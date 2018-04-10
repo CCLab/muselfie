@@ -1,11 +1,9 @@
-<Page class="page"
-    navigatingTo="onNavigatingTo" 
-    xmlns="http://schemas.nativescript.org/tns.xsd">
-    
-    <ActionBar class="action-bar">
-        <Label class="action-bar-title" text="Home"></Label>
-    </ActionBar>
-
-    <GridLayout>
+<Page class="page" navigatingTo="onNavigatingTo" actionBarHidden="true">
+    <GridLayout rows="auto, *, 70">
+        <Label text="Witaj w Muselfie!" class="h1" row="0"/>
+        <Label text="Tu będą pewnie jakieś dwa zdania wstępne o tym co to za aplikacja i co robi."
+               verticalAlignment="center" textWrap="true"
+               class="text-muted description" row="1"/>
+        <Button text="Zacznij!" class="bg-primary" row="3"/>
     </GridLayout>
 </Page>
