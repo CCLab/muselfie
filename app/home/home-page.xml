@@ -1,9 +1,9 @@
 <Page class="page" navigatingTo="onNavigatingTo" actionBarHidden="true">
-    <GridLayout rows="auto, *, 70">
+    <GridLayout rows="auto, *, auto">
         <Label text="Witaj w Muselfie!" class="h1" row="0"/>
         <Label text="Tu będą pewnie jakieś dwa zdania wstępne o tym co to za aplikacja i co robi."
                verticalAlignment="center" textWrap="true"
                class="text-muted description" row="1"/>
-        <Button text="Zacznij!" class="bg-primary" row="3"/>
+        <Button text="Zacznij!" class="btn btn-primary" tap="startTap" row="2"/>
     </GridLayout>
 </Page>

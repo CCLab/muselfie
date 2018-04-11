@@ -5,7 +5,14 @@ purpose of the file is to pass control to the app’s first module.
 */
 
 import * as app from "application";
+import * as fresco from "nativescript-fresco";
 import "./bundle-config";
+
+if (app.android) {
+    app.on("launch", () => {
+        fresco.initialize();
+    });
+}
 
 app.start({ moduleName: "home/home-page" });
 

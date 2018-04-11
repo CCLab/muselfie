@@ -1,0 +1,15 @@
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:fresco="nativescript-fresco">
+    <Page.actionBar>
+        <ActionBar title="1. Wybór tła kolażu">
+            <NavigationButton text="Wstecz" android.systemIcon="ic_menu_back" tap="backTap"/>
+        </ActionBar>
+    </Page.actionBar>
+    <GridLayout rows="*, auto, auto">
+        <fresco:FrescoDrawee id="image-background" width="100%" aspectRatio="1"
+                             imageUri="{{ chosenImagePath }}"
+                             placeholderImageUri="res://ic_image_black_48dp"/>
+        <Button text="Wybierz tło" tap="chooseTap" class="btn btn-outline" row="1"/>
+        <Button text="Dalej!" class="btn btn-primary" isEnabled="{{ chosenImagePath != '' }}" row="2"/>
+    </GridLayout>
+</Page>
