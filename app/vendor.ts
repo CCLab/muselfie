@@ -5,6 +5,10 @@ const appCssContext = require.context("~/", false, /^\.\/app\.(css|scss|less|sas
 global.registerWebpackModules(appCssContext);
 application.loadAppCss();
 
+
 require("./vendor-platform");
 
 require("bundle-entry-points");
+
+require("nativescript-fresco");
+require("nativescript-ui-listview");

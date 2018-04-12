@@ -10,7 +10,7 @@ export function onNavigatingTo(args: NavigatedData) {
 
 export function startTap(args: NavigatedData) {
     frameModule.topmost().navigate({
-        moduleName: "background/background-page",
+        moduleName: "pages/background/background-page",
         transition: { name: "slide" },
     });
 }

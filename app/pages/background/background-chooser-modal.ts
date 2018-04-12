@@ -1,7 +1,7 @@
 import { BackgroundChooserModel } from "./background-chooser-model";
-import { ShownModallyData, Page  } from "tns-core-modules/ui/page";
-import {EventData} from "tns-core-modules/data/observable";
-import {View} from "tns-core-modules/ui/core/view";
+import { ShownModallyData, Page  } from "ui/page";
+import { EventData } from "data/observable";
+import { View } from "ui/core/view";
 
 // tslint:disable-next-line:ban-types
 let closeCallback: Function;

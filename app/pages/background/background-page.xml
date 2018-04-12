@@ -8,8 +8,8 @@
     <GridLayout rows="*, auto, auto">
         <fresco:FrescoDrawee id="image-background" width="100%" aspectRatio="1"
                              imageUri="{{ chosenImagePath }}"
-                             placeholderImageUri="res://ic_image_black_48dp"/>
-        <Button text="Wybierz tło" tap="chooseTap" class="btn btn-outline" row="1"/>
-        <Button text="Dalej!" class="btn btn-primary" isEnabled="{{ chosenImagePath != '' }}" row="2"/>
+                             placeholderImageUri="res://ic_photo_black_48dp"/>
+        <Button text="{{ chosenImagePath ? 'Zmień tło' : 'Wybierz tło' }}" tap="chooseTap" class="btn btn-outline" row="1"/>
+        <Button text="Dalej!" class="btn btn-primary" tap="nextTap" isEnabled="{{ chosenImagePath != '' }}" row="2"/>
     </GridLayout>
 </Page>

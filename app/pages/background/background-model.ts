@@ -9,6 +9,8 @@ export class BackgroundModel extends Observable {
     }
 
     public imageChosen(image: FileSystemEntity) {
-        this.set("chosenImagePath", image.path);
+        if (image) {
+            this.set("chosenImagePath", image.path);
+        }
     }
 }

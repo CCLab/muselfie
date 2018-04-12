@@ -1,4 +1,5 @@
 require("application");
+
 if (!global["__snapshot"]) {
     // In case snapshot generation is enabled these modules will get into the bundle
     // but will not be required/evaluated.
