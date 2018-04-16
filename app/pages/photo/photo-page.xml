@@ -7,7 +7,7 @@
     </Page.actionBar>
     <GridLayout rows="*, auto, auto">
         <fresco:FrescoDrawee id="image-photo" width="100%" aspectRatio="1"
-                             imageUri="{{ chosenImageSource }}"
+                             imageUri="{{ chosenImage }}"
                              placeholderImageUri="res://ic_face_black_48dp"/>
         <Button text="{{ chosenImageSource ? 'Zmień zdjęcie twarzy' : 'Wybierz zdjęcie twarzy' }}" tap="chooseTap" class="btn btn-outline" row="1"/>
         <Button text="Dalej!" class="btn btn-primary" isEnabled="{{ chosenImageSource != '' }}" row="2"/>
