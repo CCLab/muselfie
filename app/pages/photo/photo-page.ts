@@ -32,14 +32,7 @@ export function chooseTap(args: EventData) {
     })
     .then((selection) => {
         selection.forEach((selected) => {
-            console.log(selected.uri);
-            console.log(selected.fileUri);
-            console.log(selected.thumb);
-            page.bindingContext.chosenImageSource = selected.uri;
-            selected.getImage({ maxWidth: 200, maxHeight: 200 })
-            .then((imageSource) => {
-                // page.bindingContext.chosenImageSource = imageSource;
-            });
+            console.log(selected);
         });
     });
 }
