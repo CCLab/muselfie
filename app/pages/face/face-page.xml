@@ -1,0 +1,16 @@
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:fresco="nativescript-fresco">
+    <Page.actionBar>
+        <ActionBar title="3. Wskazanie twarzy">
+            <NavigationButton text="Wstecz" android.systemIcon="ic_menu_back" tap="backTap"/>
+        </ActionBar>
+    </Page.actionBar>
+    <GridLayout rows="*, auto">
+        <fresco:FrescoDrawee id="image-photo" width="100%" aspectRatio="1"
+                             imageUri="{{ chosenImage }}"/>
+        <Label id="image-overlay"/>
+        <Label id="face-oval" backgroundImage="{{ chosenImage }}" touch="faceTouch" pinch="facePinch" pan="facePan"
+               style="{{ 'clip-path: ellipse(' + faceWidth + ' ' + faceHeight + ' at ' + faceX + ' ' + faceY + ');' }}"/>
+        <Button text="Gotowe!" class="btn btn-primary" row="1"/>
+    </GridLayout>
+</Page>

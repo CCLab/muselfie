@@ -51,8 +51,14 @@ export function chooseTap(args: EventData) {
 }
 
 export function nextTap(args: NavigatedData) {
+    const button = args.object as View;
+    const page = button.page as Page;
+
     frameModule.topmost().navigate({
-        moduleName: "pages/photo/photo-page",
+        moduleName: "pages/face/face-page",
         transition: { name: "slide" },
+        context: {
+            chosenImage: page.bindingContext.chosenImage,
+        },
     });
 }

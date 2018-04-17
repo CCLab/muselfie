@@ -1,7 +1,7 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:fresco="nativescript-fresco">
     <Page.actionBar>
-        <ActionBar title="1. Wybór zdjęcia twarzy">
+        <ActionBar title="2. Wybór zdjęcia twarzy">
             <NavigationButton text="Wstecz" android.systemIcon="ic_menu_back" tap="backTap"/>
         </ActionBar>
     </Page.actionBar>
@@ -10,6 +10,6 @@
                              imageUri="{{ chosenImage }}"
                              placeholderImageUri="res://ic_face_black_48dp"/>
         <Button text="{{ chosenImageSource ? 'Zmień zdjęcie twarzy' : 'Wybierz zdjęcie twarzy' }}" tap="chooseTap" class="btn btn-outline" row="1"/>
-        <Button text="Dalej!" class="btn btn-primary" isEnabled="{{ chosenImageSource != '' }}" row="2"/>
+        <Button text="Dalej!" class="btn btn-primary" tap="nextTap" isEnabled="{{ chosenImage != '' }}" row="2"/>
     </GridLayout>
 </Page>
