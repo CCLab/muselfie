@@ -1,8 +1,9 @@
 import { Observable } from "data/observable";
 
-export class PhotoModel extends Observable {
+export class FinalModel extends Observable {
     public chosenPhotoPath = "";
     public chosenBackgroundPath = "";
+    public finalImagePath = "";
 
     constructor() {
         super();

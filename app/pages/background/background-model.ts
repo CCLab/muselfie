@@ -2,15 +2,15 @@ import { Observable } from "data/observable";
 import { FileSystemEntity } from "tns-core-modules/file-system";
 
 export class BackgroundModel extends Observable {
-    public chosenImagePath = "";
+    public chosenBackgroundPath = "";
 
     constructor() {
         super();
     }
 
-    public imageChosen(image: FileSystemEntity) {
+    public backgroundChosen(image: FileSystemEntity) {
         if (image) {
-            this.set("chosenImagePath", image.path);
+            this.set("chosenBackgroundPath", image.path);
         }
     }
 }

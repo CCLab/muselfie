@@ -23,14 +23,20 @@ export function chooseTap(args: EventData) {
     page.showModal(
         "pages/background/background-chooser-modal",
         {},
-        page.bindingContext.imageChosen.bind(page.bindingContext),
+        page.bindingContext.backgroundChosen.bind(page.bindingContext),
         true,
     );
 }
 
 export function nextTap(args: NavigatedData) {
+    const button = args.object as View;
+    const page = button.page as Page;
+
     frameModule.topmost().navigate({
         moduleName: "pages/photo/photo-page",
         transition: { name: "slide" },
+        context: {
+            chosenBackgroundPath: page.bindingContext.chosenBackgroundPath,
+        },
     });
 }

@@ -3,6 +3,7 @@ import { NavigatedData, Page } from "ui/page";
 import { EventData } from "tns-core-modules/data/observable";
 import * as imageSource from "image-source";
 import * as fs from "file-system";
+import * as app from "application";
 
 import * as imagepicker from "nativescript-imagepicker";
 import * as fresco from "nativescript-fresco";
@@ -16,11 +17,15 @@ export function onNavigatingTo(args: NavigatedData) {
     if (!page.bindingContext) {
         page.bindingContext = new PhotoModel();
     }
+
+    page.bindingContext.set("chosenBackgroundPath", page.navigationContext.chosenBackgroundPath);
 }
 
 export function backTap(args: NavigatedData) {
     frameModule.topmost().goBack();
 }
+
+declare var org;
 
 export function chooseTap(args: EventData) {
     const button = args.object as View;
@@ -42,7 +47,12 @@ export function chooseTap(args: EventData) {
 
                 image.saveToFile(path, "jpg");
                 fresco.getImagePipeline().evictFromCache(`file:${path}`);
-                page.bindingContext.set("chosenImage", path);
+                page.bindingContext.set("chosenPhotoPath", path);
+
+                // clear background-image cache (for the Label on the next screen)
+                let context = app.android.context;
+                let fetcher = org.nativescript.widgets.image.Fetcher.getInstance(context);
+                fetcher.clearCache();
             }).catch((reason) => {
                 console.error(reason);
             });
@@ -58,7 +68,8 @@ export function nextTap(args: NavigatedData) {
         moduleName: "pages/face/face-page",
         transition: { name: "slide" },
         context: {
-            chosenImage: page.bindingContext.chosenImage,
+            chosenPhotoPath: page.bindingContext.chosenPhotoPath,
+            chosenBackgroundPath: page.bindingContext.chosenBackgroundPath,
         },
     });
 }

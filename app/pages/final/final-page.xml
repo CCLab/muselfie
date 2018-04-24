@@ -1,0 +1,11 @@
+<Page class="page" navigatingTo="onNavigatingTo" navigatedTo="navigatedTo" xmlns="http://schemas.nativescript.org/tns.xsd">
+    <Page.actionBar>
+        <ActionBar title="4. Profit!">
+            <NavigationButton text="Wstecz" android.systemIcon="ic_menu_back" tap="backTap"/>
+        </ActionBar>
+    </Page.actionBar>
+    <GridLayout rows="*, auto, auto">
+        <Image id="image-final" src="{{ finalImagePath }}" width="100%" />
+        <Button text="Ekran w budowie" class="btn btn-primary" tap="nextTap" isEnabled="false" row="2"/>
+    </GridLayout>
+</Page>

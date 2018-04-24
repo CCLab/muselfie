@@ -2,11 +2,14 @@ import { Observable } from "data/observable";
 import { screen } from "platform";
 
 export class FaceModel extends Observable {
-    public chosenImage = "";
+    public chosenPhotoPath = "";
+    public chosenBackgroundPath = "";
+
     public faceX: number;
     public faceY: number;
     public faceWidth: number;
     public faceHeight: number;
+
     private commitedFaceWidth: number;
     private commitedfaceHeight: number;
     private commitedFaceX: number;
@@ -38,7 +41,7 @@ export class FaceModel extends Observable {
         this.set("faceX", x);
         this.set("faceY", y);
     }
-    
+
     public commitFaceChanges() {
         this.set("commitedFaceWidth", this.faceWidth);
         this.set("commitedfaceHeight", this.faceHeight);

@@ -13,7 +13,8 @@ export function onNavigatingTo(args: NavigatedData) {
         page.bindingContext = new FaceModel();
     }
 
-    page.bindingContext.set("chosenImage", page.navigationContext.chosenImage);
+    page.bindingContext.set("chosenPhotoPath", page.navigationContext.chosenPhotoPath);
+    page.bindingContext.set("chosenBackgroundPath", page.navigationContext.chosenBackgroundPath);
 }
 
 export function backTap(args: NavigatedData) {
@@ -23,7 +24,6 @@ export function backTap(args: NavigatedData) {
 let multiFingerMode = false;
 export function faceTouch(args: TouchGestureEventData) {
     const model = (args.object as View).bindingContext as FaceModel;
-    console.log(`touch ${multiFingerMode} - ${args.action}`);
 
     if (args.action == "down") {
         multiFingerMode = (args.getPointerCount() !== 1);
@@ -42,15 +42,21 @@ export function facePinch(args: PinchGestureEventData) {
 
 export function facePan(args: PanGestureEventData) {
     const model = (args.object as View).bindingContext as FaceModel;
-    console.log(`pan ${multiFingerMode} - ${args.state}`);
     if (!multiFingerMode && args.state === GestureStateTypes.changed) {
         model.moveFacePosition(args.deltaX, args.deltaY);
     }
 }
 
 export function nextTap(args: NavigatedData) {
+    const button = args.object as View;
+    const page = button.page as Page;
+
     frameModule.topmost().navigate({
-        moduleName: "pages/photo/photo-page",
+        moduleName: "pages/final/final-page",
         transition: { name: "slide" },
+        context: {
+            chosenPhotoPath: page.bindingContext.chosenPhotoPath,
+            chosenBackgroundPath: page.bindingContext.chosenBackgroundPath,
+        },
     });
 }

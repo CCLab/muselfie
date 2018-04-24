@@ -12,3 +12,5 @@ require("bundle-entry-points");
 
 require("nativescript-fresco");
 require("nativescript-ui-listview");
+require("nativescript-bitmap-factory");
+require("nativescript-imagepicker");
