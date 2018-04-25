@@ -4,14 +4,13 @@ import { PanGestureEventData, TouchGestureEventData, PinchGestureEventData, Gest
 import { View } from "tns-core-modules/ui/core/view";
 
 
-import { FaceModel } from "./face-model";
-import {PlacementModel} from "~/pages/placement/placement-model";
+import { PlacementModel } from "./placement-model";
 
 export function onNavigatingTo(args: NavigatedData) {
     const page = args.object as Page;
 
     if (!page.bindingContext) {
-        page.bindingContext = new FaceModel();
+        page.bindingContext = new PlacementModel();
     }
 
     page.bindingContext.set("chosenPhotoPath", page.navigationContext.chosenPhotoPath);
@@ -23,48 +22,49 @@ export function backTap(args: NavigatedData) {
 }
 
 let multiFingerMode = false;
-export function faceTouch(args: TouchGestureEventData) {
-    const model = (args.object as View).bindingContext as FaceModel;
+export function placementTouch(args: TouchGestureEventData) {
+    const model = (args.object as View).bindingContext as PlacementModel;
 
     if (args.action == "down") {
         multiFingerMode = (args.getPointerCount() !== 1);
     } else if (args.action == "up") {
-        model.commitFaceChanges();
+        model.commitPlacementChanges();
     }
 }
 
-export function facePinch(args: PinchGestureEventData) {
-    const model = (args.object as View).bindingContext as FaceModel;
+export function placementPinch(args: PinchGestureEventData) {
+    const model = (args.object as View).bindingContext as PlacementModel;
     if (args.state === GestureStateTypes.changed) {
-        model.scaleFaceSize(args.scale);
-        model.setFacePosition(args.getFocusX(), args.getFocusY());
+        model.scalePlacementSize(args.scale);
+        model.setPlacementPosition(args.getFocusX(), args.getFocusY());
     }
 }
 
-export function facePan(args: PanGestureEventData) {
-    const model = (args.object as View).bindingContext as FaceModel;
+export function placementPan(args: PanGestureEventData) {
+    const model = (args.object as View).bindingContext as PlacementModel;
     if (!multiFingerMode && args.state === GestureStateTypes.changed) {
-        model.moveFacePosition(args.deltaX, args.deltaY);
+        model.movePlacementPosition(args.deltaX, args.deltaY);
     }
 }
 
 export function nextTap(args: NavigatedData) {
     const button = args.object as View;
     const page = button.page as Page;
-    const model = page.bindingContext as FaceModel;
+    const model = page.bindingContext as PlacementModel;
 
     frameModule.topmost().navigate({
-        moduleName: "pages/placement/placement-page",
+        moduleName: "pages/final/final-page",
         transition: { name: "slide" },
         context: {
-            chosenPhotoPath: page.bindingContext.chosenPhotoPath,
-            chosenBackgroundPath: page.bindingContext.chosenBackgroundPath,
-            faceDimensions: {
-                x: model.faceX,
-                y: model.faceY,
-                radiusX: model.faceRadiusX,
-                radiusY: model.faceRadiusY,
+            chosenPhotoPath: model.chosenPhotoPath,
+            chosenBackgroundPath: model.chosenBackgroundPath,
+            placementDimensions: {
+                x: model.placementX,
+                y: model.placementY,
+                radiusX: model.placementRadiusX,
+                radiusY: model.placementRadiusY,
             },
+            faceDimensions: page.navigationContext.faceDimensions,
         },
     });
 }

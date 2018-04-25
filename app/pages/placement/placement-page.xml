@@ -1,0 +1,15 @@
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:fresco="nativescript-fresco">
+    <Page.actionBar>
+        <ActionBar title="4. Gdzie ma się pojawić twarz?">
+            <NavigationButton text="Wstecz" android.systemIcon="ic_menu_back" tap="backTap"/>
+        </ActionBar>
+    </Page.actionBar>
+    <GridLayout rows="*, auto">
+        <fresco:FrescoDrawee width="100%" aspectRatio="1"
+                             imageUri="{{ chosenBackgroundPath }}"/>
+        <Label id="placement-oval" touch="placementTouch" pinch="placementPinch" pan="placementPan"
+               style="{{ 'clip-path: ellipse(' + placementRadiusX + ' ' + placementRadiusY + ' at ' + placementX + ' ' + placementY + ');' }}"/>
+        <Button text="Gotowe!" class="btn btn-primary" tap="nextTap" row="1"/>
+    </GridLayout>
+</Page>

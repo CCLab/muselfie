@@ -10,7 +10,7 @@
                              imageUri="{{ chosenPhotoPath }}"/>
         <Label id="image-overlay"/>
         <Label id="face-oval" backgroundImage="{{ chosenPhotoPath }}" touch="faceTouch" pinch="facePinch" pan="facePan"
-               style="{{ 'clip-path: ellipse(' + faceWidth + ' ' + faceHeight + ' at ' + faceX + ' ' + faceY + ');' }}"/>
-        <Button text="Gotowe!" class="btn btn-primary" tap="nextTap" row="1"/>
+               style="{{ 'clip-path: ellipse(' + faceRadiusX + ' ' + faceRadiusY + ' at ' + faceX + ' ' + faceY + ');' }}"/>
+        <Button text="Dalej" class="btn btn-primary" tap="nextTap" row="1"/>
     </GridLayout>
 </Page>

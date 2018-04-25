@@ -7,22 +7,22 @@ export class FaceModel extends Observable {
 
     public faceX: number;
     public faceY: number;
-    public faceWidth: number;
-    public faceHeight: number;
+    public faceRadiusX: number;
+    public faceRadiusY: number;
 
-    private commitedFaceWidth: number;
-    private commitedfaceHeight: number;
+    private commitedFaceRadiusX: number;
+    private commitedfaceRadiusY: number;
     private commitedFaceX: number;
     private commitedFaceY: number;
 
     constructor() {
         super();
-        this.faceWidth = screen.mainScreen.widthDIPs * 0.2;
-        this.faceHeight = screen.mainScreen.widthDIPs * 0.3;
-        this.commitedFaceWidth = this.faceWidth;
-        this.commitedfaceHeight = this.faceHeight;
+        this.faceRadiusX = screen.mainScreen.widthDIPs * 0.2;
+        this.faceRadiusY = screen.mainScreen.widthDIPs * 0.3;
+        this.commitedFaceRadiusX = this.faceRadiusX;
+        this.commitedfaceRadiusY = this.faceRadiusY;
         this.faceX = screen.mainScreen.widthDIPs * 0.5;
-        this.faceY = screen.mainScreen.heightDIPs * 0.5 - (this.faceHeight / 2);
+        this.faceY = screen.mainScreen.heightDIPs * 0.5 - (this.faceRadiusY / 2);
         this.commitedFaceX = this.faceX;
         this.commitedFaceY = this.faceY;
     }
@@ -33,8 +33,8 @@ export class FaceModel extends Observable {
     }
 
     public scaleFaceSize(factor: number) {
-        this.set("faceWidth", this.commitedFaceWidth * factor);
-        this.set("faceHeight", this.commitedfaceHeight * factor);
+        this.set("faceRadiusX", this.commitedFaceRadiusX * factor);
+        this.set("faceRadiusY", this.commitedfaceRadiusY * factor);
     }
 
     public setFacePosition(x: number, y: number) {
@@ -43,8 +43,8 @@ export class FaceModel extends Observable {
     }
 
     public commitFaceChanges() {
-        this.set("commitedFaceWidth", this.faceWidth);
-        this.set("commitedfaceHeight", this.faceHeight);
+        this.set("commitedFaceRadiusX", this.faceRadiusX);
+        this.set("commitedfaceRadiusY", this.faceRadiusY);
         this.set("commitedFaceX", this.faceX);
         this.set("commitedFaceY", this.faceY);
     }
