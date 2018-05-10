@@ -20,9 +20,12 @@ export function backTap(args: NavigatedData) {
 export function chooseTap(args: EventData) {
     const button = args.object as View;
     const page = button.page as Page;
+    const image = page.getViewById("image-background") as View;
     page.showModal(
         "pages/background/background-chooser-modal",
-        {},
+        {
+            'imageSize': image.getActualSize(),
+        },
         page.bindingContext.backgroundChosen.bind(page.bindingContext),
         true,
     );

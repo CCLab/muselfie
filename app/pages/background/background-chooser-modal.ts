@@ -7,8 +7,10 @@ import { View } from "ui/core/view";
 let closeCallback: Function;
 export function onShownModally(args: ShownModallyData) {
     const page = args.object as Page;
+    const model = new BackgroundChooserModel();
+    model.set("thumbnailHeight", args.context.imageSize.height / 2); // keep the aspect ratio
+    page.bindingContext = model;
     closeCallback = args.closeCallback;
-    page.bindingContext = new BackgroundChooserModel();
 }
 
 export function imageTap(args: EventData) {
