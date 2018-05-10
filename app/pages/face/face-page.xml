@@ -13,10 +13,12 @@
                     pan="facePan" 
                     touch="faceTouch" 
                     pinch="facePinch" 
+                    rotation="faceRotation"
                     top="{{ faceY }}"
                     left="{{ faceX }}" 
                     width="{{ faceWidth }}"
                     height="{{ faceHeight }}"
+                    rotate="{{ faceRotation }}" 
                 />
          </AbsoluteLayout>
         <Button text="Dalej" class="btn btn-primary" tap="nextTap" row="1"/>

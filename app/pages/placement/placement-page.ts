@@ -1,6 +1,6 @@
 import * as frameModule from "tns-core-modules/ui/frame";
 import { NavigatedData, Page } from "ui/page";
-import { PanGestureEventData, TouchGestureEventData, PinchGestureEventData, GestureStateTypes } from "ui/gestures";
+import { PanGestureEventData, TouchGestureEventData, PinchGestureEventData, GestureStateTypes, RotationGestureEventData } from "ui/gestures";
 import { View } from "tns-core-modules/ui/core/view";
 
 
@@ -47,6 +47,11 @@ export function placementPan(args: PanGestureEventData) {
     }
 }
 
+export function placementRotation(args: RotationGestureEventData) {
+    const model = (args.object as View).bindingContext as PlacementModel;
+    model.setPlacementRotation(args.rotation);
+}
+
 export function nextTap(args: NavigatedData) {
     const button = args.object as View;
     const page = button.page as Page;
@@ -63,6 +68,7 @@ export function nextTap(args: NavigatedData) {
                 y: model.placementY,
                 width: model.placementWidth,
                 height: model.placementHeight,
+                rotation: model.placementRotation,
             },
             faceDimensions: page.navigationContext.faceDimensions,
         },

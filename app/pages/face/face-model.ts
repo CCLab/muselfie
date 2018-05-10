@@ -9,11 +9,13 @@ export class FaceModel extends Observable {
     public faceY: number;
     public faceWidth: number;
     public faceHeight: number;
+    public faceRotation: number;
 
     private commitedFaceWidth: number;
     private commitedFaceHeight: number;
     private commitedFaceX: number;
     private commitedFaceY: number;
+    private commitedFaceRotation: number;
 
 
     constructor() {
@@ -26,6 +28,8 @@ export class FaceModel extends Observable {
         this.faceY = screen.mainScreen.heightDIPs * 0.3 - (this.faceHeight / 2);
         this.commitedFaceX = this.faceX;
         this.commitedFaceY = this.faceY;
+        this.commitedFaceRotation = 0;
+        this.faceRotation = this.commitedFaceRotation;
     }
 
     public moveFacePosition(x: number, y: number) {
@@ -43,10 +47,15 @@ export class FaceModel extends Observable {
         this.set("faceY", y);
     }
 
+    public setFaceRotation(deg: number){
+        this.set("faceRotation", this.commitedFaceRotation + deg);
+    }
+
     public commitFaceChanges() {
         this.set("commitedFaceWidth", this.faceWidth);
         this.set("commitedFaceHeight", this.faceHeight);
         this.set("commitedFaceX", this.faceX);
         this.set("commitedFaceY", this.faceY);
+        this.set("commitedFaceRotation", this.faceRotation);  
     }
 }

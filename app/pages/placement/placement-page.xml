@@ -13,10 +13,12 @@
                     pan="placementPan" 
                     touch="placementTouch" 
                     pinch="placementPinch" 
+                    rotation="placementRotation"
                     top="{{ placementY }}"
                     left="{{ placementX }}" 
                     width="{{ placementWidth }}"
                     height="{{ placementHeight }}"
+                    rotate="{{ placementRotation }}" 
                 />
          </AbsoluteLayout>
         <Button text="Gotowe!" class="btn btn-primary" tap="nextTap" row="1"/>
