@@ -3,6 +3,7 @@ import { Size } from "ui/core/view";
 import {layout} from "tns-core-modules/utils/utils";
 import * as bitmapFactory from "nativescript-bitmap-factory";
 import {ImageAsset} from "tns-core-modules/image-asset";
+import {ImageSource} from "tns-core-modules/image-source";
 
 declare var android;
 
@@ -18,7 +19,7 @@ export class FinalModel extends Observable {
 
     public chosenPhotoPath = "";
     public chosenBackgroundPath = "";
-    public finalImagePath = "";
+    public finalImageSource: ImageSource;
     public faceDimensions: OvalDimensions;
     public placementDimensions: OvalDimensions;
 
@@ -128,7 +129,7 @@ export class FinalModel extends Observable {
             canvas.drawBitmap(backgroundNative, backgroundScaleMatrix, paint);
 
             // Set in the context
-            this.set("finalImagePath", bmp.toDataUrl());
+            this.set("finalImageSource", bmp.clone().toImageSource());
         });
     }
 
