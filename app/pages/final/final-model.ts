@@ -10,8 +10,8 @@ declare var android;
 interface OvalDimensions {
     x: number;
     y: number;
-    radiusX: number;
-    radiusY: number;
+    width: number;
+    height: number;
 }
 
 export class FinalModel extends Observable {
@@ -72,25 +72,25 @@ export class FinalModel extends Observable {
             );
             let sourceRect = new android.graphics.Rect(
                 (layout.toDevicePixels(
-                    this.faceDimensions.x - this.faceDimensions.radiusX) - photoScale.xTranslation
+                    this.faceDimensions.x - this.faceDimensions.width / 2) - photoScale.xTranslation
                 ) / photoScale.scale,
                 (layout.toDevicePixels(
-                    this.faceDimensions.y - this.faceDimensions.radiusY) - photoScale.yTranslation
+                    this.faceDimensions.y - this.faceDimensions.height / 2) - photoScale.yTranslation
                 ) / photoScale.scale,
                 (layout.toDevicePixels(
-                    this.faceDimensions.x + this.faceDimensions.radiusX) - photoScale.xTranslation
+                    this.faceDimensions.x + this.faceDimensions.width / 2) - photoScale.xTranslation
                 ) / photoScale.scale,
                 (layout.toDevicePixels(
-                    this.faceDimensions.y + this.faceDimensions.radiusY) - photoScale.yTranslation
+                    this.faceDimensions.y + this.faceDimensions.height / 2) - photoScale.yTranslation
                 ) / photoScale.scale,
             );
 
             // Where to put the face?
             let destRect = new android.graphics.RectF(
-                layout.toDevicePixels(this.placementDimensions.x - this.placementDimensions.radiusX),
-                layout.toDevicePixels(this.placementDimensions.y - this.placementDimensions.radiusY),
-                layout.toDevicePixels(this.placementDimensions.x + this.placementDimensions.radiusX),
-                layout.toDevicePixels(this.placementDimensions.y + this.placementDimensions.radiusY),
+                layout.toDevicePixels(this.placementDimensions.x - this.placementDimensions.width / 2),
+                layout.toDevicePixels(this.placementDimensions.y - this.placementDimensions.height / 2),
+                layout.toDevicePixels(this.placementDimensions.x + this.placementDimensions.width / 2),
+                layout.toDevicePixels(this.placementDimensions.y + this.placementDimensions.height / 2),
             );
 
             // Blur face edges

@@ -7,22 +7,23 @@ export class FaceModel extends Observable {
 
     public faceX: number;
     public faceY: number;
-    public faceRadiusX: number;
-    public faceRadiusY: number;
+    public faceWidth: number;
+    public faceHeight: number;
 
-    private commitedFaceRadiusX: number;
-    private commitedfaceRadiusY: number;
+    private commitedFaceWidth: number;
+    private commitedFaceHeight: number;
     private commitedFaceX: number;
     private commitedFaceY: number;
 
+
     constructor() {
         super();
-        this.faceRadiusX = screen.mainScreen.widthDIPs * 0.2;
-        this.faceRadiusY = screen.mainScreen.widthDIPs * 0.3;
-        this.commitedFaceRadiusX = this.faceRadiusX;
-        this.commitedfaceRadiusY = this.faceRadiusY;
-        this.faceX = screen.mainScreen.widthDIPs * 0.5;
-        this.faceY = screen.mainScreen.heightDIPs * 0.5 - (this.faceRadiusY / 2);
+        this.faceWidth = screen.mainScreen.widthDIPs * 0.4;
+        this.faceHeight = screen.mainScreen.widthDIPs * 0.6;
+        this.commitedFaceWidth = this.faceWidth;
+        this.commitedFaceHeight = this.faceHeight;
+        this.faceX = screen.mainScreen.widthDIPs * 0.3;
+        this.faceY = screen.mainScreen.heightDIPs * 0.3 - (this.faceHeight / 2);
         this.commitedFaceX = this.faceX;
         this.commitedFaceY = this.faceY;
     }
@@ -33,8 +34,8 @@ export class FaceModel extends Observable {
     }
 
     public scaleFaceSize(factor: number) {
-        this.set("faceRadiusX", this.commitedFaceRadiusX * factor);
-        this.set("faceRadiusY", this.commitedfaceRadiusY * factor);
+        this.set("faceWidth", this.commitedFaceWidth * factor);
+        this.set("faceHeight", this.commitedFaceHeight * factor);
     }
 
     public setFacePosition(x: number, y: number) {
@@ -43,8 +44,8 @@ export class FaceModel extends Observable {
     }
 
     public commitFaceChanges() {
-        this.set("commitedFaceRadiusX", this.faceRadiusX);
-        this.set("commitedfaceRadiusY", this.faceRadiusY);
+        this.set("commitedFaceWidth", this.faceWidth);
+        this.set("commitedFaceHeight", this.faceHeight);
         this.set("commitedFaceX", this.faceX);
         this.set("commitedFaceY", this.faceY);
     }

@@ -62,8 +62,8 @@ export function nextTap(args: NavigatedData) {
             faceDimensions: {
                 x: model.faceX,
                 y: model.faceY,
-                radiusX: model.faceRadiusX,
-                radiusY: model.faceRadiusY,
+                width: model.faceWidth,
+                height: model.faceHeight,
             },
         },
     });

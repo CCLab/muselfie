@@ -1,9 +1,6 @@
-#image-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
 #face-oval {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  border-color:#00e187;
+  border-width:3;
+  clip-path: ellipse(50% 50% at 50% 50%);
+  
 }

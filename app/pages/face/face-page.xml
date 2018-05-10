@@ -8,9 +8,17 @@
     <GridLayout rows="*, auto">
         <fresco:FrescoDrawee id="image-photo" width="100%" aspectRatio="1"
                              imageUri="{{ chosenPhotoPath }}"/>
-        <Label id="image-overlay"/>
-        <Label id="face-oval" backgroundImage="{{ chosenPhotoPath }}" touch="faceTouch" pinch="facePinch" pan="facePan"
-               style="{{ 'clip-path: ellipse(' + faceRadiusX + ' ' + faceRadiusY + ' at ' + faceX + ' ' + faceY + ');' }}"/>
+        <AbsoluteLayout>
+            <Label id="face-oval" 
+                    pan="facePan" 
+                    touch="faceTouch" 
+                    pinch="facePinch" 
+                    top="{{ faceY }}"
+                    left="{{ faceX }}" 
+                    width="{{ faceWidth }}"
+                    height="{{ faceHeight }}"
+                />
+         </AbsoluteLayout>
         <Button text="Dalej" class="btn btn-primary" tap="nextTap" row="1"/>
     </GridLayout>
 </Page>

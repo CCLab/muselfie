@@ -8,8 +8,17 @@
     <GridLayout rows="*, auto">
         <fresco:FrescoDrawee width="100%" aspectRatio="1"
                              imageUri="{{ chosenBackgroundPath }}"/>
-        <Label id="placement-oval" touch="placementTouch" pinch="placementPinch" pan="placementPan"
-               style="{{ 'clip-path: ellipse(' + placementRadiusX + ' ' + placementRadiusY + ' at ' + placementX + ' ' + placementY + ');' }}"/>
+        <AbsoluteLayout>
+            <Label id="placement-oval" 
+                    pan="placementPan" 
+                    touch="placementTouch" 
+                    pinch="placementPinch" 
+                    top="{{ placementY }}"
+                    left="{{ placementX }}" 
+                    width="{{ placementWidth }}"
+                    height="{{ placementHeight }}"
+                />
+         </AbsoluteLayout>
         <Button text="Gotowe!" class="btn btn-primary" tap="nextTap" row="1"/>
     </GridLayout>
 </Page>

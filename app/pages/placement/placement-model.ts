@@ -7,24 +7,24 @@ export class PlacementModel extends Observable {
 
     public placementX: number;
     public placementY: number;
-    public placementRadiusX: number;
-    public placementRadiusY: number;
-
-    private commitedPlacementRadiusX: number;
-    private commitedplacementRadiusY: number;
+    public placementWidth: number;
+    public placementHeight: number;
+  
+    private commitedPlacementWidth: number;
+    private commitedPlacementHeight: number;
     private commitedPlacementX: number;
     private commitedPlacementY: number;
-
+  
     constructor() {
         super();
-        this.placementRadiusX = screen.mainScreen.widthDIPs * 0.2;
-        this.placementRadiusY = screen.mainScreen.widthDIPs * 0.3;
-        this.commitedPlacementRadiusX = this.placementRadiusX;
-        this.commitedplacementRadiusY = this.placementRadiusY;
-        this.placementX = screen.mainScreen.widthDIPs * 0.5;
-        this.placementY = screen.mainScreen.heightDIPs * 0.5 - (this.placementRadiusY / 2);
+        this.placementWidth = screen.mainScreen.widthDIPs * 0.4;
+        this.placementHeight = screen.mainScreen.widthDIPs * 0.6;
+        this.commitedPlacementWidth = this.placementWidth;
+        this.commitedPlacementHeight = this.placementHeight;
+        this.placementX = screen.mainScreen.widthDIPs * 0.3;
+        this.placementY = screen.mainScreen.heightDIPs * 0.3 - (this.placementHeight / 2);
         this.commitedPlacementX = this.placementX;
-        this.commitedPlacementY = this.placementY;
+        this.commitedPlacementY = this.placementY;    
     }
 
     public movePlacementPosition(x: number, y: number) {
@@ -33,19 +33,19 @@ export class PlacementModel extends Observable {
     }
 
     public scalePlacementSize(factor: number) {
-        this.set("placementRadiusX", this.commitedPlacementRadiusX * factor);
-        this.set("placementRadiusY", this.commitedplacementRadiusY * factor);
+        this.set("placementWidth", this.commitedPlacementWidth * factor);
+        this.set("placementHeight", this.commitedPlacementHeight * factor);
     }
 
     public setPlacementPosition(x: number, y: number) {
         this.set("placementX", x);
         this.set("placementY", y);
     }
-
+  
     public commitPlacementChanges() {
-        this.set("commitedPlacementRadiusX", this.placementRadiusX);
-        this.set("commitedplacementRadiusY", this.placementRadiusY);
+        this.set("commitedPlacementWidth", this.placementWidth);
+        this.set("commitedplacementHeight", this.placementHeight);
         this.set("commitedPlacementX", this.placementX);
-        this.set("commitedPlacementY", this.placementY);
+        this.set("commitedPlacementY", this.placementY);     
     }
 }

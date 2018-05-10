@@ -61,8 +61,8 @@ export function nextTap(args: NavigatedData) {
             placementDimensions: {
                 x: model.placementX,
                 y: model.placementY,
-                radiusX: model.placementRadiusX,
-                radiusY: model.placementRadiusY,
+                width: model.placementWidth,
+                height: model.placementHeight,
             },
             faceDimensions: page.navigationContext.faceDimensions,
         },
