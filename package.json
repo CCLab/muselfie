@@ -1,8 +1,8 @@
 {
-  "description": "NativeScript Application",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "readme": "NativeScript Application",
-  "repository": "<fill-your-repository-here>",
+  "description": "Muselfie",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": "https://github.com/ee/muselfie",
   "nativescript": {
     "id": "ee.laboratorium.muselfie",
     "tns-android": {
