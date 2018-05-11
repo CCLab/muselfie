@@ -8,12 +8,8 @@
     <GridLayout rows="*, auto">
         <fresco:FrescoDrawee id="image-photo" width="100%" aspectRatio="1"
                              imageUri="{{ chosenPhotoPath }}"/>
-        <AbsoluteLayout>
-            <Label id="face-oval" 
-                    pan="facePan" 
-                    touch="faceTouch" 
-                    pinch="facePinch" 
-                    rotation="faceRotation"
+        <AbsoluteLayout pan="facePan" touch="faceTouch" pinch="facePinch" rotation="faceRotation">
+            <Label id="face-oval"
                     top="{{ faceY }}"
                     left="{{ faceX }}" 
                     width="{{ faceWidth }}"

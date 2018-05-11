@@ -8,12 +8,8 @@
     <GridLayout rows="*, auto">
         <fresco:FrescoDrawee width="100%" aspectRatio="1"
                              imageUri="{{ chosenBackgroundPath }}"/>
-        <AbsoluteLayout>
-            <Label id="placement-oval" 
-                    pan="placementPan" 
-                    touch="placementTouch" 
-                    pinch="placementPinch" 
-                    rotation="placementRotation"
+        <AbsoluteLayout pan="placementPan" touch="placementTouch" pinch="placementPinch" rotation="placementRotation">
+            <Label id="placement-oval"
                     top="{{ placementY }}"
                     left="{{ placementX }}" 
                     width="{{ placementWidth }}"

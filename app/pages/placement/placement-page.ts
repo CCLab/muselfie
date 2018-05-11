@@ -36,7 +36,10 @@ export function placementPinch(args: PinchGestureEventData) {
     const model = (args.object as View).bindingContext as PlacementModel;
     if (args.state === GestureStateTypes.changed) {
         model.scalePlacementSize(args.scale);
-        model.setPlacementPosition(args.getFocusX(), args.getFocusY());
+        model.setPlacementPosition(
+            args.getFocusX() - model.placementWidth / 2,
+            args.getFocusY() - model.placementHeight / 2,
+        );
     }
 }
 

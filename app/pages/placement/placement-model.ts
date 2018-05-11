@@ -52,7 +52,7 @@ export class PlacementModel extends Observable {
   
     public commitPlacementChanges() {
         this.set("commitedPlacementWidth", this.placementWidth);
-        this.set("commitedplacementHeight", this.placementHeight);
+        this.set("commitedPlacementHeight", this.placementHeight);
         this.set("commitedPlacementX", this.placementX);
         this.set("commitedPlacementY", this.placementY); 
         this.set("commitedPlacementRotation", this.placementRotation);    

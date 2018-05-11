@@ -37,7 +37,10 @@ export function facePinch(args: PinchGestureEventData) {
     const model = (args.object as View).bindingContext as FaceModel;
     if (args.state === GestureStateTypes.changed) {
         model.scaleFaceSize(args.scale);
-        model.setFacePosition(args.getFocusX(), args.getFocusY());
+        model.setFacePosition(
+            args.getFocusX() - model.faceWidth / 2,
+            args.getFocusY() - model.faceHeight / 2,
+        );
     }
 }
 
