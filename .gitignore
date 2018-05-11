@@ -6,9 +6,11 @@ npm-debug.log
 app/**/*.js
 app/**/*.js.map
 app/**/*.css
-hooks/
+hooks/*/*
+!hooks/*/muselfie.js
 lib/
 node_modules/
 platforms/
 tmp/
 typings/
+automatically-resized/
