@@ -1,0 +1,31 @@
+@import 'variables';
+
+button{
+    background-repeat: no-repeat;
+    border-radius: 100%;
+    box-sizing: border-box;
+    font-size: $fontSize;
+    padding: 15 20;
+}
+
+.btn-back{
+    background-color: $secondaryBackgroundColor;
+    color: $secondaryFontColor;
+    height: 60;
+}
+
+.btn-next{
+    background-color: $mainBackgroundColor;
+    color: $mainFontColor;
+    height: 60;
+    & .roboto {
+        font-family: "Roboto-Light", monospace;
+        text-transform: uppercase;
+        padding-top: 0;
+        margin-top: 0;
+      }
+}
+
+.only_icon{
+    width: 60;
+}

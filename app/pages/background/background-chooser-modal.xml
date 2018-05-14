@@ -1,13 +1,22 @@
 <Page shownModally="onShownModally" xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:lv="nativescript-ui-listview" xmlns:fresco="nativescript-fresco">
     <StackLayout>
-        <lv:RadListView items="{{ images }}" >
-            <lv:RadListView.listViewLayout>
-                <lv:ListViewGridLayout scrollDirection="Vertical" spanCount="2"/>
-            </lv:RadListView.listViewLayout>
-            <lv:RadListView.itemTemplate>
-                <fresco:FrescoDrawee height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ path }}" tap="imageTap"/>
-            </lv:RadListView.itemTemplate>
-        </lv:RadListView>
+        <FlexboxLayout id="action-bar-fake" >
+            <Label class="action-bar-step" text="1/3"/>
+            <Label class="action-bar-title" text="Wybierz tło"/>
+            <Label class="action-bar-icon mdi" text="{{ fonticon('mdi-vertical-align-bottom') }}"/>
+        </FlexboxLayout>
+        <GridLayout>
+            <lv:RadListView items="{{ images }}" >
+                <lv:RadListView.listViewLayout>
+                    <lv:ListViewGridLayout scrollDirection="Vertical" spanCount="2"/>
+                </lv:RadListView.listViewLayout>
+                <lv:RadListView.itemTemplate >
+                    <GridLayout>
+                    <fresco:FrescoDrawee height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ path }}" tap="imageTap"/>
+                     </GridLayout>
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+         </GridLayout>
     </StackLayout>
 </Page>

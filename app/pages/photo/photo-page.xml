@@ -1,8 +1,11 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:fresco="nativescript-fresco">
     <Page.actionBar>
-        <ActionBar title="2. Wybór zdjęcia twarzy">
-            <NavigationButton text="Wstecz" android.systemIcon="ic_menu_back" tap="backTap"/>
+        <ActionBar class="action-bar steps">
+             <StackLayout>
+                <Label class="action-bar-step" text="2/3"/>
+                <Label class="action-bar-title" text="Wybór zdjęcia"/>
+            </StackLayout>
         </ActionBar>
     </Page.actionBar>
     <GridLayout rows="*, auto, auto">

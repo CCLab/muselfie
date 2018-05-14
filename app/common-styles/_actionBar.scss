@@ -1,0 +1,29 @@
+@import 'variables';
+
+.action-bar{
+    background-color: $actionbarBackgroundColor;
+    border-color: transparent;
+    border-width: 1;
+    box-shadow: none;
+    color: $actionbarFontColor;
+    font-size: $actionbarFontSize;
+    height: $actionbarHeight;
+    margin: 0;
+    text-align: center;
+   
+    & label{
+        width: 100%;
+    }
+
+    & .action-bar-title{
+        width:60%;
+    }
+    
+    & .action-bar-step, & .action-bar-icon{
+        width:20%;
+    }
+
+    & .action-bar-step{
+        color: red;
+    }
+}

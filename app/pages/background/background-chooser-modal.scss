@@ -1,0 +1,26 @@
+@import '~/common-styles/actionBar';
+@import '~/common-styles/navigationButtonsContainer';
+@import '~/common-styles/buttons';
+
+#action-bar-fake{
+    @extend .action-bar;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+
+    & .action-bar-title{
+        width:60%;
+    }
+
+    & .action-bar-step, & .action-bar-icon{
+        width:20%;
+    }
+
+    & .action-bar-step{
+        color: red;
+    }
+}

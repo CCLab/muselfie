@@ -1,3 +1,11 @@
+@import '~/common-styles/actionBar';
+@import '~/common-styles/navigationButtonsContainer';
+@import '~/common-styles/buttons';
+
+#image-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 #face-oval {
   border-color:#00e187;
   border-width:3;

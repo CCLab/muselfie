@@ -1,0 +1,19 @@
+@import '~/common-styles/actionBar';
+@import '~/common-styles/navigationButtonsContainer';
+@import '~/common-styles/buttons';
+
+.steps{
+    justify-content: left;
+    flex-direction: row;
+    & .action-bar-title{
+        width:60%;
+    }
+    
+    & .action-bar-step, & .action-bar-icon{
+        width:20%;
+    }
+
+    & .action-bar-step{
+        color: red;
+    }
+}

@@ -1,7 +1,9 @@
 <Page class="page" navigatingTo="onNavigatingTo" navigatedTo="navigatedTo" xmlns="http://schemas.nativescript.org/tns.xsd">
     <Page.actionBar>
-        <ActionBar title="5. Profit!">
-            <NavigationButton text="Wstecz" android.systemIcon="ic_menu_back" tap="backTap"/>
+        <ActionBar class="action-bar">
+            <StackLayout>
+                <Label text="Brawo Ty!"/>
+            </StackLayout>
         </ActionBar>
     </Page.actionBar>
     <GridLayout rows="*, auto">

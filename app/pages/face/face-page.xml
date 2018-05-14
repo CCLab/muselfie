@@ -1,8 +1,10 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:fresco="nativescript-fresco">
-    <Page.actionBar>
-        <ActionBar title="3. Wskazanie twarzy">
-            <NavigationButton text="Wstecz" android.systemIcon="ic_menu_back" tap="backTap"/>
+      <Page.actionBar>
+        <ActionBar class="action-bar">
+            <StackLayout>
+                <Label text="Dopasuj maskę"/>
+            </StackLayout>
         </ActionBar>
     </Page.actionBar>
     <GridLayout rows="*, auto">

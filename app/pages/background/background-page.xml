@@ -1,8 +1,10 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:fresco="nativescript-fresco">
-    <Page.actionBar>
-        <ActionBar title="1. Wybór tła kolażu">
-            <NavigationButton text="Wstecz" android.systemIcon="ic_menu_back" tap="backTap"/>
+     <Page.actionBar >
+        <ActionBar class="action-bar">
+            <StackLayout>
+                <Label text="{{ chosenBackgroundPath ? 'autor tytuł' : 'start' }}"/>
+            </StackLayout>
         </ActionBar>
     </Page.actionBar>
     <GridLayout rows="*, auto, auto">
