@@ -11,8 +11,8 @@
         <Image id="image-final" src="{{ finalImageSource }}" width="100%" stretch="none"/>
         <StackLayout verticalAlignment="bottom">
             <FlexboxLayout class="navigation-buttons-container" >
-                <Button class="btn-back only_icon mdi" text="{{ fonticon('mdi-share') }}" tap="shareTap" isEnabled="{{ finalImageSource !== undefined }}"/>
-                <Button class="btn-next only_icon mdi" text="{{ fonticon('mdi-create') }}" tap="homeTap"/>
+                <Button class="btn-share" tap="shareTap" isEnabled="{{ finalImageSource !== undefined }}"/>
+                <Button class="btn-new" text="start" tap="homeTap"/>
             </FlexboxLayout>
         </StackLayout>
     </GridLayout>

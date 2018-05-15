@@ -4,7 +4,7 @@
         <ActionBar class="action-bar">
             <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
                 <Label text="start" visibility="{{ !chosenBackgroundPath ? 'visible' : 'collapse' }}"/>
-                <Label class="action-bar-step mdi info" text="{{ fonticon('mdi-info') }}" visibility="{{ chosenBackgroundPath ? 'visible' : 'collapse' }}" />
+                <Label class="action-bar-step info" visibility="{{ chosenBackgroundPath ? 'visible' : 'collapse' }}" />
                 <Label class="action-bar-title" text="autor tytuł" visibility="{{ chosenBackgroundPath ? 'visible' : 'collapse' }}"/>
             </StackLayout>
         </ActionBar>
@@ -18,9 +18,9 @@
                                 placeholderImageUri="res://ic_photo_black_48dp"/>
         <StackLayout verticalAlignment="bottom">
                 <FlexboxLayout class="navigation-buttons-container">
-                    <Button class="btn-back mdi" text="{{ 'wybierz tło' + fonticon('mdi-arrow-forward') }}" tap="chooseTap" visibility="{{ chosenBackgroundPath  ? 'collapse' : 'visible' }}"/>
-                    <Button class="btn-back only_icon mdi" text="{{ fonticon('mdi-arrow-back') }}" tap="chooseTap" visibility="{{ !chosenBackgroundPath  ? 'collapse' : 'visible' }}"/>
-                    <Button class="btn-next mdi" text="{{ 'dalej' + fonticon('mdi-arrow-forward') }}" tap="nextTap" visibility="{{ !chosenBackgroundPath   ? 'collapse' : 'visible' }}"/>
+                    <Button class="btn-choose-image" text="wybierz tło" tap="chooseTap" visibility="{{ chosenBackgroundPath  ? 'collapse' : 'visible' }}"/>
+                    <Button class="btn-back" tap="chooseTap" visibility="{{ !chosenBackgroundPath  ? 'collapse' : 'visible' }}"/>
+                    <Button class="btn-next" text="dalej" tap="nextTap" visibility="{{ !chosenBackgroundPath   ? 'collapse' : 'visible' }}"/>
                 </FlexboxLayout>
         </StackLayout>
     </GridLayout>

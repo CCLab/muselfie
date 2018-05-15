@@ -5,7 +5,7 @@
 
 .steps{
     flex-direction: row;
-    justify-content: left;
+    justify-content: flex-start;
 
     & .action-bar-title{
         width:60%;
@@ -18,4 +18,10 @@
     & .action-bar-step{
         color: red;
     }
+}
+.btn-choose-image{
+    background-color: $mainBackgroundColor;
+    background-image: url("res://next_arrow_black");
+    color: $mainFontColor;
+    width:240;
 }

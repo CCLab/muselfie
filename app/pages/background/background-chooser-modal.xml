@@ -4,7 +4,7 @@
         <FlexboxLayout id="action-bar-fake" >
             <Label class="action-bar-step" text="1/3"/>
             <Label class="action-bar-title" text="Wybierz tło"/>
-            <Label class="action-bar-icon mdi" text="{{ fonticon('mdi-vertical-align-bottom') }}"/>
+            <Label class="action-bar-icon btn-download"/>
         </FlexboxLayout>
         <GridLayout>
             <lv:RadListView items="{{ images }}" >
@@ -19,7 +19,7 @@
             </lv:RadListView>
             <StackLayout verticalAlignment="bottom" visibility="{{ chosenFile ? 'visible' : 'collapse' }}">
                 <FlexboxLayout class="navigation-buttons-container">
-                    <Button class="btn-next mdi" text="{{ 'dalej' + fonticon('mdi-arrow-forward') }}" tap="nextTap"/>
+                    <Button class="btn-next" text="dalej" tap="nextTap"/>
                 </FlexboxLayout>
             </StackLayout>  
          </GridLayout>

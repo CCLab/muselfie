@@ -14,9 +14,9 @@
                              placeholderImageUri="res://ic_face_black_48dp"/>
         <StackLayout verticalAlignment="bottom">
             <FlexboxLayout class="navigation-buttons-container" >
-                <Button class="btn-back only_icon mdi" text="{{ fonticon('mdi-arrow-back') }}" tap="backTap"/>
-                <Button class="btn-next mdi" text="{{ 'Wybierz zdjęcie' + fonticon('mdi-arrow-forward') }}"  tap="chooseTap"  visibility="{{ chosenPhotoPath ? 'collapse' : 'visible' }}"/>
-                <Button class="btn-next mdi" text="{{ 'dalej' + fonticon('mdi-arrow-forward') }}"  tap="nextTap" visibility="{{ !chosenPhotoPath ? 'collapse' : 'visible' }}"/>
+                <Button class="btn-back" tap="backTap"/>
+                <Button class="btn-choose-image" text="Wybierz zdjęcie" tap="chooseTap" visibility="{{ chosenPhotoPath ? 'collapse' : 'visible' }}"/>
+                <Button class="btn-next" text="dalej" tap="nextTap" visibility="{{ !chosenPhotoPath ? 'collapse' : 'visible' }}"/>
             </FlexboxLayout>
         </StackLayout>
     </GridLayout>

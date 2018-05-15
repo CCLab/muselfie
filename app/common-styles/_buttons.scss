@@ -2,31 +2,61 @@
 
 button{
     background-repeat: no-repeat;
+    background-size: 40 40;
     border-radius: 100%;
     box-sizing: border-box;
     font-size: $fontSize;
     padding: 15 20;
+    text-transform: lowercase;
 }
 
 .btn-back{
-
     background-color: $secondaryBackgroundColor;
+    background-image: url("res://back_arrow_white");
+    background-position: center;
     color: $secondaryFontColor;
     height: 60;
+    width: 60;
+}
+.btn-choose-image{
+    background-color: $secondaryBackgroundColor;
+    background-image: url("res://next_arrow_white");
+    background-position: 90% 50%;
+    color: $secondaryFontColor;
+    text-align: left;
+    text-indent: 15%;
+    width: 200;
 }
 
 .btn-next{
     background-color: $mainBackgroundColor;
+    background-image: url("res://next_arrow_black");
+    background-position: 85% 50%;
     color: $mainFontColor;
     height: 60;
-    & .roboto {
-        font-family: "Roboto-Light", monospace;
-        text-transform: uppercase;
-        padding-top: 0;
-        margin-top: 0;
-      }
+    text-align: left;
+    text-indent: 15%;
+    width: 120;
 }
 
-.only_icon{
+.btn-new{
+    @extend .btn-back;
+    background-image: none;
+    width: 100;
+}
+
+.btn-share{
+    @extend .btn-next;
+    background-image: url("res://share_black");
+    background-position: center;
     width: 60;
+}
+
+.btn-download{
+    background-image: url("res://download_black");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50 50;
+    height: 80;
+    width: 80;
 }

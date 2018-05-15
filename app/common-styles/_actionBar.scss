@@ -16,6 +16,7 @@
     }
 
     & .action-bar-title{
+        text-align: center;
         width:60%;
     }
     
@@ -43,7 +44,12 @@
         }
 
         & .info{
-            color: black;
+            background-image: url("res://info");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 50 50;
+            height: 80;
+            width: 80;
         }
 
     }

@@ -2,3 +2,10 @@
 @import '~/common-styles/navigationButtonsContainer';
 @import '~/common-styles/buttons';
 
+.action-bar{
+    & .steps{
+        & .action-bar-title{
+            width: 80%;
+        }
+    }
+}
