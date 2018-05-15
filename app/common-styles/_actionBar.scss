@@ -26,4 +26,20 @@
     & .action-bar-step{
         color: red;
     }
+    .steps{
+        width: 100%;
+        
+        & .action-bar-title{
+            font-size: $actionbarFontSize;
+            width:60%;
+        }
+        
+        & .action-bar-step, & .action-bar-icon{
+            width:20%;
+        }
+    
+        & .action-bar-step{
+            color: red;
+        }
+    }
 }

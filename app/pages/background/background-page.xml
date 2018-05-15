@@ -2,8 +2,10 @@
       xmlns:fresco="nativescript-fresco">
      <Page.actionBar >
         <ActionBar class="action-bar">
-            <StackLayout>
-                <Label text="{{ chosenBackgroundPath ? 'autor tytuł' : 'start' }}"/>
+            <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
+                <Label text="start" visibility="{{ !chosenBackgroundPath ? 'visible' : 'collapse' }}"/>
+                <Label class="action-bar-step" text="{{ fonticon('mdi-live-help') }}" visibility="{{ chosenBackgroundPath ? 'visible' : 'collapse' }}" />
+                <Label class="action-bar-title" text="autor tytuł" visibility="{{ chosenBackgroundPath ? 'visible' : 'collapse' }}"/>
             </StackLayout>
         </ActionBar>
     </Page.actionBar>
