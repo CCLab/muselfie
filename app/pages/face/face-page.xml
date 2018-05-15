@@ -20,6 +20,11 @@
                     rotate="{{ faceRotation }}" 
                 />
          </AbsoluteLayout>
-        <Button text="Dalej" class="btn btn-primary" tap="nextTap" row="1"/>
+         <StackLayout verticalAlignment="bottom">
+            <FlexboxLayout class="navigation-buttons-container" >
+                <Button class="btn-back only_icon mdi" text="{{ fonticon('mdi-arrow-back') }}" tap="backTap"/>
+                <Button class="btn-next mdi" text="{{ 'dalej' + fonticon('mdi-arrow-forward') }}"  tap="nextTap"/>
+            </FlexboxLayout>
+        </StackLayout>
     </GridLayout>
 </Page>

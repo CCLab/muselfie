@@ -8,11 +8,16 @@
             </StackLayout>
         </ActionBar>
     </Page.actionBar>
-    <GridLayout rows="*, auto, auto">
+    <GridLayout>
         <fresco:FrescoDrawee id="image-photo" width="100%" aspectRatio="1"
                              imageUri="{{ chosenPhotoPath }}"
                              placeholderImageUri="res://ic_face_black_48dp"/>
-        <Button text="{{ chosenImageSource ? 'Zmień zdjęcie twarzy' : 'Wybierz zdjęcie twarzy' }}" tap="chooseTap" class="btn btn-outline" row="1"/>
-        <Button text="Dalej!" class="btn btn-primary" tap="nextTap" isEnabled="{{ chosenPhotoPath != '' }}" row="2"/>
+        <StackLayout verticalAlignment="bottom">
+            <FlexboxLayout class="navigation-buttons-container" >
+                <Button class="btn-back only_icon mdi" text="{{ fonticon('mdi-arrow-back') }}" tap="backTap"/>
+                <Button class="btn-next mdi" text="{{ 'Wybierz zdjęcie' + fonticon('mdi-arrow-forward') }}"  tap="chooseTap"  visibility="{{ chosenPhotoPath ? 'collapse' : 'visible' }}"/>
+                <Button class="btn-next mdi" text="{{ 'dalej' + fonticon('mdi-arrow-forward') }}"  tap="nextTap" visibility="{{ !chosenPhotoPath ? 'collapse' : 'visible' }}"/>
+            </FlexboxLayout>
+        </StackLayout>
     </GridLayout>
 </Page>

@@ -15,6 +15,13 @@ export function onShownModally(args: ShownModallyData) {
 
 export function imageTap(args: EventData) {
     const view = args.object as View;
+    const model = view.page.bindingContext as BackgroundChooserModel;
     const chosenFile = view.bindingContext;
-    closeCallback(chosenFile);
+    model.set("chosenFile", chosenFile);
+}
+
+export function nextTap(args: EventData) {
+    const view = args.object as View;
+    const model = view.bindingContext;
+    closeCallback(model.chosenFile);
 }

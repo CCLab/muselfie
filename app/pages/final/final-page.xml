@@ -9,9 +9,11 @@
     <GridLayout rows="*, auto">
         <ActivityIndicator busy="true" width="64" height="64"/>
         <Image id="image-final" src="{{ finalImageSource }}" width="100%" stretch="none"/>
-        <GridLayout row="2" columns="*, *">
-            <Button text="Udostępnij!" class="btn btn-primary" tap="shareTap" isEnabled="{{ finalImageSource !== undefined }}" col="0"/>
-            <Button text="Nowy kolaż" class="btn btn-outline" tap="homeTap" col="1"/>
-        </GridLayout>
+        <StackLayout verticalAlignment="bottom">
+            <FlexboxLayout class="navigation-buttons-container" >
+                <Button class="btn-back only_icon mdi" text="{{ fonticon('mdi-share') }}" tap="shareTap" isEnabled="{{ finalImageSource !== undefined }}"/>
+                <Button class="btn-next only_icon mdi" text="{{ fonticon('mdi-create') }}" tap="homeTap"/>
+            </FlexboxLayout>
+        </StackLayout>
     </GridLayout>
 </Page>

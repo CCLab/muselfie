@@ -3,3 +3,19 @@
 @import '~/common-styles/buttons';
  
 
+.steps{
+    flex-direction: row;
+    justify-content: left;
+
+    & .action-bar-title{
+        width:60%;
+    }
+    
+    & .action-bar-step, & .action-bar-icon{
+        width:20%;
+    }
+
+    & .action-bar-step{
+        color: red;
+    }
+}

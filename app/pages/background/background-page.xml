@@ -9,11 +9,19 @@
             </StackLayout>
         </ActionBar>
     </Page.actionBar>
-    <GridLayout rows="*, auto, auto">
-        <fresco:FrescoDrawee id="image-background" width="100%" aspectRatio="1"
-                             imageUri="{{ chosenBackgroundPath }}"
-                             placeholderImageUri="res://ic_photo_black_48dp"/>
-        <Button text="{{ chosenImagePath ? 'Zmień tło' : 'Wybierz tło' }}" tap="chooseTap" class="btn btn-outline" row="1"/>
-        <Button text="Dalej!" class="btn btn-primary" tap="nextTap" isEnabled="{{ chosenBackgroundPath != '' }}" row="2"/>
+   <GridLayout>
+        <fresco:FrescoDrawee id="image-background" 
+                                height="100%"
+                                aspectRatio="1"
+                                verticalAlignment="top"
+                                imageUri="{{ chosenBackgroundPath }}"
+                                placeholderImageUri="res://ic_photo_black_48dp"/>
+        <StackLayout verticalAlignment="bottom">
+                <FlexboxLayout class="navigation-buttons-container">
+                    <Button class="btn-back mdi" text="{{ 'wybierz tło' + fonticon('mdi-arrow-forward') }}" tap="chooseTap" visibility="{{ chosenBackgroundPath  ? 'collapse' : 'visible' }}"/>
+                    <Button class="btn-back only_icon mdi" text="{{ fonticon('mdi-arrow-back') }}" tap="chooseTap" visibility="{{ !chosenBackgroundPath  ? 'collapse' : 'visible' }}"/>
+                    <Button class="btn-next mdi" text="{{ 'dalej' + fonticon('mdi-arrow-forward') }}" tap="nextTap" visibility="{{ !chosenBackgroundPath   ? 'collapse' : 'visible' }}"/>
+                </FlexboxLayout>
+        </StackLayout>
     </GridLayout>
 </Page>
