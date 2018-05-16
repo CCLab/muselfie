@@ -1,6 +1,6 @@
-@import '~/common-styles/actionBar';
-@import '~/common-styles/navigationButtonsContainer';
-@import '~/common-styles/buttons';
+@import '~/common-styles/_actionBar.scss';
+@import '~/common-styles/_navigationButtonsContainer.scss';
+@import '~/common-styles/_buttons.scss';
 
 #action-bar-fake{
     @extend .action-bar;
@@ -29,4 +29,8 @@
 .chosen-file{
     border-color: $mainBackgroundColor;
     border-width: 2;
+}
+
+btn-download {
+    visibility: collapse;
 }
