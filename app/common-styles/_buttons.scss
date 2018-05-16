@@ -1,62 +1,118 @@
 @import 'variables';
 
-button{
-    background-repeat: no-repeat;
-    background-size: 40 40;
+button, label {
     border-radius: 100%;
-    box-sizing: border-box;
+    font-family: $fontFamily;
     font-size: $fontSize;
-    padding: 15 20;
+    line-height: $fontSize;
+    text-align: center;
     text-transform: lowercase;
 }
 
-.btn-back{
-    background-color: $secondaryBackgroundColor;
-    background-image: url("res://back_arrow_white");
+%button{
     background-position: center;
-    color: $secondaryFontColor;
-    height: 60;
-    width: 60;
-}
-.btn-choose-image{
-    background-color: $secondaryBackgroundColor;
-    background-image: url("res://next_arrow_white");
-    background-position: 90% 50%;
-    color: $secondaryFontColor;
-    text-align: left;
-    text-indent: 15%;
-    width: 200;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 40;
+    width: 40;
 }
 
-.btn-next{
+%wrapper{
+    border-radius: 100%;
+    height: 70;
+    padding: 15;
+}
+
+%text{
+    padding-top: 2;
+    height: 33;
+}
+
+button{
+    @extend %button;
+    font-size: $fontSize;
+
+}
+.btn-back-wrapper{
+    @extend %wrapper;
+    background-color: $secondaryBackgroundColor;
+    width: 70;
+
+    .btn-back{
+        @extend %button;
+        background-image: url("res://arrow_left_white");
+    }
+}
+
+.btn-choose-wrapper{
+    @extend %wrapper;
+    background-color: $secondaryBackgroundColor;
+
+    .btn-choose-image-text{
+        @extend %text;
+        color: $secondaryFontColor;
+        margin: 0 0 0 5;
+    }
+    
+    .btn-choose-image{
+        @extend %button;
+        background-image: url("res://arrow_right_white");
+        margin: 0 5;
+    
+    }
+}
+
+.btn-next-wrapper{
+    @extend %wrapper;
     background-color: $mainBackgroundColor;
-    background-image: url("res://next_arrow_black");
-    background-position: 85% 50%;
+
+    .btn-next-text{
+        @extend %text;
+        color: $mainFontColor;
+        margin: 0 0 0 5; 
+    }
+    .btn-next{
+        @extend %button;
+        background-color: $mainBackgroundColor;
+        background-image: url("res://arrow_right_black");
+        margin: 0 5;
+    }
+}
+.btn-choose-image-wrapper{
+    @extend %wrapper;
+    background-color: $mainBackgroundColor;
     color: $mainFontColor;
-    height: 60;
-    text-align: left;
-    text-indent: 15%;
-    width: 120;
+
+    .btn-choose-image{
+        @extend %button;
+        background-image: url("res://arrow_right_black");
+    }
+
+    .btn-choose-image-text{
+        @extend %text;
+        margin: 0 5;
+    }
 }
 
 .btn-new{
-    @extend .btn-back;
-    background-image: none;
+    background-color: $secondaryBackgroundColor;
+    color: $secondaryFontColor;
+    height: 70;
     width: 100;
 }
 
 .btn-share{
-    @extend .btn-next;
-    background-image: url("res://share_black");
-    background-position: center;
-    width: 60;
+    background-color: $mainBackgroundColor;
+    border-radius: 100%;
+    color: $mainFontColor;
+    height: 70;
+    width: 120;
 }
 
 .btn-download{
     background-image: url("res://download_black");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 50 50;
     height: 80;
     width: 80;
 }

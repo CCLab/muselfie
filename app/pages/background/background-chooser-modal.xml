@@ -13,13 +13,16 @@
                 </lv:RadListView.listViewLayout>
                 <lv:RadListView.itemTemplate >
                     <GridLayout>
-                        <fresco:FrescoDrawee  class="{{ $parents['Page'].chosenFile, $parents['Page'].chosenFile == $value ? 'chosen-file' : '' }}" height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ path }}" tap="imageTap"/>
+                        <fresco:FrescoDrawee class="{{ $parents['Page'].chosenFile, $parents['Page'].chosenFile == $value ? 'chosen-file' : '' }}" height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ path }}" tap="imageTap"/>
                      </GridLayout>
                 </lv:RadListView.itemTemplate>
             </lv:RadListView>
             <StackLayout verticalAlignment="bottom" visibility="{{ chosenFile ? 'visible' : 'collapse' }}">
                 <FlexboxLayout class="navigation-buttons-container">
-                    <Button class="btn-next" text="dalej" tap="nextTap"/>
+                    <StackLayout class="btn-next-wrapper" tap="nextTap" orientation="horizontal">
+                        <Label class="btn-next-text" text="dalej" />
+                        <Label class="btn-next"/>
+                     </StackLayout>
                 </FlexboxLayout>
             </StackLayout>  
          </GridLayout>

@@ -7,8 +7,8 @@
     box-shadow: none;
     color: $actionbarFontColor;
     font-size: $actionbarFontSize;
+    font-weight: 500;
     height: $actionbarHeight;
-    margin: 0;
     text-align: center;
    
     & label{
@@ -27,9 +27,11 @@
     & .action-bar-step{
         color: red;
     }
+    & .action-bar-start{
+        width: 100%;
+    }
     .steps{
         width: 100%;
-        
         & .action-bar-title{
             font-size: $actionbarFontSize;
             width:60%;
@@ -47,7 +49,6 @@
             background-image: url("res://info");
             background-position: center;
             background-repeat: no-repeat;
-            background-size: 50 50;
             height: 80;
             width: 80;
         }

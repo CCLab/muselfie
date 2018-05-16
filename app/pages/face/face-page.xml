@@ -22,8 +22,13 @@
          </AbsoluteLayout>
          <StackLayout verticalAlignment="bottom">
             <FlexboxLayout class="navigation-buttons-container" >
-                <Button class="btn-back" tap="backTap"/>
-                <Button class="btn-next" text="dalej" tap="nextTap"/>
+                 <StackLayout class="btn-back-wrapper" tap="backTap">
+                         <Button class="btn-back"/>
+                    </StackLayout>
+                <StackLayout class="btn-next-wrapper" tap="nextTap" orientation="horizontal">
+                        <Label class="btn-next-text" text="dalej"/>
+                        <Label class="btn-next"/>
+                    </StackLayout>
             </FlexboxLayout>
         </StackLayout>
     </GridLayout>

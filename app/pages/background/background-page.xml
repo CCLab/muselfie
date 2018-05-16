@@ -3,7 +3,7 @@
      <Page.actionBar >
         <ActionBar class="action-bar">
             <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
-                <Label text="start" visibility="{{ !chosenBackgroundPath ? 'visible' : 'collapse' }}"/>
+                <Label class="action-bar-start" text="start" visibility="{{ !chosenBackgroundPath ? 'visible' : 'collapse' }}"/>
                 <Label class="action-bar-step info" visibility="{{ chosenBackgroundPath ? 'visible' : 'collapse' }}" />
                 <Label class="action-bar-title" text="autor tytuł" visibility="{{ chosenBackgroundPath ? 'visible' : 'collapse' }}"/>
             </StackLayout>
@@ -18,9 +18,17 @@
                                 placeholderImageUri="res://ic_photo_black_48dp"/>
         <StackLayout verticalAlignment="bottom">
                 <FlexboxLayout class="navigation-buttons-container">
-                    <Button class="btn-choose-image" text="wybierz tło" tap="chooseTap" visibility="{{ chosenBackgroundPath  ? 'collapse' : 'visible' }}"/>
-                    <Button class="btn-back" tap="chooseTap" visibility="{{ !chosenBackgroundPath  ? 'collapse' : 'visible' }}"/>
-                    <Button class="btn-next" text="dalej" tap="nextTap" visibility="{{ !chosenBackgroundPath   ? 'collapse' : 'visible' }}"/>
+                    <StackLayout class="btn-choose-wrapper" tap="chooseTap" visibility="{{ chosenBackgroundPath  ? 'collapse' : 'visible' }}" orientation="horizontal">
+                        <Label class="btn-choose-image-text" text="wybierz tło"/>
+                        <Label class="btn-choose-image"/>
+                    </StackLayout>
+                    <StackLayout class="btn-back-wrapper" tap="chooseTap" visibility="{{ !chosenBackgroundPath  ? 'collapse' : 'visible' }}">
+                         <Button class="btn-back"/>
+                    </StackLayout>
+                    <StackLayout class="btn-next-wrapper" tap="nextTap" visibility="{{ !chosenBackgroundPath   ? 'collapse' : 'visible' }}" orientation="horizontal">
+                        <Label class="btn-next-text" text="dalej"/>
+                        <Label class="btn-next"/>
+                    </StackLayout>
                 </FlexboxLayout>
         </StackLayout>
     </GridLayout>

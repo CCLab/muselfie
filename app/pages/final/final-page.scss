@@ -1,3 +1,7 @@
 @import '~/common-styles/_actionBar.scss';
 @import '~/common-styles/_navigationButtonsContainer.scss';
 @import '~/common-styles/_buttons.scss';
+
+.action-bar{
+    text-transform: capitalize;
+}
