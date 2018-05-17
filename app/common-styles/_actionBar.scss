@@ -45,14 +45,16 @@
             color: red;
         }
 
+       & .action-bar-step{
         & .info{
             background-image: url("res://info");
             background-position: center;
             background-repeat: no-repeat;
-            height: 80;
-            width: 80;
+            background-size: contain;
+            height: 30;
+            width: 30;
         }
-
+       }
     }
 }
 

@@ -4,7 +4,9 @@
         <ActionBar class="action-bar">
             <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
                 <Label class="action-bar-start" text="start" visibility="{{ !chosenBackgroundPath ? 'visible' : 'collapse' }}"/>
-                <Label class="action-bar-step info" visibility="{{ chosenBackgroundPath ? 'visible' : 'collapse' }}" />
+                <StackLayout class="action-bar-step" visibility="{{ chosenBackgroundPath ? 'visible' : 'collapse' }}">
+                    <Label class="info"/>
+                </StackLayout>
                 <Label class="action-bar-title" text="autor tytuł" visibility="{{ chosenBackgroundPath ? 'visible' : 'collapse' }}"/>
             </StackLayout>
         </ActionBar>
