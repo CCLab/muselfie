@@ -13,7 +13,8 @@
                 </lv:RadListView.listViewLayout>
                 <lv:RadListView.itemTemplate >
                     <GridLayout>
-                        <fresco:FrescoDrawee class="{{ $parents['Page'].chosenFile, $parents['Page'].chosenFile == $value ? 'chosen-file' : '' }}" height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ path }}" tap="imageTap"/>
+                        <fresco:FrescoDrawee height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ path }}" tap="imageTap"/>
+                        <Label class="{{ $parents['Page'].chosenFile, $parents['Page'].chosenFile == $value ? 'chosen-file' : '' }}"/>
                      </GridLayout>
                 </lv:RadListView.itemTemplate>
             </lv:RadListView>
