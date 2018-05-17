@@ -17,13 +17,9 @@
                 <StackLayout class="btn-back-wrapper" tap="backTap">
                          <Button class="btn-back" />
                 </StackLayout>
-                <StackLayout class="btn-choose-image-wrapper" tap="chooseTap" visibility="{{ chosenPhotoPath ? 'collapse' : 'visible' }}" orientation="horizontal">
-                    <Label class="btn-choose-image-text" text="Wybierz zdjęcie" />
+                <StackLayout class="btn-choose-image-wrapper" tap="chooseTap" orientation="horizontal">
+                    <Label class="btn-choose-image-text" text="{{ !chosenPhotoPath ? 'wybierz zdjęcie' : 'zmień zdjęcie' }}" />
                     <Label class="btn-choose-image"/>
-                </StackLayout>
-                <StackLayout class="btn-next-wrapper" tap="nextTap" visibility="{{ !chosenPhotoPath ? 'collapse' : 'visible' }}" orientation="horizontal">
-                        <Label class="btn-next-text" text="dalej" />
-                        <Label class="btn-next"/>
                 </StackLayout>
             </FlexboxLayout>
         </StackLayout>

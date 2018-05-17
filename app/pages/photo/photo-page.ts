@@ -53,23 +53,17 @@ export function chooseTap(args: EventData) {
                 let context = app.android.context;
                 let fetcher = org.nativescript.widgets.image.Fetcher.getInstance(context);
                 fetcher.clearCache();
+                frameModule.topmost().navigate({
+                    moduleName: "pages/face/face-page",
+                    transition: { name: "slide" },
+                    context: {
+                        chosenPhotoPath: page.bindingContext.chosenPhotoPath,
+                        chosenBackgroundPath: page.bindingContext.chosenBackgroundPath,
+                    },
+                });
             }).catch((reason) => {
                 console.error(reason);
             });
         });
-    });
-}
-
-export function nextTap(args: NavigatedData) {
-    const button = args.object as View;
-    const page = button.page as Page;
-
-    frameModule.topmost().navigate({
-        moduleName: "pages/face/face-page",
-        transition: { name: "slide" },
-        context: {
-            chosenPhotoPath: page.bindingContext.chosenPhotoPath,
-            chosenBackgroundPath: page.bindingContext.chosenBackgroundPath,
-        },
     });
 }
