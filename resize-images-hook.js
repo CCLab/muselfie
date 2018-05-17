@@ -57,15 +57,17 @@ function createSizeDirs(directoryName) {
 
 }
 
-
-console.log("Resizing images...");
-for (let folder of IMAGE_FOLDERS) {
-    createSizeDirs(folder);
-    fs.readdir(folder, (err, files) => {
-        files.forEach(file => {
-            if (file.endsWith('.jpg')) {
-                resizeFile(folder, file);
-            }
+module.exports = function(hookArgs) {
+    console.log("Resizing images...");
+    for (let folder of IMAGE_FOLDERS) {
+        createSizeDirs(folder);
+        fs.readdir(folder, (err, files) => {
+            files.forEach(file => {
+                if (file.endsWith('.jpg')) {
+                    resizeFile(folder, file);
+                }
+            });
         });
-    });
-}
+    }
+};
+
