@@ -12,6 +12,13 @@ interface OvalDimensions {
     y: number;
     width: number;
     height: number;
+    rotation: number;
+}
+
+interface PhotoScale {
+    scale: number;
+    xTranslation: number;
+    yTranslation: number;
 }
 
 export class FinalModel extends Observable {
@@ -70,17 +77,22 @@ export class FinalModel extends Observable {
                 imageWidthPx,
                 imageHeightPx,
             );
+
+            let faceTopLeft = FinalModel.fromScaledToOriginalCoordinates(
+                photoScale,
+                this.faceDimensions.x,
+                this.faceDimensions.y,
+            );
+            let faceBottomRight = FinalModel.fromScaledToOriginalCoordinates(
+                photoScale,
+                this.faceDimensions.x + this.faceDimensions.width,
+                this.faceDimensions.y + this.faceDimensions.height,
+            );
             let sourceRect = new android.graphics.Rect(
-                (layout.toDevicePixels(this.faceDimensions.x) - photoScale.xTranslation
-                ) / photoScale.scale,
-                (layout.toDevicePixels(this.faceDimensions.y) - photoScale.yTranslation
-                ) / photoScale.scale,
-                (layout.toDevicePixels(
-                    this.faceDimensions.x + this.faceDimensions.width) - photoScale.xTranslation
-                ) / photoScale.scale,
-                (layout.toDevicePixels(
-                    this.faceDimensions.y + this.faceDimensions.height) - photoScale.yTranslation
-                ) / photoScale.scale,
+                faceTopLeft.x,
+                faceTopLeft.y,
+                faceBottomRight.x,
+                faceBottomRight.y,
             );
 
             // Where to put the face?
@@ -98,6 +110,16 @@ export class FinalModel extends Observable {
                     android.graphics.BlurMaskFilter.Blur.NORMAL,
                 )
             );
+
+            // Apply the placement rotation
+            canvas.save(android.graphics.Canvas.MATRIX_SAVE_FLAG);
+            canvas.rotate(
+                this.placementDimensions.rotation,
+                destRect.centerX(),
+                destRect.centerY(),
+            );
+
+            // draw an oval that will be used as an mask when placing the face
             canvas.drawOval(destRect, paint);
             paint.setMaskFilter(null);
 
@@ -112,8 +134,35 @@ export class FinalModel extends Observable {
                 android.graphics.PorterDuff.Mode.SRC_IN
             ));
 
-            // paint the face
+            // painting the face
+
+            // change the bounds of sourceRect and destRect to reflect the face rotation
+            let rotationMatrix = new android.graphics.Matrix();
+            let sourceRectTemp = new android.graphics.RectF(sourceRect);  // cast to a floating point rect
+            rotationMatrix.setRotate(
+                this.faceDimensions.rotation,
+                sourceRect.centerX(),
+                sourceRect.centerY(),
+            );
+            rotationMatrix.mapRect(sourceRectTemp);
+            sourceRectTemp.round(sourceRect);  // save the result in sourceRect
+            rotationMatrix.setRotate(
+                this.faceDimensions.rotation,
+                destRect.centerX(),
+                destRect.centerY(),
+            );
+            rotationMatrix.mapRect(destRect);  // save the result in destRect
+
+            // rotate canvas according to the face rotation
+            canvas.save(android.graphics.Canvas.MATRIX_SAVE_FLAG);
+            canvas.rotate(
+                -this.faceDimensions.rotation,
+                destRect.centerX(),
+                destRect.centerY(),
+            );
             canvas.drawBitmap(photoNative, sourceRect, destRect, paint);
+            canvas.restore();  // restore the face rotation
+            canvas.restore();  // restore the placement rotation
 
             // Add background
             paint.setXfermode(new android.graphics.PorterDuffXfermode(
@@ -143,7 +192,7 @@ export class FinalModel extends Observable {
         return matrix;
     }
 
-    public static aspectFillSettings(bitmap, width: number, height: number) {
+    public static aspectFillSettings(bitmap, width: number, height: number): PhotoScale {
         let scale: number;
         let xTranslation = 0;
         let yTranslation = 0;
@@ -161,5 +210,16 @@ export class FinalModel extends Observable {
             yTranslation = (height - originalHeight * scale)/2;
         }
         return {scale, xTranslation, yTranslation};
+    }
+
+    /**
+     * Takes coordinates in the coordinate system of a scaled on-screen image (in dip) and returns
+     * coordinates in the coordinate systems of the original image (in px).
+     * photoScale is an object containing scaling settings returned by aspectFillSettings.
+     */
+    public static fromScaledToOriginalCoordinates(photoScale: PhotoScale, x, y) {
+        let newX = (layout.toDevicePixels(x) - photoScale.xTranslation) / photoScale.scale;
+        let newY = (layout.toDevicePixels(y) - photoScale.yTranslation) / photoScale.scale;
+        return {x: newX, y: newY};
     }
 }
