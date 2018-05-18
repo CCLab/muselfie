@@ -1,6 +1,6 @@
 @import 'variables';
 
-button, label {
+label {
     border-radius: 100%;
     font-family: $fontFamily;
     font-size: $fontSize;
@@ -13,6 +13,7 @@ button, label {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+    border-radius: 100%;
     height: 40;
     width: 40;
 }
@@ -27,11 +28,6 @@ button, label {
     vertical-align: middle;
 }
 
-button{
-    @extend %button;
-    font-size: $fontSize;
-
-}
 .btn-back-wrapper{
     @extend %wrapper;
     background-color: $secondaryBackgroundColor;
@@ -94,6 +90,7 @@ button{
 }
 
 .btn-new{
+    @extend %button;
     background-color: $secondaryBackgroundColor;
     color: $secondaryFontColor;
     height: 70;
@@ -101,8 +98,8 @@ button{
 }
 
 .btn-share{
+    @extend %button;
     background-color: $mainBackgroundColor;
-    border-radius: 100%;
     color: $mainFontColor;
     height: 70;
     width: 120;

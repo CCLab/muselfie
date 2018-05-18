@@ -23,7 +23,7 @@
          <StackLayout verticalAlignment="bottom">
             <FlexboxLayout class="navigation-buttons-container" >
                  <StackLayout class="btn-back-wrapper" >
-                         <Button class="btn-back" tap="backTap"/>
+                         <Label class="btn-back" tap="backTap"/>
                 </StackLayout>
                 <StackLayout class="btn-next-wrapper" tap="nextTap" orientation="horizontal">
                         <Label class="btn-next-text" text="dalej"/>

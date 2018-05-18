@@ -25,7 +25,7 @@
                         <Label class="btn-choose-image"/>
                     </StackLayout>
                     <StackLayout class="btn-back-wrapper" tap="chooseTap" visibility="{{ !chosenBackgroundPath  ? 'collapse' : 'visible' }}">
-                         <Button class="btn-back"/>
+                         <Label class="btn-back"/>
                     </StackLayout>
                     <StackLayout class="btn-next-wrapper" tap="nextTap" visibility="{{ !chosenBackgroundPath   ? 'collapse' : 'visible' }}" orientation="horizontal">
                         <Label class="btn-next-text" text="dalej"/>

@@ -15,7 +15,7 @@
         <StackLayout verticalAlignment="bottom">
             <FlexboxLayout class="navigation-buttons-container" >
                 <StackLayout class="btn-back-wrapper" tap="backTap">
-                         <Button class="btn-back" />
+                    <Label class="btn-back"/>
                 </StackLayout>
                 <StackLayout class="btn-choose-image-wrapper" tap="chooseTap" orientation="horizontal">
                     <Label class="btn-choose-image-text" text="{{ !chosenPhotoPath ? 'wybierz zdjęcie' : 'zmień zdjęcie' }}" />
