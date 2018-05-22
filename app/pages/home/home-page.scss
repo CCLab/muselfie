@@ -1,10 +1,12 @@
-label.h1 {
-  margin-top: 20;
-  font-size: 50;
-  text-align: center;
-}
+@import '~/common-styles/_actionBar.scss';
+@import '~/common-styles/_navigationButtonsContainer.scss';
+@import '~/common-styles/_buttons.scss';
 
-.description {
-  text-align: center;
-  font-size: 15;
+.home-page-layout{
+  .home-page-layout-main{
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+  }
 }

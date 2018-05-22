@@ -2,7 +2,7 @@
       xmlns:fresco="nativescript-fresco">
      <Page.actionBar >
         <ActionBar class="action-bar">
-            <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
+            <StackLayout class="steps" orientation="horizontal" horizontalAlignment="{{ !chosenBackgroundPath ? 'center' : 'left' }}">
                 <Label class="action-bar-start" text="start" visibility="{{ !chosenBackgroundPath ? 'visible' : 'collapse' }}"/>
                 <StackLayout class="action-bar-step" visibility="{{ chosenBackgroundPath ? 'visible' : 'collapse' }}">
                     <Label class="info"/>

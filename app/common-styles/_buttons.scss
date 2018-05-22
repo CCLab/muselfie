@@ -15,6 +15,7 @@ label {
     background-size: contain;
     border-radius: 100%;
     height: 40;
+    vertical-align: middle;
     width: 40;
 }
 
@@ -25,6 +26,7 @@ label {
 }
 
 %text{
+    padding: 0 8 0 0;
     vertical-align: middle;
 }
 
@@ -41,19 +43,16 @@ label {
 
 .btn-choose-wrapper{
     @extend %wrapper;
-    background-color: $secondaryBackgroundColor;
+    background-color: $mainBackgroundColor;
 
     .btn-choose-image-text{
         @extend %text;
-        color: $secondaryFontColor;
-        margin: 0 0 0 5;
+        color: $mainFontColor;
     }
     
     .btn-choose-image{
         @extend %button;
-        background-image: url("res://arrow_right_white");
-        margin: 0 5;
-    
+        background-image: url("res://arrow_right_black");
     }
 }
 
@@ -63,14 +62,12 @@ label {
 
     .btn-next-text{
         @extend %text;
-        color: $mainFontColor;
-        margin: 0 0 0 5; 
+        color: $mainFontColor; 
     }
     .btn-next{
         @extend %button;
         background-color: $mainBackgroundColor;
         background-image: url("res://arrow_right_black");
-        margin: 0 5;
     }
 }
 .btn-choose-image-wrapper{
@@ -85,24 +82,36 @@ label {
 
     .btn-choose-image-text{
         @extend %text;
-        margin: 0 5;
     }
 }
 
-.btn-new{
-    @extend %button;
-    background-color: $secondaryBackgroundColor;
-    color: $secondaryFontColor;
-    height: 70;
-    width: 100;
+.btn-new-wrapper{
+    @extend %wrapper;
+    background-color: $startEndBackgroundColor;
+    .btn-new{
+        @extend %button;
+        background-image: url("res://add");
+        color: $startEndFontColor;
+        width: 35;
+    }
+
+    .btn-new-text{
+        @extend %text;
+        color: $startEndFontColor;
+       
+    }
 }
 
-.btn-share{
-    @extend %button;
+.btn-share-wrapper{
+    @extend %wrapper;
     background-color: $mainBackgroundColor;
-    color: $mainFontColor;
-    height: 70;
-    width: 120;
+    padding: 20;
+    width: 70;
+    .btn-share{
+        @extend %button;
+        background-image: url("res://share");
+        border-radius: 0;
+    }
 }
 
 .btn-download{

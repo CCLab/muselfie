@@ -1,9 +1,14 @@
 <Page class="page" navigatingTo="onNavigatingTo" actionBarHidden="true">
-    <GridLayout rows="auto, *, auto">
-        <Label text="Witaj w Muselfie!" class="h1" row="0"/>
-        <Label text="Tu będą pewnie jakieś dwa zdania wstępne o tym co to za aplikacja i co robi."
-               verticalAlignment="center" textWrap="true"
-               class="text-muted description" row="1"/>
-        <Button text="Zacznij!" class="btn btn-primary" tap="startTap" row="2"/>
+    <GridLayout rows="*, auto" class="home-page-layout">
+        <FlexboxLayout row="0" class="home-page-layout-main">
+            <Label text="Witaj w Muselfie!"/>
+            <Label text="Tu będą pewnie jakieś dwa zdania wstępne o tym co to za aplikacja i co robi." verticalAlignment="center" textWrap="true" row="1"/>
+        </FlexboxLayout>
+        <FlexboxLayout row="1" class="navigation-buttons-container">
+            <StackLayout class="btn-new-wrapper" tap="startTap" orientation="horizontal">
+                    <Label class="btn-new-text" text="Zacznij"/>
+                    <Label class="btn-new"/>
+            </StackLayout>
+        </FlexboxLayout>
     </GridLayout>
 </Page>
