@@ -1,7 +1,7 @@
 import * as frameModule from "ui/frame";
-import {NavigatedData, Page} from "ui/page";
-
-import {HomeViewModel} from "./home-view-model";
+import { NavigatedData, Page } from "ui/page";
+import { View } from "ui/core/view";
+import { HomeViewModel } from "./home-view-model";
 
 export function onNavigatingTo(args: NavigatedData) {
     const page = args.object as Page;
@@ -10,7 +10,7 @@ export function onNavigatingTo(args: NavigatedData) {
 
 export function startTap(args: NavigatedData) {
     frameModule.topmost().navigate({
-        moduleName: "pages/background/background-page",
+        moduleName: "pages/background-gallery/background-gallery-page",
         transition: { name: "slide" },
     });
 }

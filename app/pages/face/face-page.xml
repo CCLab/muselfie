@@ -4,7 +4,7 @@
         <ActionBar class="action-bar">
             <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
                 <Label class="action-bar-step" text="2/3"/>
-                <Label class="action-bar-title" text="Wybór zdjęcia"/>
+                <Label class="action-bar-title" text="Oznacz owal twarzy"/>
             </StackLayout>
         </ActionBar>
     </Page.actionBar>

@@ -2,9 +2,12 @@
 @import '~/common-styles/_navigationButtonsContainer.scss';
 @import '~/common-styles/_buttons.scss';
 
-.action-bar{
-    label{
-        width: 90%;
-        text-transform: capitalize;
-    }
+.chosen-file{
+    border-color: $mainBackgroundColor;
+    border-radius: 0;
+    border-width: 2;
+}
+
+.btn-download {
+    visibility: hidden;
 }

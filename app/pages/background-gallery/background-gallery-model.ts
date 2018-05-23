@@ -1,11 +1,14 @@
 import { Observable } from "data/observable";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
 import * as fs from "tns-core-modules/file-system";
+import { FileSystemEntity } from "tns-core-modules/file-system";
 
-export class BackgroundChooserModel extends Observable {
+export class BackgroundGalleryModel extends Observable {
     public images = new ObservableArray<fs.FileSystemEntity>();
+    public imageSize;
     public thumbnailHeight = 250;
     public chosenFile: fs.FileSystemEntity;
+    public chosenBackgroundPath = "";
 
     constructor() {
         super();
