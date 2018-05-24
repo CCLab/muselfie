@@ -7,14 +7,21 @@ $secondaryFontColor: white;
 $startEndBackgroundColor: #ffe646;
 $startEndFontColor: black;
 
-$fontFamily: 'OpenSans-Regular', sans-serif;
-$fontSize: 23;
+$fontFamily: 'WorkSans-Medium';
+$fontSize: 19;
+$letterSpacing:-0.01;
+
+$buttonIconSize: 27;
+$buttonIconPadding: 17;
+
+$buttonWrapperPadding: 25; // right and left for button without icon; only left for button with icon
+$buttonWrapperHeight: $buttonIconSize + 2 * $buttonIconPadding;
 
 $ovalColor: $mainBackgroundColor;
 
 $actionbarBackgroundColor: #e5e5e5;
 $actionbarFontColor: $secondaryBackgroundColor;
-$actionbarFontSize: 18;
+$actionbarFontSize: 19;
 $actionbarHeight: 70;
 $actionbarSecondaryFontColor: #ff3232;
 

@@ -7,7 +7,6 @@
         <FlexboxLayout row="1" class="navigation-buttons-container">
             <StackLayout class="btn-new-wrapper" tap="startTap" orientation="horizontal">
                     <Label class="btn-new-text" text="Zacznij"/>
-                    <Label class="btn-new"/>
             </StackLayout>
         </FlexboxLayout>
     </GridLayout>

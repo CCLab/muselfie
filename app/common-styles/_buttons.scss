@@ -4,8 +4,8 @@ label {
     border-radius: 100%;
     font-family: $fontFamily;
     font-size: $fontSize;
+    letter-spacing: $letterSpacing;
     line-height: $fontSize;
-    text-align: center;
     text-transform: lowercase;
 }
 
@@ -14,30 +14,35 @@ label {
     background-repeat: no-repeat;
     background-size: contain;
     border-radius: 100%;
-    height: 40;
+    height: $buttonIconSize;
+    margin-left: $buttonIconPadding;
     vertical-align: middle;
-    width: 40;
+    width: $buttonIconSize;
 }
 
 %wrapper{
     border-radius: 100%;
-    height: 70;
-    padding: 15;
+    height: $buttonWrapperHeight;
+    padding-left: $buttonWrapperPadding;
+    padding-right: $buttonIconPadding;
 }
 
 %text{
-    padding: 0 8 0 0;
+    padding: 0;
     vertical-align: middle;
+    text-align: right;
 }
 
 .btn-back-wrapper{
     @extend %wrapper;
     background-color: $secondaryBackgroundColor;
-    width: 70;
-
+    padding: $buttonIconPadding;
+    width: $buttonWrapperHeight;
     .btn-back{
         @extend %button;
         background-image: url("res://arrow_left_white");
+        margin: 0;
+        padding: 0;
     }
 }
 
@@ -59,7 +64,7 @@ label {
 .btn-next-wrapper{
     @extend %wrapper;
     background-color: $mainBackgroundColor;
-
+    
     .btn-next-text{
         @extend %text;
         color: $mainFontColor; 
@@ -88,28 +93,21 @@ label {
 .btn-new-wrapper{
     @extend %wrapper;
     background-color: $startEndBackgroundColor;
-    .btn-new{
-        @extend %button;
-        background-image: url("res://add");
-        color: $startEndFontColor;
-        width: 35;
-    }
-
+    padding-right: $buttonWrapperPadding;
     .btn-new-text{
         @extend %text;
         color: $startEndFontColor;
-       
+        text-align: center;
     }
 }
 
 .btn-share-wrapper{
     @extend %wrapper;
     background-color: $mainBackgroundColor;
-    padding: 20;
-    width: 70;
+    padding: $buttonIconPadding;
+    width: $buttonWrapperHeight;
     .btn-share{
         @extend %button;
-        background-image: url("res://share");
         border-radius: 0;
     }
 }
