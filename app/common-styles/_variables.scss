@@ -11,8 +11,8 @@ $fontFamily: 'WorkSans-Medium';
 $fontSize: 19;
 $letterSpacing:-0.01;
 
-$buttonIconSize: 27;
-$buttonIconPadding: 17;
+$buttonIconSize: 61;
+$buttonIconPadding: 0;
 
 $buttonWrapperPadding: 25; // right and left for button without icon; only left for button with icon
 $buttonWrapperHeight: $buttonIconSize + 2 * $buttonIconPadding;
