@@ -40,7 +40,7 @@ label {
     width: $buttonWrapperHeight;
     .btn-back{
         @extend %button;
-        background-image: url("res://arrow_left_white");
+        background-image: url("res://arrow_left_white_v2");
         margin: 0;
         padding: 0;
     }
@@ -57,7 +57,7 @@ label {
     
     .btn-choose-image{
         @extend %button;
-        background-image: url("res://arrow_right_black");
+        background-image: url("res://arrow_right_black_v2");
     }
 }
 
@@ -72,7 +72,7 @@ label {
     .btn-next{
         @extend %button;
         background-color: $mainBackgroundColor;
-        background-image: url("res://arrow_right_black");
+        background-image: url("res://arrow_right_black_v2");
     }
 }
 .btn-choose-image-wrapper{
@@ -82,7 +82,7 @@ label {
 
     .btn-choose-image{
         @extend %button;
-        background-image: url("res://arrow_right_black");
+        background-image: url("res://arrow_right_black_v2");
     }
 
     .btn-choose-image-text{
@@ -108,12 +108,15 @@ label {
     width: $buttonWrapperHeight;
     .btn-share{
         @extend %button;
+        background-image: url("res://share_v2");
         border-radius: 0;
+        margin: 0;
+        padding: 0;
     }
 }
 
 .btn-download{
-    background-image: url("res://download_black");
+    background-image: url("res://download_black_v2");
     background-position: center;
     background-repeat: no-repeat;
     height: 80;
