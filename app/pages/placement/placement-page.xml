@@ -1,4 +1,4 @@
-<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+<Page class="page" navigatingTo="onNavigatingTo" navigatedTo="navigatedTo" xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:fresco="nativescript-fresco">
       <Page.actionBar>
        <ActionBar class="action-bar">
@@ -9,7 +9,7 @@
         </ActionBar>
     </Page.actionBar>
     <GridLayout rows="*, auto">
-        <fresco:FrescoDrawee width="100%" aspectRatio="1"
+        <fresco:FrescoDrawee id="image-background" width="100%" aspectRatio="1"
                              imageUri="{{ chosenBackgroundPath }}"/>
         <AbsoluteLayout pan="placementPan" touch="placementTouch" pinch="placementPinch" rotation="placementRotation">
             <Label id="placement-oval"
@@ -17,8 +17,8 @@
                     left="{{ placementX }}" 
                     width="{{ placementWidth }}"
                     height="{{ placementHeight }}"
-                    rotate="{{ placementRotation }}" 
-                />
+                    rotate="{{ placementRotation }}"
+                    style="{{ 'background: url(' + backgroundData + ');' }}"/>
         </AbsoluteLayout>
         <StackLayout verticalAlignment="bottom">
                 <FlexboxLayout class="navigation-buttons-container" >

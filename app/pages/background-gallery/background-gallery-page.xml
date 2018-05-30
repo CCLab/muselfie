@@ -1,4 +1,4 @@
-<Page class="page" loaded="onLoaded" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+<Page class="page" navigatingTo="onNavigatingTo" navigatedTo="navigatedTo" xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:lv="nativescript-ui-listview" xmlns:fresco="nativescript-fresco">
       <Page.actionBar >
         <ActionBar class="action-bar">
@@ -10,7 +10,7 @@
     </Page.actionBar>
     <StackLayout>
         <GridLayout>
-            <lv:RadListView items="{{ images }}">
+            <lv:RadListView id="gallery" items="{{ images }}">
                 <lv:RadListView.listViewLayout>
                     <lv:ListViewGridLayout scrollDirection="Vertical" spanCount="2"/>
                 </lv:RadListView.listViewLayout>

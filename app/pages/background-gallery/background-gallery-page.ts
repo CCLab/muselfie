@@ -11,14 +11,14 @@ export function onNavigatingTo(args: NavigatedData) {
     page.bindingContext = model;
 }
 
-export function onLoaded(args: EventData) {
+export function navigatedTo(args: NavigatedData) {
     const view = args.object as View;
+    const imageView = view.page.getViewById("gallery") as View;
+    const imageSize = imageView.getActualSize();
     const model = view.page.bindingContext as BackgroundGalleryModel;
-    model.set("imageSize", screen.mainScreen.heightDIPs - 94); //count the remaining screensize, while 94 is the height of the ActionBar
-    model.set("thumbnailHeight",model.imageSize / 2); // keep the aspect ratio
+    model.set("thumbnailHeight", imageSize.height / 2); // keep the aspect ratio
     view.bindingContext = model;
 }
-
 
 
 export function imageTap(args: EventData) {

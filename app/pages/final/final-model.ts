@@ -4,22 +4,9 @@ import {layout} from "tns-core-modules/utils/utils";
 import * as bitmapFactory from "nativescript-bitmap-factory";
 import {ImageAsset} from "tns-core-modules/image-asset";
 import {ImageSource} from "tns-core-modules/image-source";
+import * as imageManipulation from "../../utils/image_manipulation";
 
 declare var android;
-
-interface OvalDimensions {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-    rotation: number;
-}
-
-interface PhotoScale {
-    scale: number;
-    xTranslation: number;
-    yTranslation: number;
-}
 
 export class FinalModel extends Observable {
     public static BLUR_RADIUS = 10;
@@ -27,8 +14,8 @@ export class FinalModel extends Observable {
     public chosenPhotoPath = "";
     public chosenBackgroundPath = "";
     public finalImageSource: ImageSource;
-    public faceDimensions: OvalDimensions;
-    public placementDimensions: OvalDimensions;
+    public faceDimensions: imageManipulation.OvalDimensions;
+    public placementDimensions: imageManipulation.OvalDimensions;
 
     constructor() {
         super();
@@ -72,18 +59,18 @@ export class FinalModel extends Observable {
             // Add the face
 
             // What part of the photo to use?
-            const photoScale = FinalModel.aspectFillSettings(
+            const photoScale = imageManipulation.aspectFillSettings(
                 photoNative,
                 imageWidthPx,
                 imageHeightPx,
             );
 
-            let faceTopLeft = FinalModel.fromScaledToOriginalCoordinates(
+            let faceTopLeft = imageManipulation.fromScaledToOriginalCoordinates(
                 photoScale,
                 this.faceDimensions.x,
                 this.faceDimensions.y,
             );
-            let faceBottomRight = FinalModel.fromScaledToOriginalCoordinates(
+            let faceBottomRight = imageManipulation.fromScaledToOriginalCoordinates(
                 photoScale,
                 this.faceDimensions.x + this.faceDimensions.width,
                 this.faceDimensions.y + this.faceDimensions.height,
@@ -185,41 +172,10 @@ export class FinalModel extends Observable {
      */
     public static aspectFillMatrix(bitmap, width: number, height: number) {
         const matrix = new android.graphics.Matrix();
-        const settings = FinalModel.aspectFillSettings(bitmap, width, height);
+        const settings = imageManipulation.aspectFillSettings(bitmap, width, height);
 
         matrix.preScale(settings.scale, settings.scale);
         matrix.postTranslate(settings.xTranslation, settings.yTranslation);
         return matrix;
-    }
-
-    public static aspectFillSettings(bitmap, width: number, height: number): PhotoScale {
-        let scale: number;
-        let xTranslation = 0;
-        let yTranslation = 0;
-        const originalWidth = bitmap.getWidth();
-        const originalHeight = bitmap.getHeight();
-        const originalAspect = originalWidth / originalHeight;
-        const newAspect = width / height;
-
-        if (originalAspect > newAspect) {
-            scale = height / originalHeight;
-            xTranslation = (width - originalWidth * scale)/2;
-        }
-        else {
-            scale = width / originalWidth;
-            yTranslation = (height - originalHeight * scale)/2;
-        }
-        return {scale, xTranslation, yTranslation};
-    }
-
-    /**
-     * Takes coordinates in the coordinate system of a scaled on-screen image (in dip) and returns
-     * coordinates in the coordinate systems of the original image (in px).
-     * photoScale is an object containing scaling settings returned by aspectFillSettings.
-     */
-    public static fromScaledToOriginalCoordinates(photoScale: PhotoScale, x, y) {
-        let newX = (layout.toDevicePixels(x) - photoScale.xTranslation) / photoScale.scale;
-        let newY = (layout.toDevicePixels(y) - photoScale.yTranslation) / photoScale.scale;
-        return {x: newX, y: newY};
     }
 }

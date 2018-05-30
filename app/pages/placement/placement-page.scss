@@ -2,15 +2,8 @@
 @import '~/common-styles/_navigationButtonsContainer.scss';
 @import '~/common-styles/_buttons.scss';
 
-#image-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  
-}
-
 #placement-oval {
-  background-color: rgba(0, 224, 135, 0.65);
-  border-color: #00e187;
-  border-width: 2;
+  background-repeat: no-repeat;
+  background-size: cover;
   clip-path: ellipse(49% 49% at 50% 50%);
-
 }

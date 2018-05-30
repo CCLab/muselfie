@@ -2,10 +2,7 @@ import * as frameModule from "tns-core-modules/ui/frame";
 import { NavigatedData, Page } from "ui/page";
 import { PanGestureEventData, TouchGestureEventData, PinchGestureEventData, GestureStateTypes, RotationGestureEventData } from "ui/gestures";
 import { View } from "tns-core-modules/ui/core/view";
-
-
 import { FaceModel } from "./face-model";
-import {PlacementModel} from "~/pages/placement/placement-model";
 
 export function onNavigatingTo(args: NavigatedData) {
     const page = args.object as Page;
@@ -60,7 +57,6 @@ export function nextTap(args: NavigatedData) {
     const button = args.object as View;
     const page = button.page as Page;
     const model = page.bindingContext as FaceModel;
-
     frameModule.topmost().navigate({
         moduleName: "pages/placement/placement-page",
         transition: { name: "slide" },
