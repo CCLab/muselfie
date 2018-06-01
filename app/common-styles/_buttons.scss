@@ -122,3 +122,8 @@ label {
     height: 80;
     width: 80;
 }
+
+.action-bar-btn-download{
+    @extend %button;
+    background-image: url("res://download_violet_v2");
+}

@@ -1,0 +1,27 @@
+@import '~/common-styles/_actionBar.scss';
+@import '~/common-styles/_navigationButtonsContainer.scss';
+@import '~/common-styles/_buttons.scss';
+
+
+#action-bar-fake{
+    @extend .action-bar;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 20;
+    vertical-align: center;
+
+    .action-bar-step{
+        @extend %button;
+        background-image: url("res://arrow_left_red_v2");
+    }
+}
+.chosen-file{
+    border-color: $mainBackgroundColor;
+    border-radius: 0;
+    border-width: 2;
+}
+.btn-download{
+    @extend %button;
+    background-image: url("res://download_black_v2");
+}

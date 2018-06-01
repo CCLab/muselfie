@@ -16,10 +16,25 @@ export function navigatedTo(args: NavigatedData) {
     const imageView = view.page.getViewById("gallery") as View;
     const imageSize = imageView.getActualSize();
     const model = view.page.bindingContext as BackgroundGalleryModel;
+    model.set("imageSize", imageSize);
     model.set("thumbnailHeight", imageSize.height / 2); // keep the aspect ratio
     view.bindingContext = model;
 }
 
+export function downloadGallery(args: EventData){
+    const icon = args.object as View;
+    const page = icon.page as Page;
+    const model = page.bindingContext as BackgroundGalleryModel;
+
+    page.showModal(
+        "pages/background-gallery/background-gallery-download-page",
+        {
+            'imageSize': model.imageSize,
+        },
+        ()=>{},
+        true,
+    );
+}
 
 export function imageTap(args: EventData) {
     const view = args.object as View;

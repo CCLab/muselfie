@@ -5,6 +5,7 @@
             <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
                 <Label class="action-bar-step" text="1 / 3"/>
                 <Label class="action-bar-title" text="Wybierz tło z galerii"/>
+                <Label class="action-bar-btn-download" tap="downloadGallery"/>
             </StackLayout>
         </ActionBar>
     </Page.actionBar>

@@ -130,7 +130,7 @@ export class PlacementModel extends Observable {
             );
             canvas.drawBitmap(nativePhoto, sourceRect, destRect, paint);
 
-            this.set("backgroundData", bmp.clone().toDataUrl());
+            this.set("backgroundData", bmp.clone().toDataUrl(bitmapFactory.OutputFormat.JPEG, 25));
         })
 
     }

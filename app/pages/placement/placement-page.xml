@@ -18,7 +18,7 @@
                     width="{{ placementWidth }}"
                     height="{{ placementHeight }}"
                     rotate="{{ placementRotation }}"
-                    style="{{ 'background: url(' + backgroundData + ');' }}"/>
+                    backgroundImage="{{ backgroundData }}"/>
         </AbsoluteLayout>
         <StackLayout verticalAlignment="bottom">
                 <FlexboxLayout class="navigation-buttons-container" >
