@@ -1,6 +1,5 @@
 import * as app from "application";
 import * as fresco from "nativescript-fresco";
-import "./bundle-config";
 
 if (app.android) {
     app.on("launch", () => {
