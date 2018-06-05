@@ -28,7 +28,7 @@ export class BackgroundGalleryModel extends Observable {
 
     /**
      * Gets the directory where the backgrounds that come with the application are stored.
-     * The value depends on the device's screen size (as the method chooses a version
+     * The value depends on `desiredWidthPx` and `desiredHeightPx` (as the method chooses a version
      * best suited for the size). Expect the resized files to be in folders
      * named using a `automatically-resized/[width]x[height]` format.
      */
@@ -71,13 +71,12 @@ export class BackgroundGalleryModel extends Observable {
     }
 
     public showImages() {
-        const backgroundsFolder = fs.knownFolders.currentApp().getFolder("content/backgrounds");
-
         let backgrounds_from_db = this.db.get('backgrounds').value() as BackgroundEntry[];
         if (backgrounds_from_db) {
             this.backgrounds.push(backgrounds_from_db);
         } else {
             // No background in database; get the default list of backgrounds
+            const backgroundsFolder = fs.knownFolders.currentApp().getFolder("content/backgrounds");
             let default_backgrounds = JSON.parse(backgroundsFolder.getFile('list.json').readTextSync());
             let backgrounds_dir = this.getStaticBackgroundsDir(
                 layout.toDevicePixels(this.imageSize.width),

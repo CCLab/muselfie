@@ -6,18 +6,20 @@
                 <Label class="action-bar-title" text="Pobierz obrazy"/>
             </FlexboxLayout>
         <GridLayout>
-            <lv:RadListView id="gallery" items="{{ images }}">
+            <lv:RadListView id="gallery" items="{{ remoteBackgrounds }}">
                 <lv:RadListView.listViewLayout>
                     <lv:ListViewGridLayout scrollDirection="Vertical" spanCount="2"/>
                 </lv:RadListView.listViewLayout>
                 <lv:RadListView.itemTemplate >
                     <GridLayout>
-                        <fresco:FrescoDrawee height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ path }}" tap="imageTap"/>
-                        <Label class="{{ $parents['Page'].chosenImage, $parents['Page'].chosenImage == $value.path ? 'chosen-file' : '' }}"/>
+                        <fresco:FrescoDrawee height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ image_url }}"
+                            progressiveRenderingEnabled="true" progressBarColor="black" showProgressBar="true" tap="imageTap"/>
+                        <Label class="{{ $parents['Page'].chosenRemoteBackground, $parents['Page'].chosenRemoteBackground == $value ? 'chosen-file' : '' }}"/>
                      </GridLayout>
                 </lv:RadListView.itemTemplate>
             </lv:RadListView>
-            <StackLayout verticalAlignment="bottom" visibility="{{ chosenImage ? 'visible' : 'collapse' }}">
+            <ActivityIndicator busy="{{ busy }}" width="64" height="64"/>
+            <StackLayout verticalAlignment="bottom" visibility="{{ chosenRemoteBackground ? 'visible' : 'collapse' }}">
                 <FlexboxLayout class="navigation-buttons-container">
                     <StackLayout class="btn-next-wrapper" tap="downloadImage" orientation="horizontal">
                         <Label class="btn-next-text" text="pobierz tło"/>
