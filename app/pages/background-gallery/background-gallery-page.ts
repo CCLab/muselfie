@@ -30,6 +30,7 @@ export function downloadGallery(args: EventData) {
         "pages/background-gallery/background-gallery-download-page",
         {
             imageSize: model.imageSize,
+            downloadedRemoteIds: model.getBackgroundRemoteIds(),
         },
         (backgroundEntry: BackgroundEntry) => {
             if (backgroundEntry) {

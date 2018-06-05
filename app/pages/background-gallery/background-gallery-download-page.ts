@@ -11,6 +11,7 @@ export function onShownModally(args: ShownModallyData) {
     const model = new BackgroundDownloadModel();
     const size = args.context.imageSize;
     model.set("thumbnailHeight", size.height / 2); // keep the aspect ratio
+    model.set("downloadedRemoteIds", args.context.downloadedRemoteIds);
     page.bindingContext = model;
     closeCallback = args.closeCallback;
 

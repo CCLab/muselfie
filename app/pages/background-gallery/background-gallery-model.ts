@@ -111,4 +111,11 @@ export class BackgroundGalleryModel extends Observable {
         this.backgrounds.unshift(backgroundEntry);
         this.set("chosenBackground", backgroundEntry);
     }
+
+    /**
+     * Get a list of remote ids of all downloaded backgrounds.
+     */
+    public getBackgroundRemoteIds(): number[] {
+        return this.db.get("backgrounds").map("remoteId").compact().value();
+    }
 }

@@ -14,6 +14,7 @@ export interface RemoteBackgroundEntry {
     name: string;
     image_url: string;
     thumbnail_url: string;
+    already_downloaded?: boolean; // we will add this ourselves later
 }
 
 export class BackgroundDownloadModel extends Observable {
@@ -21,6 +22,7 @@ export class BackgroundDownloadModel extends Observable {
     public remoteBackgrounds = new ObservableArray<RemoteBackgroundEntry>();
     public thumbnailHeight = 250;
     public imageSize;
+    public downloadedRemoteIds: number[];
     public chosenRemoteBackground: RemoteBackgroundEntry;
     public busy = true; // show the loading indicator
 
@@ -39,10 +41,11 @@ export class BackgroundDownloadModel extends Observable {
                 return Promise.reject("Wrong format of JSON response.");
             }
 
-            // Make the urls absolute
+            // Make the urls absolute and add the download status
             apiBackgrounds.forEach(background => {
                 background.image_url = BackgroundDownloadModel.API_URL + background.image_url;
                 background.thumbnail_url = BackgroundDownloadModel.API_URL + background.thumbnail_url;
+                background.already_downloaded = this.isBackgroundDownloaded(background);
             });
 
             this.remoteBackgrounds.push(apiBackgrounds);
@@ -67,5 +70,12 @@ export class BackgroundDownloadModel extends Observable {
                 };
             });
         });
+    }
+
+    /**
+     * Returns a boolean value indicating whether the remote background had been already downloaded.
+     */
+    public isBackgroundDownloaded(remoteBackgroundEntry: RemoteBackgroundEntry) {
+        return this.downloadedRemoteIds.indexOf(remoteBackgroundEntry.id) !== -1;
     }
 }

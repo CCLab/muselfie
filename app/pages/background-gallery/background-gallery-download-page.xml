@@ -13,7 +13,8 @@
                 <lv:RadListView.itemTemplate >
                     <GridLayout>
                         <fresco:FrescoDrawee height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ image_url }}"
-                            progressiveRenderingEnabled="true" progressBarColor="black" showProgressBar="true" tap="imageTap"/>
+                            progressiveRenderingEnabled="true" progressBarColor="black" showProgressBar="true" tap="imageTap"
+                            isEnabled="{{ !already_downloaded }}" class="{{ already_downloaded ? 'downloaded-background' : '' }}"/>
                         <Label class="{{ $parents['Page'].chosenRemoteBackground, $parents['Page'].chosenRemoteBackground == $value ? 'chosen-file' : '' }}"/>
                      </GridLayout>
                 </lv:RadListView.itemTemplate>
