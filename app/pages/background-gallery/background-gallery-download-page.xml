@@ -22,7 +22,7 @@
             <ActivityIndicator busy="{{ busy }}" width="64" height="64"/>
             <StackLayout verticalAlignment="bottom" visibility="{{ chosenRemoteBackground ? 'visible' : 'collapse' }}" isEnabled="{{ !busy }}">
                 <FlexboxLayout class="navigation-buttons-container">
-                    <StackLayout class="btn-next-wrapper" tap="downloadImage" orientation="horizontal">
+                    <StackLayout class="{{ !busy ? 'btn-next-wrapper' : 'btn-next-wrapper btn-busy' }}" tap="downloadImage" orientation="horizontal">
                         <Label class="btn-next-text" text="pobierz tło"/>
                         <Label class="btn-download"/>
                      </StackLayout>

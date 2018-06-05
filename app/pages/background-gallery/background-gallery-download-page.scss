@@ -1,6 +1,7 @@
 @import '~/common-styles/_actionBar.scss';
 @import '~/common-styles/_navigationButtonsContainer.scss';
 @import '~/common-styles/_buttons.scss';
+@import '~/common-styles/_variables.scss';
 
 
 #action-bar-fake{
@@ -8,8 +9,9 @@
     align-items: center;
     flex-direction: row;
     justify-content: flex-start;
-    padding-left: 20;
     vertical-align: center;
+    margin-left: 5;
+    width: 100%;
 
     .action-bar-step{
         @extend %button;
@@ -24,6 +26,11 @@
 .btn-download{
     @extend %button;
     background-image: url("res://download_black_v2");
+}
+.btn-busy{
+    background-color: $actionbarBackgroundColor;
+    color: #bdbdbd;
+    opacity: 0.5;
 }
 
 .downloaded-background {

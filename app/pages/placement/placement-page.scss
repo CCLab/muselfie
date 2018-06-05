@@ -1,9 +1,17 @@
 @import '~/common-styles/_actionBar.scss';
 @import '~/common-styles/_navigationButtonsContainer.scss';
 @import '~/common-styles/_buttons.scss';
-
 #placement-oval {
   background-repeat: no-repeat;
   background-size: cover;
   clip-path: ellipse(49% 49% at 50% 50%);
+}
+
+.action-bar {
+  & .steps {
+    & .action-bar-title {
+      width: 80%;
+      text-align: left;
+    }
+  }
 }

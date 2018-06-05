@@ -9,6 +9,7 @@
     font-size: $actionbarFontSize;
     font-weight: 500;
     height: $actionbarHeight;
+    margin-left: -10;
     text-align: center;
    
     & label{
@@ -29,7 +30,7 @@
         vertical-align: middle;
     }
     & .action-bar-start{
-        width: 90%;
+        width: 100%;
     }
     .steps{
         width: 100%;
