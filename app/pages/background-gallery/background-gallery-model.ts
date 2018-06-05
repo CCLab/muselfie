@@ -22,7 +22,7 @@ export class BackgroundGalleryModel extends Observable {
     constructor() {
         super();
 
-        const adapter = new NativeScriptAdapter('backgrounds.json');
+        const adapter = new NativeScriptAdapter("backgrounds.json");
         this.db = lowdb<lowdb.AdapterSync>(adapter);
     }
 
@@ -32,9 +32,9 @@ export class BackgroundGalleryModel extends Observable {
      * best suited for the size). Expect the resized files to be in folders
      * named using a `automatically-resized/[width]x[height]` format.
      */
-    public getStaticBackgroundsDir(desiredWidthPx, desiredHeightPx): fs.Folder {
+    public static getStaticBackgroundsDir(desiredWidthPx, desiredHeightPx): fs.Folder {
         const backgroundsFolder = fs.knownFolders.currentApp().getFolder("content/backgrounds");
-        const resizedFolder = backgroundsFolder.getFolder('automatically-resized');
+        const resizedFolder = backgroundsFolder.getFolder("automatically-resized");
 
         // I need to do the weird type casting below because there is a bug in NativeScript definition
         // of getEntitiesSync() returned type, so I have to force the correct type.
@@ -45,18 +45,18 @@ export class BackgroundGalleryModel extends Observable {
         let bestHeight: number;
         for (let dir of resizeDirs) {
             let size = dir.name.split("x");
-            if (size.length != 2 || isNaN(+size[0]) || isNaN(+size[1])) {
+            if (size.length !== 2 || isNaN(+size[0]) || isNaN(+size[1])) {
                 // The file's name is not in the [width]x[height] format, skip
                 continue;
             }
             let currentWidth = +size[0];
             let currentHeight = +size[1];
 
-            let first_iteration = (bestWidth === undefined || bestHeight === undefined);
-            let fits_boundries = (currentWidth >= desiredWidthPx && currentHeight >= desiredHeightPx);
-            let smaller_than_best = !first_iteration && (currentWidth < bestWidth || currentHeight < bestHeight);
+            let firstIteration = (bestWidth === undefined || bestHeight === undefined);
+            let fitsBoundries = (currentWidth >= desiredWidthPx && currentHeight >= desiredHeightPx);
+            let smallerThanBest = !firstIteration && (currentWidth < bestWidth || currentHeight < bestHeight);
 
-            if (fits_boundries && (first_iteration || smaller_than_best)) {
+            if (fitsBoundries && (firstIteration || smallerThanBest)) {
                 bestWidth = currentWidth;
                 bestHeight = currentHeight;
             }
@@ -67,37 +67,36 @@ export class BackgroundGalleryModel extends Observable {
         } else {
             return backgroundsFolder;
         }
-
     }
 
     public showImages() {
-        let backgrounds_from_db = this.db.get('backgrounds').value() as BackgroundEntry[];
-        if (backgrounds_from_db) {
-            this.backgrounds.push(backgrounds_from_db);
+        let backgroundsFromDb = this.db.get("backgrounds").value() as BackgroundEntry[];
+        if (backgroundsFromDb) {
+            this.backgrounds.push(backgroundsFromDb);
         } else {
             // No background in database; get the default list of backgrounds
             const backgroundsFolder = fs.knownFolders.currentApp().getFolder("content/backgrounds");
-            let default_backgrounds = JSON.parse(backgroundsFolder.getFile('list.json').readTextSync());
-            let backgrounds_dir = this.getStaticBackgroundsDir(
+            let defaultBackgrounds = JSON.parse(backgroundsFolder.getFile("list.json").readTextSync());
+            let backgroundsDir = BackgroundGalleryModel.getStaticBackgroundsDir(
                 layout.toDevicePixels(this.imageSize.width),
-                layout.toDevicePixels(this.imageSize.height)
+                layout.toDevicePixels(this.imageSize.height),
             );
-            let thumbnails_dir = this.getStaticBackgroundsDir(
+            let thumbnailsDir = BackgroundGalleryModel.getStaticBackgroundsDir(
                 layout.toDevicePixels(this.imageSize.width * 0.5),
-                layout.toDevicePixels(this.imageSize.height * 0.5)
+                layout.toDevicePixels(this.imageSize.height * 0.5),
             );
 
-            for (let background of default_backgrounds) {
+            for (let background of defaultBackgrounds) {
                 this.backgrounds.push({
-                    path: backgrounds_dir.getFile(background.file).path,
-                    thumbnailPath: thumbnails_dir.getFile(background.file).path,
+                    path: backgroundsDir.getFile(background.file).path,
+                    thumbnailPath: thumbnailsDir.getFile(background.file).path,
                     name: background.name,
                     type: "internal",
-                })
+                });
             }
 
             // save to db
-            this.db.set('backgrounds', (this.backgrounds as any)._array).write();
+            this.db.set("backgrounds", (this.backgrounds as any)._array).write();
         }
     }
 }

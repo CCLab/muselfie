@@ -1,8 +1,8 @@
 import * as frameModule from "tns-core-modules/ui/frame";
 import { NavigatedData, Page } from "ui/page";
-import { PanGestureEventData, TouchGestureEventData, PinchGestureEventData, GestureStateTypes, RotationGestureEventData } from "ui/gestures";
+import { PanGestureEventData, TouchGestureEventData, PinchGestureEventData,
+    GestureStateTypes, RotationGestureEventData } from "ui/gestures";
 import { View } from "tns-core-modules/ui/core/view";
-import { EventData } from "data/observable";
 import { Image } from "tns-core-modules/ui/image";
 import { PlacementModel } from "./placement-model";
 
@@ -26,7 +26,7 @@ export function navigatedTo(args: NavigatedData) {
     model.setFaceImage(imageSize);
 }
 
-export function backTap(args: NavigatedData) {
+export function backTap() {
     frameModule.topmost().goBack();
 }
 
@@ -34,9 +34,9 @@ let multiFingerMode = false;
 export function placementTouch(args: TouchGestureEventData) {
     const model = (args.object as View).bindingContext as PlacementModel;
 
-    if (args.action == "down") {
+    if (args.action === "down") {
         multiFingerMode = (args.getPointerCount() !== 1);
-    } else if (args.action == "up") {
+    } else if (args.action === "up") {
         model.commitPlacementChanges();
     }
 }

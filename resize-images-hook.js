@@ -3,12 +3,12 @@
  * as needed by various mobile devices. It is run automatically by NativeScript during
  * the prepare stage of building the app.
  */
-const fs = require('fs');
-const path = require('path');
-const sharp = require('sharp');
+const fs = require("fs");
+const path = require("path");
+const sharp = require("sharp");
 
 const IMAGE_FOLDERS = [
-    'app/content/backgrounds',
+    "app/content/backgrounds",
 ];
 const SIZE_STEPS = [
     [2560 * 0.625, 2560],
@@ -19,7 +19,7 @@ const SIZE_STEPS = [
     [600 * 0.625, 600],
     [480 * 0.625, 480],
 ];
-const TOP_DIRECTORY_NAME = 'automatically-resized';
+const TOP_DIRECTORY_NAME = "automatically-resized";
 
 
 /**
@@ -76,7 +76,7 @@ for (let folder of IMAGE_FOLDERS) {
     createSizeDirs(folder);
     fs.readdir(folder, (err, files) => {
         files.forEach(file => {
-            if (file.endsWith('.jpg')) {
+            if (file.endsWith(".jpg")) {
                 resizeFile(folder, file);
             }
         });

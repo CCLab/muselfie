@@ -1,6 +1,5 @@
 import * as frameModule from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
-import { View } from "ui/core/view";
 import { HomeViewModel } from "./home-view-model";
 
 export function onNavigatingTo(args: NavigatedData) {
@@ -8,7 +7,7 @@ export function onNavigatingTo(args: NavigatedData) {
     page.bindingContext = new HomeViewModel();
 }
 
-export function startTap(args: NavigatedData) {
+export function startTap() {
     frameModule.topmost().navigate({
         moduleName: "pages/background-gallery/background-gallery-page",
         transition: { name: "slide" },

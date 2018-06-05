@@ -2,10 +2,9 @@ import { BackgroundDownloadModel } from "./background-gallery-download-model";
 import { ShownModallyData, Page } from "ui/page";
 import { EventData } from "data/observable";
 import { View } from "ui/core/view";
-import * as http from "tns-core-modules/http";
 import * as dialogs from "ui/dialogs";
 
-let closeCallback: Function;
+let closeCallback: Function; // tslint:disable-line
 
 export function onShownModally(args: ShownModallyData) {
     const page = args.object as Page;
@@ -17,13 +16,13 @@ export function onShownModally(args: ShownModallyData) {
 
     // Get the list of images
     model.downloadImageList(size.width, size.height).catch(() => {
-        dialogs.alert("Problem z połączeniem internetowym. Spróbuj ponownie później.").then(()=> {
+        dialogs.alert("Problem z połączeniem internetowym. Spróbuj ponownie później.").then(() => {
             closeCallback();
         });
     });
 }
 
-export function backTap(args: EventData) {
+export function backTap() {
     closeCallback();
 }
 
@@ -34,6 +33,6 @@ export function imageTap(args: EventData) {
     model.set("chosenRemoteBackground", image.bindingContext);
 }
 
-export function downloadImage(args: EventData) {
+export function downloadImage() {
     closeCallback();
 }

@@ -1,6 +1,7 @@
 import * as frameModule from "tns-core-modules/ui/frame";
 import { NavigatedData, Page } from "ui/page";
-import { PanGestureEventData, TouchGestureEventData, PinchGestureEventData, GestureStateTypes, RotationGestureEventData } from "ui/gestures";
+import { PanGestureEventData, TouchGestureEventData, PinchGestureEventData,
+    GestureStateTypes, RotationGestureEventData } from "ui/gestures";
 import { View } from "tns-core-modules/ui/core/view";
 import { FaceModel } from "./face-model";
 
@@ -15,7 +16,7 @@ export function onNavigatingTo(args: NavigatedData) {
     page.bindingContext.set("chosenBackground", page.navigationContext.chosenBackground);
 }
 
-export function backTap(args: NavigatedData) {
+export function backTap() {
     frameModule.topmost().goBack();
 }
 
@@ -23,9 +24,9 @@ let multiFingerMode = false;
 export function faceTouch(args: TouchGestureEventData) {
     const model = (args.object as View).bindingContext as FaceModel;
 
-    if (args.action == "down") {
+    if (args.action === "down") {
         multiFingerMode = (args.getPointerCount() !== 1);
-    } else if (args.action == "up") {
+    } else if (args.action === "up") {
         model.commitFaceChanges();
     }
 }

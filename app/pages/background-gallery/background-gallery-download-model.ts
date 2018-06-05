@@ -1,7 +1,6 @@
 import { Observable } from "data/observable";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { layout } from "tns-core-modules/utils/utils";
-import * as fs from "tns-core-modules/file-system";
 import * as http from "http";
 
 /**
@@ -15,7 +14,7 @@ export interface RemoteBackgroundEntry {
 }
 
 export class BackgroundDownloadModel extends Observable {
-    public static API_URL = 'https://muselfie-backend.test.laboratorium.ee';
+    public static API_URL = "https://muselfie-backend.test.laboratorium.ee";
     public remoteBackgrounds = new ObservableArray<RemoteBackgroundEntry>();
     public thumbnailHeight = 250;
     public imageSize;

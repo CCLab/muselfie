@@ -8,7 +8,6 @@ import * as SocialShare from "nativescript-social-share";
 import { FinalModel } from "./final-model";
 import {View} from "tns-core-modules/ui/core/view";
 
-
 export function onNavigatingTo(args: NavigatedData) {
     const page = args.object as Page;
 
@@ -22,7 +21,6 @@ export function onNavigatingTo(args: NavigatedData) {
     page.bindingContext.set("placementDimensions", page.navigationContext.placementDimensions);
 }
 
-
 export function navigatedTo(args: NavigatedData) {
     const page = args.object as Page;
     const imageView = page.getViewById("image-final") as Image;
@@ -32,12 +30,11 @@ export function navigatedTo(args: NavigatedData) {
     model.setFinalImage(imageSize);
 }
 
-export function backTap(args: NavigatedData) {
+export function backTap() {
     frameModule.topmost().goBack();
 }
 
-
-export function homeTap(args: NavigatedData) {
+export function homeTap() {
     confirm({
         message: "Tworzenie nowego kolażu skasuje dotychczasowy. Czy chcesz kontynuować?",
         neutralButtonText: "Anuluj",
@@ -52,7 +49,6 @@ export function homeTap(args: NavigatedData) {
     });
 
 }
-
 
 export function shareTap(args: NavigatedData) {
     const button = args.object as View;

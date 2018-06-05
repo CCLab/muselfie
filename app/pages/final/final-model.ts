@@ -95,7 +95,7 @@ export class FinalModel extends Observable {
                 new android.graphics.BlurMaskFilter(
                     FinalModel.BLUR_RADIUS,
                     android.graphics.BlurMaskFilter.Blur.NORMAL,
-                )
+                ),
             );
 
             // Apply the placement rotation
@@ -118,7 +118,7 @@ export class FinalModel extends Observable {
 
             // This mode will put the face where the painted oval is
             paint.setXfermode(new android.graphics.PorterDuffXfermode(
-                android.graphics.PorterDuff.Mode.SRC_IN
+                android.graphics.PorterDuff.Mode.SRC_IN,
             ));
 
             // painting the face
@@ -153,7 +153,7 @@ export class FinalModel extends Observable {
 
             // Add background
             paint.setXfermode(new android.graphics.PorterDuffXfermode(
-                android.graphics.PorterDuff.Mode.DST_OVER  // put below the existing stuff
+                android.graphics.PorterDuff.Mode.DST_OVER,  // put below the existing stuff
             ));
             const backgroundScaleMatrix = FinalModel.aspectFillMatrix(
                 backgroundNative,

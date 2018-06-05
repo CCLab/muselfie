@@ -17,7 +17,6 @@ export class FaceModel extends Observable {
     private commitedFaceY: number;
     private commitedFaceRotation: number;
 
-
     constructor() {
         super();
         this.faceWidth = screen.mainScreen.widthDIPs * 0.4;
@@ -47,7 +46,7 @@ export class FaceModel extends Observable {
         this.set("faceY", y);
     }
 
-    public setFaceRotation(deg: number){
+    public setFaceRotation(deg: number) {
         this.set("faceRotation", this.commitedFaceRotation + deg);
     }
 
@@ -56,6 +55,6 @@ export class FaceModel extends Observable {
         this.set("commitedFaceHeight", this.faceHeight);
         this.set("commitedFaceX", this.faceX);
         this.set("commitedFaceY", this.faceY);
-        this.set("commitedFaceRotation", this.faceRotation);  
+        this.set("commitedFaceRotation", this.faceRotation);
     }
 }

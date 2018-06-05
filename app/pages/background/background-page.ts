@@ -20,7 +20,7 @@ export function onNavigatingTo(args: NavigatedData) {
     page.bindingContext.set("chosenBackground", page.navigationContext.chosenBackground);
 }
 
-export function backTap(args: NavigatedData) {
+export function backTap() {
     frameModule.topmost().goBack();
 }
 
@@ -49,8 +49,7 @@ export function choosePhoto(args: EventData) {
                 page.bindingContext.set("chosenPhotoPath", path);
 
                 // clear background-image cache (for the Label on the next screen)
-                let context = app.android.context;
-                let fetcher = org.nativescript.widgets.image.Fetcher.getInstance(context);
+                let fetcher = org.nativescript.widgets.image.Fetcher.getInstance(app.android.context);
                 fetcher.clearCache();
                 frameModule.topmost().navigate({
                     moduleName: "pages/face/face-page",
