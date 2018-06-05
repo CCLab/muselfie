@@ -11,7 +11,7 @@ declare var android;
 
 export class PlacementModel extends Observable {
     public chosenPhotoPath = "";
-    public chosenBackgroundPath = "";
+    public chosenBackground;
 
     public finalImageSource: ImageSource;
     public faceDimensions: imageManipulation.OvalDimensions;

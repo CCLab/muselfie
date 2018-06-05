@@ -15,7 +15,7 @@ export function onNavigatingTo(args: NavigatedData) {
 
     page.bindingContext.set("chosenPhotoPath", page.navigationContext.chosenPhotoPath);
     page.bindingContext.set("faceDimensions", page.navigationContext.faceDimensions);
-    page.bindingContext.set("chosenBackgroundPath", page.navigationContext.chosenBackgroundPath);
+    page.bindingContext.set("chosenBackground", page.navigationContext.chosenBackground);
 }
 
 export function navigatedTo(args: NavigatedData) {
@@ -74,7 +74,7 @@ export function nextTap(args: NavigatedData) {
         transition: { name: "slide" },
         context: {
             chosenPhotoPath: model.chosenPhotoPath,
-            chosenBackgroundPath: model.chosenBackgroundPath,
+            chosenBackground: model.chosenBackground,
             placementDimensions: {
                 x: model.placementX,
                 y: model.placementY,

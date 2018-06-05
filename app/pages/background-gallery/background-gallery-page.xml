@@ -11,18 +11,18 @@
     </Page.actionBar>
     <StackLayout>
         <GridLayout>
-            <lv:RadListView id="gallery" items="{{ images }}">
+            <lv:RadListView id="gallery" items="{{ backgrounds }}">
                 <lv:RadListView.listViewLayout>
                     <lv:ListViewGridLayout scrollDirection="Vertical" spanCount="2"/>
                 </lv:RadListView.listViewLayout>
                 <lv:RadListView.itemTemplate >
                     <GridLayout>
-                        <fresco:FrescoDrawee height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ path }}" tap="imageTap"/>
-                        <Label class="{{ $parents['Page'].chosenFile, $parents['Page'].chosenFile == $value ? 'chosen-file' : '' }}"/>
+                        <fresco:FrescoDrawee height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ thumbnailPath }}" tap="imageTap"/>
+                        <Label class="{{ $parents['Page'].chosenBackground, $parents['Page'].chosenBackground == $value ? 'chosen-file' : '' }}"/>
                      </GridLayout>
                 </lv:RadListView.itemTemplate>
             </lv:RadListView>
-            <StackLayout verticalAlignment="bottom" visibility="{{ chosenFile ? 'visible' : 'collapse' }}">
+            <StackLayout verticalAlignment="bottom" visibility="{{ chosenBackground ? 'visible' : 'collapse' }}">
                 <FlexboxLayout class="navigation-buttons-container">
                     <StackLayout class="btn-next-wrapper" tap="nextTap" orientation="horizontal">
                         <Label class="btn-next-text" text="dalej" />

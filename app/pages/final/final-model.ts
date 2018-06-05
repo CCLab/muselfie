@@ -12,7 +12,7 @@ export class FinalModel extends Observable {
     public static BLUR_RADIUS = 10;
 
     public chosenPhotoPath = "";
-    public chosenBackgroundPath = "";
+    public chosenBackground;
     public finalImageSource: ImageSource;
     public faceDimensions: imageManipulation.OvalDimensions;
     public placementDimensions: imageManipulation.OvalDimensions;
@@ -26,7 +26,7 @@ export class FinalModel extends Observable {
      */
     public setFinalImage(imageSize: Size) {
         // Load the images
-        const background = new ImageAsset(this.chosenBackgroundPath);
+        const background = new ImageAsset(this.chosenBackground.path);
         const photo = new ImageAsset(this.chosenPhotoPath);
 
         background.getImageAsync(backgroundNative => {

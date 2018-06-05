@@ -3,7 +3,7 @@ import { screen } from "platform";
 
 export class FaceModel extends Observable {
     public chosenPhotoPath = "";
-    public chosenBackgroundPath = "";
+    public chosenBackground;
 
     public faceX: number;
     public faceY: number;

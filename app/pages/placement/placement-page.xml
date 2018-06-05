@@ -10,7 +10,7 @@
     </Page.actionBar>
     <GridLayout rows="*, auto">
         <fresco:FrescoDrawee id="image-background" width="100%" aspectRatio="1"
-                             imageUri="{{ chosenBackgroundPath }}"/>
+                             imageUri="{{ chosenBackground.path }}"/>
         <AbsoluteLayout pan="placementPan" touch="placementTouch" pinch="placementPinch" rotation="placementRotation">
             <Label id="placement-oval"
                     top="{{ placementY }}"

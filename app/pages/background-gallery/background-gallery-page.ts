@@ -18,7 +18,7 @@ export function navigatedTo(args: NavigatedData) {
     const model = view.page.bindingContext as BackgroundGalleryModel;
     model.set("imageSize", imageSize);
     model.set("thumbnailHeight", imageSize.height / 2); // keep the aspect ratio
-    view.bindingContext = model;
+    model.showImages();
 }
 
 export function downloadGallery(args: EventData){
@@ -39,9 +39,8 @@ export function downloadGallery(args: EventData){
 export function imageTap(args: EventData) {
     const view = args.object as View;
     const model = view.page.bindingContext as BackgroundGalleryModel;
-    const chosenFile = view.bindingContext;
-    model.set("chosenFile", chosenFile);
-    model.set("chosenBackgroundPath", chosenFile.path);
+    const chosenBackground = view.bindingContext;
+    model.set("chosenBackground", chosenBackground);
 }
 
 export function nextTap(args: NavigatedData) {
@@ -52,7 +51,7 @@ export function nextTap(args: NavigatedData) {
         moduleName: "pages/background/background-page",
         transition: { name: "slide" },
         context: {
-            chosenBackgroundPath: page.bindingContext.chosenBackgroundPath,
+            chosenBackground: page.bindingContext.chosenBackground,
         },
     });
 }

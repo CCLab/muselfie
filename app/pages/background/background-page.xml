@@ -6,7 +6,7 @@
                 <StackLayout class="action-bar-step">
                     <Label class="info"/>
                 </StackLayout>
-                <Label class="action-bar-title" text="autor tytuł obrazu"/>
+                <Label class="action-bar-title" text="{{ chosenBackground.name }}"/>
             </StackLayout>
         </ActionBar>
     </Page.actionBar>
@@ -15,7 +15,7 @@
                                 height="100%"
                                 aspectRatio="1"
                                 verticalAlignment="top"
-                                imageUri="{{ chosenBackgroundPath }}"/>
+                                imageUri="{{ chosenBackground.path }}"/>
         <StackLayout verticalAlignment="bottom">
                 <FlexboxLayout class="navigation-buttons-container">
                     <StackLayout class="btn-back-wrapper" tap="backTap">

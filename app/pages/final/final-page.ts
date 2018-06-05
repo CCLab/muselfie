@@ -16,7 +16,7 @@ export function onNavigatingTo(args: NavigatedData) {
         page.bindingContext = new FinalModel();
     }
 
-    page.bindingContext.set("chosenBackgroundPath", page.navigationContext.chosenBackgroundPath);
+    page.bindingContext.set("chosenBackground", page.navigationContext.chosenBackground);
     page.bindingContext.set("chosenPhotoPath", page.navigationContext.chosenPhotoPath);
     page.bindingContext.set("faceDimensions", page.navigationContext.faceDimensions);
     page.bindingContext.set("placementDimensions", page.navigationContext.placementDimensions);

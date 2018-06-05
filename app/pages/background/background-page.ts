@@ -17,8 +17,8 @@ export function onNavigatingTo(args: NavigatedData) {
         page.bindingContext = new BackgroundModel();
     }
 
-    page.bindingContext.set("chosenBackgroundPath", page.navigationContext.chosenBackgroundPath);
-    }
+    page.bindingContext.set("chosenBackground", page.navigationContext.chosenBackground);
+}
 
 export function backTap(args: NavigatedData) {
     frameModule.topmost().goBack();
@@ -57,7 +57,7 @@ export function choosePhoto(args: EventData) {
                     transition: { name: "slide" },
                     context: {
                         chosenPhotoPath: page.bindingContext.chosenPhotoPath,
-                        chosenBackgroundPath: page.bindingContext.chosenBackgroundPath,
+                        chosenBackground: page.bindingContext.chosenBackground,
                     },
                 });
             }).catch((reason) => {

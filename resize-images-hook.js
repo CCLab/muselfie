@@ -10,14 +10,14 @@ const sharp = require('sharp');
 const IMAGE_FOLDERS = [
     'app/content/backgrounds',
 ];
-const HEIGHT_STEPS = [
-    2560,
-    2048,
-    1280,
-    1080,
-    800,
-    600,
-    480,
+const SIZE_STEPS = [
+    [2560 * 0.625, 2560],
+    [2048 * 0.625, 2048],
+    [1280 * 0.625, 1280],
+    [1080 * 0.625, 1080],
+    [800 * 0.625, 800],
+    [600 * 0.625, 600],
+    [480 * 0.625, 480],
 ];
 const TOP_DIRECTORY_NAME = 'automatically-resized';
 
@@ -26,13 +26,21 @@ const TOP_DIRECTORY_NAME = 'automatically-resized';
  * Create separate versions of the file in all of the HEIGHT_STEPS sizes.
  */
 function resizeFile(directoryName, fileName) {
-    for (let height of HEIGHT_STEPS) {
-        let newFileName = path.join(directoryName, TOP_DIRECTORY_NAME, height.toString(), fileName);
+    for (let size of SIZE_STEPS) {
+        let [width, height] = size;
+
+        let newFileName = path.join(
+            directoryName,
+            TOP_DIRECTORY_NAME,
+            `${width}x${height}`,
+            fileName,
+        );
         if (fs.existsSync(newFileName)) {
             continue;  // skip if the file already exists
         }
         sharp(path.join(directoryName, fileName))
-            .resize(undefined, height)
+            .resize(width, height)
+            .jpeg({quality: 60})
             .toFile(newFileName);
     }
 }
@@ -48,8 +56,14 @@ function createSizeDirs(directoryName) {
     }
 
     // create the size subdirectories as needed
-    for (let height of HEIGHT_STEPS) {
-        let newDirName = path.join(directoryName, TOP_DIRECTORY_NAME, height.toString());
+    for (let size of SIZE_STEPS) {
+        let [width, height] = size;
+
+        let newDirName = path.join(
+            directoryName,
+            TOP_DIRECTORY_NAME,
+            `${width}x${height}`,
+        );
         if (!fs.existsSync(newDirName)){
             fs.mkdirSync(newDirName);
         }
@@ -57,17 +71,14 @@ function createSizeDirs(directoryName) {
 
 }
 
-module.exports = function(hookArgs) {
-    console.log("Resizing images...");
-    for (let folder of IMAGE_FOLDERS) {
-        createSizeDirs(folder);
-        fs.readdir(folder, (err, files) => {
-            files.forEach(file => {
-                if (file.endsWith('.jpg')) {
-                    resizeFile(folder, file);
-                }
-            });
+console.log("Resizing images...");
+for (let folder of IMAGE_FOLDERS) {
+    createSizeDirs(folder);
+    fs.readdir(folder, (err, files) => {
+        files.forEach(file => {
+            if (file.endsWith('.jpg')) {
+                resizeFile(folder, file);
+            }
         });
-    }
-};
-
+    });
+}
