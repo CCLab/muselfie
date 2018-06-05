@@ -5,11 +5,13 @@ import * as fs from "tns-core-modules/file-system";
 import * as lowdb from "lowdb";
 import * as NativeScriptAdapter from "lowdb-nativescript-adapter";
 
+export type backgroundEntryType = "external"|"internal";
 export interface BackgroundEntry {
     path: string;
     thumbnailPath: string;
     name: string;
-    type: "external"|"internal";
+    type: backgroundEntryType;
+    remoteId?: number;
 }
 
 export class BackgroundGalleryModel extends Observable {
@@ -98,5 +100,15 @@ export class BackgroundGalleryModel extends Observable {
             // save to db
             this.db.set("backgrounds", (this.backgrounds as any)._array).write();
         }
+    }
+
+    /**
+     * Adds new background entry to the beginning of the background lists
+     * (both in the database and the model itself).
+     */
+    public addBackgroundEntry(backgroundEntry: BackgroundEntry) {
+        this.db.get("backgrounds").unshift(backgroundEntry).write();
+        this.backgrounds.unshift(backgroundEntry);
+        this.set("chosenBackground", backgroundEntry);
     }
 }

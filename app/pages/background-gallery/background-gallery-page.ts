@@ -1,8 +1,9 @@
 import * as frameModule from "tns-core-modules/ui/frame";
-import { BackgroundGalleryModel } from "./background-gallery-model";
+import { BackgroundGalleryModel, BackgroundEntry } from "./background-gallery-model";
 import { NavigatedData, Page  } from "ui/page";
 import { EventData } from "data/observable";
 import { View } from "ui/core/view";
+import { RadListView } from "nativescript-ui-listview";
 
 export function onNavigatingTo(args: NavigatedData) {
     const page = args.object as Page;
@@ -23,13 +24,19 @@ export function downloadGallery(args: EventData) {
     const icon = args.object as View;
     const page = icon.page as Page;
     const model = page.bindingContext as BackgroundGalleryModel;
+    const galleryView = page.getViewById("gallery") as RadListView;
 
     page.showModal(
         "pages/background-gallery/background-gallery-download-page",
         {
             imageSize: model.imageSize,
         },
-        undefined,
+        (backgroundEntry: BackgroundEntry) => {
+            if (backgroundEntry) {
+                model.addBackgroundEntry(backgroundEntry);
+                galleryView.scrollToIndex(0);
+            }
+        },
         true,
     );
 }

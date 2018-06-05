@@ -1,7 +1,10 @@
 import { Observable } from "data/observable";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { layout } from "tns-core-modules/utils/utils";
+import * as fs from "tns-core-modules/file-system";
 import * as http from "http";
+
+import { BackgroundEntry, backgroundEntryType } from "./background-gallery-model";
 
 /**
  * This interface mirrors the way backgrounds are return by the REST API
@@ -44,6 +47,25 @@ export class BackgroundDownloadModel extends Observable {
 
             this.remoteBackgrounds.push(apiBackgrounds);
             this.set("busy", false); // hide the loading indicator
+        });
+    }
+
+    public downloadChosenBackground(): Promise<BackgroundEntry> {
+        this.set("busy", true);
+        const remoteBackgroundsFolder = fs.knownFolders.documents().getFolder("backgrounds");
+        const filePath = fs.path.join(remoteBackgroundsFolder.path, `${this.chosenRemoteBackground.id}.jpg`);
+        const thumbPath = fs.path.join(remoteBackgroundsFolder.path, `${this.chosenRemoteBackground.id}_thumb.jpg`);
+        return http.getFile(this.chosenRemoteBackground.image_url, filePath).then(() => {
+            return http.getFile(this.chosenRemoteBackground.image_url, thumbPath).then(() => {
+                this.set("busy", false);
+                return {
+                    path: filePath,
+                    thumbnailPath: thumbPath,
+                    name: this.chosenRemoteBackground.name,
+                    type: "external" as backgroundEntryType,
+                    remoteId: this.chosenRemoteBackground.id,
+                };
+            });
         });
     }
 }

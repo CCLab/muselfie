@@ -33,6 +33,12 @@ export function imageTap(args: EventData) {
     model.set("chosenRemoteBackground", image.bindingContext);
 }
 
-export function downloadImage() {
-    closeCallback();
+export function downloadImage(args: EventData) {
+    const page = (args.object as View).page as Page;
+    const model = page.bindingContext as BackgroundDownloadModel;
+    model.downloadChosenBackground().then((backgroundEntry) => {
+        closeCallback(backgroundEntry);
+    }).catch(() => {
+        dialogs.alert("Nie udało się pobrać obrazka. Spróbuj ponownie później.");
+    });
 }
