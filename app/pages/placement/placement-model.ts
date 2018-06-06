@@ -52,6 +52,7 @@ export class PlacementModel extends Observable {
         const photo = new ImageAsset(this.chosenPhotoPath);
         photo.getImageAsync((nativePhoto) => {
             this.generateFaceImage(imageSize, nativePhoto);
+            nativePhoto.recycle();  // free the memory
         });
     }
 
@@ -130,7 +131,7 @@ export class PlacementModel extends Observable {
             );
             canvas.drawBitmap(nativePhoto, sourceRect, destRect, paint);
 
-            this.set("backgroundData", bmp.clone().toDataUrl(bitmapFactory.OutputFormat.JPEG, 25));
+            this.set("backgroundData", bmp.toDataUrl(bitmapFactory.OutputFormat.JPEG, 25));
         });
 
     }

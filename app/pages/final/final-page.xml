@@ -1,4 +1,5 @@
-<Page class="page" navigatingTo="onNavigatingTo" navigatedTo="navigatedTo" xmlns="http://schemas.nativescript.org/tns.xsd">
+<Page class="page" navigatingTo="onNavigatingTo" navigatedTo="navigatedTo" navigatedFrom="navigatedFrom"
+      xmlns="http://schemas.nativescript.org/tns.xsd">
     <Page.actionBar>
         <ActionBar class="action-bar">
             <StackLayout>

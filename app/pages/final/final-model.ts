@@ -34,6 +34,9 @@ export class FinalModel extends Observable {
                 if (backgroundNative && photoNative) {
                     this.createFinalBitmap(imageSize, backgroundNative, photoNative);
                 }
+                // free the memory
+                if (backgroundNative) { backgroundNative.recycle(); }
+                if (photoNative) { photoNative.recycle(); }
             });
         });
     }
@@ -48,123 +51,121 @@ export class FinalModel extends Observable {
         // The bitmap
         let bmp = bitmapFactory.create(imageWidthPx, imageHeightPx);
 
-        bmp.dispose(() => {
-            // Main canvas
-            const canvas = (bmp as any).__canvas;
-            const paint = new android.graphics.Paint();
-            paint.setFilterBitmap(true);
-            paint.setDither(true);
-            paint.setAntiAlias(true);
+        // Main canvas
+        const canvas = (bmp as any).__canvas;
+        const paint = new android.graphics.Paint();
+        paint.setFilterBitmap(true);
+        paint.setDither(true);
+        paint.setAntiAlias(true);
 
-            // Add the face
+        // Add the face
 
-            // What part of the photo to use?
-            const photoScale = imageManipulation.aspectFillSettings(
-                photoNative,
-                imageWidthPx,
-                imageHeightPx,
-            );
+        // What part of the photo to use?
+        const photoScale = imageManipulation.aspectFillSettings(
+            photoNative,
+            imageWidthPx,
+            imageHeightPx,
+        );
 
-            let faceTopLeft = imageManipulation.fromScaledToOriginalCoordinates(
-                photoScale,
-                this.faceDimensions.x,
-                this.faceDimensions.y,
-            );
-            let faceBottomRight = imageManipulation.fromScaledToOriginalCoordinates(
-                photoScale,
-                this.faceDimensions.x + this.faceDimensions.width,
-                this.faceDimensions.y + this.faceDimensions.height,
-            );
-            let sourceRect = new android.graphics.Rect(
-                faceTopLeft.x,
-                faceTopLeft.y,
-                faceBottomRight.x,
-                faceBottomRight.y,
-            );
+        let faceTopLeft = imageManipulation.fromScaledToOriginalCoordinates(
+            photoScale,
+            this.faceDimensions.x,
+            this.faceDimensions.y,
+        );
+        let faceBottomRight = imageManipulation.fromScaledToOriginalCoordinates(
+            photoScale,
+            this.faceDimensions.x + this.faceDimensions.width,
+            this.faceDimensions.y + this.faceDimensions.height,
+        );
+        let sourceRect = new android.graphics.Rect(
+            faceTopLeft.x,
+            faceTopLeft.y,
+            faceBottomRight.x,
+            faceBottomRight.y,
+        );
 
-            // Where to put the face?
-            let destRect = new android.graphics.RectF(
-                layout.toDevicePixels(this.placementDimensions.x),
-                layout.toDevicePixels(this.placementDimensions.y),
-                layout.toDevicePixels(this.placementDimensions.x + this.placementDimensions.width),
-                layout.toDevicePixels(this.placementDimensions.y + this.placementDimensions.height),
-            );
+        // Where to put the face?
+        let destRect = new android.graphics.RectF(
+            layout.toDevicePixels(this.placementDimensions.x),
+            layout.toDevicePixels(this.placementDimensions.y),
+            layout.toDevicePixels(this.placementDimensions.x + this.placementDimensions.width),
+            layout.toDevicePixels(this.placementDimensions.y + this.placementDimensions.height),
+        );
 
-            // Blur face edges
-            paint.setMaskFilter(
-                new android.graphics.BlurMaskFilter(
-                    FinalModel.BLUR_RADIUS,
-                    android.graphics.BlurMaskFilter.Blur.NORMAL,
-                ),
-            );
+        // Blur face edges
+        paint.setMaskFilter(
+            new android.graphics.BlurMaskFilter(
+                FinalModel.BLUR_RADIUS,
+                android.graphics.BlurMaskFilter.Blur.NORMAL,
+            ),
+        );
 
-            // Apply the placement rotation
-            canvas.save(android.graphics.Canvas.MATRIX_SAVE_FLAG);
-            canvas.rotate(
-                this.placementDimensions.rotation,
-                destRect.centerX(),
-                destRect.centerY(),
-            );
+        // Apply the placement rotation
+        canvas.save(android.graphics.Canvas.MATRIX_SAVE_FLAG);
+        canvas.rotate(
+            this.placementDimensions.rotation,
+            destRect.centerX(),
+            destRect.centerY(),
+        );
 
-            // draw an oval that will be used as an mask when placing the face
-            canvas.drawOval(destRect, paint);
-            paint.setMaskFilter(null);
+        // draw an oval that will be used as an mask when placing the face
+        canvas.drawOval(destRect, paint);
+        paint.setMaskFilter(null);
 
-            // Add margins to face so there are additional pixels for blurring
-            destRect.top -= FinalModel.BLUR_RADIUS;
-            destRect.left -= FinalModel.BLUR_RADIUS;
-            destRect.bottom += FinalModel.BLUR_RADIUS * 2;
-            destRect.right += FinalModel.BLUR_RADIUS * 2;
+        // Add margins to face so there are additional pixels for blurring
+        destRect.top -= FinalModel.BLUR_RADIUS;
+        destRect.left -= FinalModel.BLUR_RADIUS;
+        destRect.bottom += FinalModel.BLUR_RADIUS * 2;
+        destRect.right += FinalModel.BLUR_RADIUS * 2;
 
-            // This mode will put the face where the painted oval is
-            paint.setXfermode(new android.graphics.PorterDuffXfermode(
-                android.graphics.PorterDuff.Mode.SRC_IN,
-            ));
+        // This mode will put the face where the painted oval is
+        paint.setXfermode(new android.graphics.PorterDuffXfermode(
+            android.graphics.PorterDuff.Mode.SRC_IN,
+        ));
 
-            // painting the face
+        // painting the face
 
-            // change the bounds of sourceRect and destRect to reflect the face rotation
-            let rotationMatrix = new android.graphics.Matrix();
-            let sourceRectTemp = new android.graphics.RectF(sourceRect);  // cast to a floating point rect
-            rotationMatrix.setRotate(
-                this.faceDimensions.rotation,
-                sourceRect.centerX(),
-                sourceRect.centerY(),
-            );
-            rotationMatrix.mapRect(sourceRectTemp);
-            sourceRectTemp.round(sourceRect);  // save the result in sourceRect
-            rotationMatrix.setRotate(
-                this.faceDimensions.rotation,
-                destRect.centerX(),
-                destRect.centerY(),
-            );
-            rotationMatrix.mapRect(destRect);  // save the result in destRect
+        // change the bounds of sourceRect and destRect to reflect the face rotation
+        let rotationMatrix = new android.graphics.Matrix();
+        let sourceRectTemp = new android.graphics.RectF(sourceRect);  // cast to a floating point rect
+        rotationMatrix.setRotate(
+            this.faceDimensions.rotation,
+            sourceRect.centerX(),
+            sourceRect.centerY(),
+        );
+        rotationMatrix.mapRect(sourceRectTemp);
+        sourceRectTemp.round(sourceRect);  // save the result in sourceRect
+        rotationMatrix.setRotate(
+            this.faceDimensions.rotation,
+            destRect.centerX(),
+            destRect.centerY(),
+        );
+        rotationMatrix.mapRect(destRect);  // save the result in destRect
 
-            // rotate canvas according to the face rotation
-            canvas.save(android.graphics.Canvas.MATRIX_SAVE_FLAG);
-            canvas.rotate(
-                -this.faceDimensions.rotation,
-                destRect.centerX(),
-                destRect.centerY(),
-            );
-            canvas.drawBitmap(photoNative, sourceRect, destRect, paint);
-            canvas.restore();  // restore the face rotation
-            canvas.restore();  // restore the placement rotation
+        // rotate canvas according to the face rotation
+        canvas.save(android.graphics.Canvas.MATRIX_SAVE_FLAG);
+        canvas.rotate(
+            -this.faceDimensions.rotation,
+            destRect.centerX(),
+            destRect.centerY(),
+        );
+        canvas.drawBitmap(photoNative, sourceRect, destRect, paint);
+        canvas.restore();  // restore the face rotation
+        canvas.restore();  // restore the placement rotation
 
-            // Add background
-            paint.setXfermode(new android.graphics.PorterDuffXfermode(
-                android.graphics.PorterDuff.Mode.DST_OVER,  // put below the existing stuff
-            ));
-            const backgroundScaleMatrix = FinalModel.aspectFillMatrix(
-                backgroundNative,
-                imageWidthPx,
-                imageHeightPx,
-            );
-            canvas.drawBitmap(backgroundNative, backgroundScaleMatrix, paint);
+        // Add background
+        paint.setXfermode(new android.graphics.PorterDuffXfermode(
+            android.graphics.PorterDuff.Mode.DST_OVER,  // put below the existing stuff
+        ));
+        const backgroundScaleMatrix = FinalModel.aspectFillMatrix(
+            backgroundNative,
+            imageWidthPx,
+            imageHeightPx,
+        );
+        canvas.drawBitmap(backgroundNative, backgroundScaleMatrix, paint);
 
-            // Set in the context
-            this.set("finalImageSource", bmp.clone().toImageSource());
-        });
+        // Set in the context
+        this.set("finalImageSource", bmp.toImageSource());
     }
 
     /**

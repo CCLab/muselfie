@@ -30,6 +30,16 @@ export function navigatedTo(args: NavigatedData) {
     model.setFinalImage(imageSize);
 }
 
+export function navigatedFrom(args: NavigatedData) {
+    const page = args.object as Page;
+    const model = page.bindingContext as FinalModel;
+
+    // free the final image from memory
+    if (model.finalImageSource && model.finalImageSource.android) {
+        model.finalImageSource.android.recycle();
+    }
+}
+
 export function backTap() {
     frameModule.topmost().goBack();
 }
