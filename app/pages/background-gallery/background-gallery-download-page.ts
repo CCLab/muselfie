@@ -40,6 +40,7 @@ export function downloadImage(args: EventData) {
     model.downloadChosenBackground().then((backgroundEntry) => {
         closeCallback(backgroundEntry);
     }).catch(() => {
-        dialogs.alert("Nie udało się pobrać obrazka. Spróbuj ponownie później.");
+        dialogs.alert("Nie udało się pobrać obrazu. Spróbuj ponownie później.");
+        closeCallback();
     });
 }
