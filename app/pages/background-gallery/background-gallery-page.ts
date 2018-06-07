@@ -7,7 +7,11 @@ import { RadListView } from "nativescript-ui-listview";
 
 export function onNavigatingTo(args: NavigatedData) {
     const page = args.object as Page;
-    page.bindingContext = new BackgroundGalleryModel();
+    let model = page.bindingContext as BackgroundGalleryModel;
+
+    if (!model) {
+        model = page.bindingContext = new BackgroundGalleryModel();
+    }
 }
 
 export function navigatedTo(args: NavigatedData): void {
@@ -52,11 +56,14 @@ export function imageTap(args: EventData) {
 export function nextTap(args: NavigatedData) {
     const button = args.object as View;
     const page = button.page as Page;
+    const model = page.bindingContext as BackgroundGalleryModel;
+
     frameModule.topmost().navigate({
         moduleName: "pages/background/background-page",
         transition: { name: "slide" },
         context: {
-            chosenBackground: page.bindingContext.chosenBackground,
+            chosenBackground: model.chosenBackground,
+            imageSize: model.imageSize,
         },
     });
 }

@@ -7,13 +7,14 @@ import { FaceModel } from "./face-model";
 
 export function onNavigatingTo(args: NavigatedData) {
     const page = args.object as Page;
+    let model = page.bindingContext as FaceModel;
 
-    if (!page.bindingContext) {
-        page.bindingContext = new FaceModel();
+    if (!model) {
+        model = page.bindingContext = new FaceModel();
     }
 
-    page.bindingContext.set("chosenPhotoPath", page.navigationContext.chosenPhotoPath);
-    page.bindingContext.set("chosenBackground", page.navigationContext.chosenBackground);
+    model.set("chosenPhotoPath", page.navigationContext.chosenPhotoPath);
+    model.set("chosenBackground", page.navigationContext.chosenBackground);
 }
 
 export function backTap() {
@@ -62,8 +63,8 @@ export function nextTap(args: NavigatedData) {
         moduleName: "pages/placement/placement-page",
         transition: { name: "slide" },
         context: {
-            chosenPhotoPath: page.bindingContext.chosenPhotoPath,
-            chosenBackground: page.bindingContext.chosenBackground,
+            chosenPhotoPath: model.chosenPhotoPath,
+            chosenBackground: model.chosenBackground,
             faceDimensions: {
                 x: model.faceX,
                 y: model.faceY,
@@ -71,6 +72,7 @@ export function nextTap(args: NavigatedData) {
                 height: model.faceHeight,
                 rotation: model.faceRotation,
             },
+            imageSize: page.navigationContext.imageSize,
         },
     });
 }

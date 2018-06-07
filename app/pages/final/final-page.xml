@@ -1,4 +1,4 @@
-<Page class="page" navigatingTo="onNavigatingTo" navigatedTo="navigatedTo" navigatedFrom="navigatedFrom"
+<Page class="page" navigatingTo="onNavigatingTo" navigatedFrom="navigatedFrom"
       xmlns="http://schemas.nativescript.org/tns.xsd">
     <Page.actionBar>
         <ActionBar class="action-bar">

@@ -3,27 +3,22 @@ import { NavigatedData, Page } from "ui/page";
 import { PanGestureEventData, TouchGestureEventData, PinchGestureEventData,
     GestureStateTypes, RotationGestureEventData } from "ui/gestures";
 import { View } from "tns-core-modules/ui/core/view";
-import { Image } from "tns-core-modules/ui/image";
 import { PlacementModel } from "./placement-model";
 
 export function onNavigatingTo(args: NavigatedData) {
     const page = args.object as Page;
+    let model = page.bindingContext as PlacementModel;
 
-    if (!page.bindingContext) {
-        page.bindingContext = new PlacementModel();
+    if (!model) {
+        model = page.bindingContext = new PlacementModel();
     }
 
-    page.bindingContext.set("chosenPhotoPath", page.navigationContext.chosenPhotoPath);
-    page.bindingContext.set("faceDimensions", page.navigationContext.faceDimensions);
-    page.bindingContext.set("chosenBackground", page.navigationContext.chosenBackground);
-}
+    model.set("chosenPhotoPath", page.navigationContext.chosenPhotoPath);
+    model.set("faceDimensions", page.navigationContext.faceDimensions);
+    model.set("chosenBackground", page.navigationContext.chosenBackground);
+    model.set("imageSize", page.navigationContext.imageSize);
 
-export function navigatedTo(args: NavigatedData) {
-    const page = args.object as Page;
-    const imageView = page.getViewById("image-background") as Image;
-    const imageSize = imageView.getActualSize();
-    const model = page.bindingContext as PlacementModel;
-    model.setFaceImage(imageSize);
+    model.setFaceImage();
 }
 
 export function backTap() {
@@ -83,6 +78,7 @@ export function nextTap(args: NavigatedData) {
                 rotation: model.placementRotation,
             },
             faceDimensions: model.faceDimensions,
+            imageSize: model.imageSize,
         },
     });
 }

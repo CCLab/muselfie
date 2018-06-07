@@ -17,6 +17,7 @@ export class PlacementModel extends Observable {
     public faceDimensions: imageManipulation.OvalDimensions;
     public placementDimensions: imageManipulation.OvalDimensions;
     public backgroundData: string;
+    public imageSize: Size;
 
     public placementX: number;
     public placementY: number;
@@ -48,10 +49,10 @@ export class PlacementModel extends Observable {
      * Create new image of previously selected part of the photo and save it in the model.
      */
 
-    public setFaceImage(imageSize: Size) {
+    public setFaceImage() {
         const photo = new ImageAsset(this.chosenPhotoPath);
         photo.getImageAsync((nativePhoto) => {
-            this.generateFaceImage(imageSize, nativePhoto);
+            this.generateFaceImage(nativePhoto);
             nativePhoto.recycle();  // free the memory
         });
     }
@@ -60,9 +61,9 @@ export class PlacementModel extends Observable {
      * The actual creation of the bitmap to be displayed as the oval background.
      */
 
-    public generateFaceImage(imageSize: Size, nativePhoto) {
-        const imageWidthPx = layout.toDevicePixels(imageSize.width);
-        const imageHeightPx = layout.toDevicePixels(imageSize.height);
+    public generateFaceImage(nativePhoto) {
+        const imageWidthPx = layout.toDevicePixels(this.imageSize.width);
+        const imageHeightPx = layout.toDevicePixels(this.imageSize.height);
         // The bitmap
         let bmp = bitmapFactory.create(imageWidthPx, imageHeightPx);
 

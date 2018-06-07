@@ -1,4 +1,4 @@
-<Page class="page" navigatingTo="onNavigatingTo" navigatedTo="navigatedTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:fresco="nativescript-fresco">
       <Page.actionBar>
        <ActionBar class="action-bar">

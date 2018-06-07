@@ -12,12 +12,13 @@ import { BackgroundModel } from "./background-model";
 
 export function onNavigatingTo(args: NavigatedData) {
     const page = args.object as Page;
+    let model = page.bindingContext as BackgroundModel;
 
-    if (!page.bindingContext) {
-        page.bindingContext = new BackgroundModel();
+    if (!model) {
+        model = page.bindingContext = new BackgroundModel();
     }
 
-    page.bindingContext.set("chosenBackground", page.navigationContext.chosenBackground);
+    model.set("chosenBackground", page.navigationContext.chosenBackground);
 }
 
 export function backTap() {
@@ -56,7 +57,8 @@ export function choosePhoto(args: EventData) {
                     transition: { name: "slide" },
                     context: {
                         chosenPhotoPath: page.bindingContext.chosenPhotoPath,
-                        chosenBackground: page.bindingContext.chosenBackground,
+                        chosenBackground: page.navigationContext.chosenBackground,
+                        imageSize: page.navigationContext.imageSize,
                     },
                 });
             }).catch((reason) => {

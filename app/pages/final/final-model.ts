@@ -16,6 +16,7 @@ export class FinalModel extends Observable {
     public finalImageSource: ImageSource;
     public faceDimensions: imageManipulation.OvalDimensions;
     public placementDimensions: imageManipulation.OvalDimensions;
+    public imageSize: Size;
 
     constructor() {
         super();
@@ -24,15 +25,22 @@ export class FinalModel extends Observable {
     /**
      * Create the final collage and make it available.
      */
-    public setFinalImage(imageSize: Size) {
+    public setFinalImage() {
         // Load the images
         const background = new ImageAsset(this.chosenBackground.path);
         const photo = new ImageAsset(this.chosenPhotoPath);
 
+        // load background in the exact right size
+        background.options = {
+            width: layout.toDevicePixels(this.imageSize.width),
+            height: layout.toDevicePixels(this.imageSize.height),
+            keepAspectRatio: true,
+        };
+
         background.getImageAsync(backgroundNative => {
             photo.getImageAsync(photoNative => {
                 if (backgroundNative && photoNative) {
-                    this.createFinalBitmap(imageSize, backgroundNative, photoNative);
+                    this.createFinalBitmap(backgroundNative, photoNative);
                 }
                 // free the memory
                 if (backgroundNative) { backgroundNative.recycle(); }
@@ -44,9 +52,9 @@ export class FinalModel extends Observable {
     /**
      * The actual creation of the bitmap to be displayed as the final image.
      */
-    private createFinalBitmap(imageSize: Size, backgroundNative, photoNative) {
-        const imageWidthPx = layout.toDevicePixels(imageSize.width);
-        const imageHeightPx = layout.toDevicePixels(imageSize.height);
+    private createFinalBitmap(backgroundNative, photoNative) {
+        const imageWidthPx = layout.toDevicePixels(this.imageSize.width);
+        const imageHeightPx = layout.toDevicePixels(this.imageSize.height);
 
         // The bitmap
         let bmp = bitmapFactory.create(imageWidthPx, imageHeightPx);

@@ -10,24 +10,19 @@ import {View} from "tns-core-modules/ui/core/view";
 
 export function onNavigatingTo(args: NavigatedData) {
     const page = args.object as Page;
+    let model = page.bindingContext as FinalModel;
 
-    if (!page.bindingContext) {
-        page.bindingContext = new FinalModel();
+    if (!model) {
+        model = page.bindingContext = new FinalModel();
     }
 
-    page.bindingContext.set("chosenBackground", page.navigationContext.chosenBackground);
-    page.bindingContext.set("chosenPhotoPath", page.navigationContext.chosenPhotoPath);
-    page.bindingContext.set("faceDimensions", page.navigationContext.faceDimensions);
-    page.bindingContext.set("placementDimensions", page.navigationContext.placementDimensions);
-}
+    model.set("chosenBackground", page.navigationContext.chosenBackground);
+    model.set("chosenPhotoPath", page.navigationContext.chosenPhotoPath);
+    model.set("faceDimensions", page.navigationContext.faceDimensions);
+    model.set("placementDimensions", page.navigationContext.placementDimensions);
+    model.set("imageSize", page.navigationContext.imageSize);
 
-export function navigatedTo(args: NavigatedData) {
-    const page = args.object as Page;
-    const imageView = page.getViewById("image-final") as Image;
-    const imageSize = imageView.getActualSize();
-    const model = page.bindingContext as FinalModel;
-
-    model.setFinalImage(imageSize);
+    model.setFinalImage();
 }
 
 export function navigatedFrom(args: NavigatedData) {
