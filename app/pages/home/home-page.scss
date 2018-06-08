@@ -1,12 +1,56 @@
 @import '~/common-styles/_actionBar.scss';
 @import '~/common-styles/_navigationButtonsContainer.scss';
 @import '~/common-styles/_buttons.scss';
+@import '~/common-styles/_logo.scss';
+.page {
+    background-color: #e6e6e6;
+}
 
-.home-page-layout{
-  .home-page-layout-main{
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 100%;
-  }
+.action-bar {
+    height: $actionbarHeight;
+    margin-left: -6; //- 16 moves element to left side (reduces space added by android); and add 10 padding
+    margin-right: 8; //- 2 moves right element to right side; add 10 padding
+}
+
+.steps {
+    .logo,
+    .app-name,
+    .info {
+        vertical-align: middle;
+    }
+    .logo {
+        background-image: url("res://mnw_logo_startowa");
+        horizontal-align: left;
+        margin: 0;
+        padding: 0;
+        width: 20%;
+    }
+    .app-name {
+        color: black;
+        font-weight: bold;
+        letter-spacing: 0.04;
+        horizontal-align: center;
+        text-align: center;
+        width: 60%;
+    }
+    .info {
+        @extend %icon;
+        background-image: url("res://info_startowa");
+        width: 20%;
+    }
+}
+
+.home-page-layout {
+    .home-page-layout-main {
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100%;
+    }
+    .start-page-image {
+        background-color: #e6e6e6;
+        transform: translate(0, 4%);
+        padding-left: 30;
+        padding-right: 30;
+    }
 }

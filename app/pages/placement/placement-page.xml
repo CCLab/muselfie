@@ -1,8 +1,8 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:fresco="nativescript-fresco">
       <Page.actionBar>
-       <ActionBar class="action-bar">
-             <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
+        <ActionBar class="action-bar">
+            <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
                 <Label class="action-bar-step" text="3 / 3"/>
                 <Label class="action-bar-title" text="Wskaż położenie twarzy"/>
             </StackLayout>

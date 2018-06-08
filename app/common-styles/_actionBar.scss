@@ -1,5 +1,4 @@
 @import 'variables';
-
 .action-bar {
     background-color: $actionbarBackgroundColor;
     border-color: transparent;
@@ -11,20 +10,17 @@
     height: $actionbarHeight;
     margin-left: -10;
     text-align: center;
-   
     & label {
         width: 100%;
     }
-
     & .action-bar-title {
         text-align: center;
-        width:60%;
+        width: 60%;
     }
-    
-    & .action-bar-step, & .action-bar-icon {
-        width:20%;
+    & .action-bar-step,
+    & .action-bar-icon {
+        width: 20%;
     }
-
     & .action-bar-step {
         color: red;
         vertical-align: middle;
@@ -36,30 +32,25 @@
         width: 100%;
         & .action-bar-title {
             font-size: $actionbarFontSize;
-            width:60%;
+            width: 60%;
         }
-        
-        & .action-bar-step, & .action-bar-icon {
-            width:20%;
+        & .action-bar-step,
+        & .action-bar-icon {
+            width: 20%;
         }
-    
         & .action-bar-step {
             color: red;
+            & .info {
+                background-image: url("res://info_panel_v2");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: $buttonIconSize;
+                width: $buttonIconSize;
+            }
+            & .close-info {
+                background-image: url("res://x_panel_v2");
+            }
         }
-
-       & .action-bar-step {
-        & .info {
-            background-image: url("res://info_panel_v2");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: $buttonIconSize;
-            width: $buttonIconSize;
-        }
-        & .close-info {
-            background-image: url("res://x_panel_v2");
-        }
-       }
     }
 }
-
