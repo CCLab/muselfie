@@ -25,6 +25,13 @@ export function backTap() {
     frameModule.topmost().goBack();
 }
 
+export function toggleInfo(args: EventData){
+    const button = args.object as View;
+    const page = button.page as Page;
+    let model = page.bindingContext as BackgroundModel;
+    model.set("infoVisibilty", !model.infoVisibilty);
+}
+
 declare var org;
 
 export function choosePhoto(args: EventData) {

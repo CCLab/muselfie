@@ -1,12 +1,11 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:fresco="nativescript-fresco">
      <Page.actionBar >
-        <ActionBar class="action-bar">
-            <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
+        <ActionBar id="action-bar" class="action-bar">
+            <StackLayout class="steps" orientation="horizontal" horizontalAlignment="right">
                 <StackLayout class="action-bar-step">
-                    <Label class="info"/>
+                    <Label class="{{ infoVisibilty ? 'info close-info' : 'info' }}" tap="toggleInfo" horizontalAlignment="right"/>
                 </StackLayout>
-                <Label class="action-bar-title" text="{{ chosenBackground.name }}"/>
             </StackLayout>
         </ActionBar>
     </Page.actionBar>
@@ -16,6 +15,11 @@
                                 aspectRatio="1"
                                 verticalAlignment="top"
                                 imageUri="{{ chosenBackground.path }}"/>
+        <GridLayout class="fake-action-bar" verticalAlignment="top" visibility="{{ infoVisibilty ? 'visible' : 'collapse' }}">
+            <StackLayout verticalAlignment="middle">
+                <Label class="picture-info" text="{{ chosenBackground.name }}" textWrap="true"/>
+            </StackLayout>
+        </GridLayout>
         <StackLayout verticalAlignment="bottom">
                 <FlexboxLayout class="navigation-buttons-container">
                     <StackLayout class="btn-back-wrapper" tap="backTap">
@@ -27,5 +31,6 @@
                     </StackLayout>
                 </FlexboxLayout>
         </StackLayout>
+        <Label class="logo"/>
     </GridLayout>
 </Page>

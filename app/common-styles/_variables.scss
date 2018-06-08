@@ -22,6 +22,8 @@ $ovalColor: $mainBackgroundColor;
 $actionbarBackgroundColor: #e5e5e5;
 $actionbarFontColor: $secondaryBackgroundColor;
 $actionbarFontSize: 22;
-$actionbarHeight: 70;
+$actionbarHeight: 81;
 $actionbarSecondaryFontColor: #ff3232;
+
+$fakeActionBarMarginTop: -1 * $actionbarHeight / 2;
 

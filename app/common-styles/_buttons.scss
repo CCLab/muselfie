@@ -8,7 +8,7 @@ label {
     line-height: $fontSize;
 }
 
-%button{
+%icon{
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -38,7 +38,7 @@ label {
     padding: $buttonIconPadding;
     width: $buttonWrapperHeight;
     .btn-back{
-        @extend %button;
+        @extend %icon;
         background-image: url("res://arrow_left_white_v2");
         margin: 0;
         padding: 0;
@@ -55,8 +55,8 @@ label {
     }
     
     .btn-choose-image{
-        @extend %button;
-        background-image: url("res://arrow_right_black_v2");
+        @extend %icon;
+        background-image: url("res://arrow_right_black_v3");
     }
 }
 
@@ -69,7 +69,7 @@ label {
         color: $mainFontColor; 
     }
     .btn-next{
-        @extend %button;
+        @extend %icon;
         background-color: $mainBackgroundColor;
         background-image: url("res://arrow_right_black_v2");
     }
@@ -80,7 +80,7 @@ label {
     color: $mainFontColor;
 
     .btn-choose-image{
-        @extend %button;
+        @extend %icon;
         background-image: url("res://arrow_right_black_v2");
     }
 
@@ -106,7 +106,7 @@ label {
     padding: $buttonIconPadding;
     width: $buttonWrapperHeight;
     .btn-share{
-        @extend %button;
+        @extend %icon;
         background-image: url("res://share_v2");
         border-radius: 0;
         margin: 0;
@@ -123,6 +123,6 @@ label {
 }
 
 .action-bar-btn-download{
-    @extend %button;
+    @extend %icon;
     background-image: url("res://download_violet_v2");
 }

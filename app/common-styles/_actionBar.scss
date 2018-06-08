@@ -1,6 +1,6 @@
 @import 'variables';
 
-.action-bar{
+.action-bar {
     background-color: $actionbarBackgroundColor;
     border-color: transparent;
     border-width: 1;
@@ -12,49 +12,52 @@
     margin-left: -10;
     text-align: center;
    
-    & label{
+    & label {
         width: 100%;
     }
 
-    & .action-bar-title{
+    & .action-bar-title {
         text-align: center;
         width:60%;
     }
     
-    & .action-bar-step, & .action-bar-icon{
+    & .action-bar-step, & .action-bar-icon {
         width:20%;
     }
 
-    & .action-bar-step{
+    & .action-bar-step {
         color: red;
         vertical-align: middle;
     }
-    & .action-bar-start{
+    & .action-bar-start {
         width: 100%;
     }
-    .steps{
+    .steps {
         width: 100%;
-        & .action-bar-title{
+        & .action-bar-title {
             font-size: $actionbarFontSize;
             width:60%;
         }
         
-        & .action-bar-step, & .action-bar-icon{
+        & .action-bar-step, & .action-bar-icon {
             width:20%;
         }
     
-        & .action-bar-step{
+        & .action-bar-step {
             color: red;
         }
 
-       & .action-bar-step{
-        & .info{
-            background-image: url("res://info_v2");
+       & .action-bar-step {
+        & .info {
+            background-image: url("res://info_panel_v2");
             background-position: center;
             background-repeat: no-repeat;
-            background-size: contain;
+            background-size: cover;
             height: $buttonIconSize;
             width: $buttonIconSize;
+        }
+        & .close-info {
+            background-image: url("res://x_panel_v2");
         }
        }
     }

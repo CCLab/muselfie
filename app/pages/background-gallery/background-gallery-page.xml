@@ -29,7 +29,8 @@
                         <Label class="btn-next"/>
                      </StackLayout>
                 </FlexboxLayout>
-            </StackLayout>  
+            </StackLayout>
+            <Label class="logo"/>
          </GridLayout>
     </StackLayout>
 </Page>

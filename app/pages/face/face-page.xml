@@ -31,5 +31,6 @@
                     </StackLayout>
             </FlexboxLayout>
         </StackLayout>
+        <Label class="logo"/>
     </GridLayout>
 </Page>

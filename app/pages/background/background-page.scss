@@ -1,11 +1,25 @@
 @import '~/common-styles/_actionBar.scss';
 @import '~/common-styles/_navigationButtonsContainer.scss';
 @import '~/common-styles/_buttons.scss';
+@import '~/common-styles/_variables.scss';
+@import '~/common-styles/_logo.scss';
 
-.action-bar{
-    & .steps{
-        & .action-bar-title{
-            width: 100%;
-        }
+.action-bar {
+    & .steps {
+       margin-right: 10;
     }
+}
+
+.fake-action-bar {
+    background-color: $actionbarBackgroundColor;
+    color: $actionbarFontColor;
+    height: 50%;
+    margin-top: $fakeActionBarMarginTop;
+    padding-left: 25;
+    padding-right: 25;
+    
+    .picture-info {
+        vertical-align: middle;
+        text-align: center;
+     }
 }

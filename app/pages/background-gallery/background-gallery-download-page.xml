@@ -27,7 +27,8 @@
                         <Label class="btn-download"/>
                      </StackLayout>
                 </FlexboxLayout>
-            </StackLayout>  
+            </StackLayout>
+            <Label class="logo"/>
          </GridLayout>
     </StackLayout>
 </Page>

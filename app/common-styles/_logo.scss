@@ -1,0 +1,11 @@
+@import 'buttons';
+
+.logo {
+    @extend %icon;
+    background-image: url("res://mnw_logo");
+    border-radius: 0;
+    horizontal-align: right;
+    margin-bottom: 15;
+    margin-right: 15;
+    vertical-align: bottom;
+}
