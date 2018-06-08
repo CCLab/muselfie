@@ -36,6 +36,7 @@
     .info {
         @extend %icon;
         background-image: url("res://info_startowa");
+        visibility: hidden;
         width: 20%;
     }
 }
@@ -49,7 +50,7 @@
     }
     .start-page-image {
         background-color: #e6e6e6;
-        transform: translate(0, 4%);
+        transform: translate(0, -4%);
         padding-left: 30;
         padding-right: 30;
     }

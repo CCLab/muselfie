@@ -3,7 +3,7 @@
         <ActionBar class="action-bar">
             <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
                 <Label class="logo"/>
-                <Label class="app-name" text="muslefie"/>
+                <Label class="app-name" text="muselfie"/>
                 <Label class="info"/>
             </StackLayout>
         </ActionBar>
