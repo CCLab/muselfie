@@ -124,4 +124,5 @@ label {
 .action-bar-btn-download {
     @extend %icon;
     background-image: url("res://download_violet_v2");
+    background-position: right;
 }

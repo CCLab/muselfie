@@ -40,9 +40,11 @@
         }
         & .action-bar-step {
             color: red;
+            padding-left: 10;
+            text-align: left;
             & .info {
                 background-image: url("res://info_panel_v2");
-                background-position: center;
+                background-position: right;
                 background-repeat: no-repeat;
                 background-size: cover;
                 height: $buttonIconSize;

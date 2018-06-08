@@ -16,6 +16,7 @@
     .action-bar-step {
         @extend %icon;
         background-image: url("res://arrow_left_red_v2");
+        background-position: left;
         width: 20%;
     }
     .action-bar-title {

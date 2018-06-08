@@ -20,6 +20,7 @@
     }
     .logo {
         background-image: url("res://mnw_logo_startowa");
+        background-position: left;
         horizontal-align: left;
         margin: 0;
         padding: 0;
@@ -36,6 +37,7 @@
     .info {
         @extend %icon;
         background-image: url("res://info_startowa");
+        background-position: right;
         visibility: hidden;
         width: 20%;
     }
@@ -48,10 +50,15 @@
         justify-content: space-around;
         width: 100%;
     }
-    .start-page-image {
-        background-color: #e6e6e6;
-        transform: translate(0, -4%);
+    .start-page-image-wrapper {
+        align-items: center;
+        justify-content: space-around;
         padding-left: 30;
         padding-right: 30;
+
+        .start-page-image {
+            background-color: #e6e6e6;
+            transform: translate(0, -4%);
+        }
     }
 }
