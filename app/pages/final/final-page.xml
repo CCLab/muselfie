@@ -20,7 +20,6 @@
                 </StackLayout>
                  <StackLayout class="btn-new-wrapper" tap="homeTap" orientation="horizontal">
                     <Label class="btn-new-text" text="od nowa"/>
-                    <Label class="btn-new"/>
                 </StackLayout>
             </FlexboxLayout>
         </StackLayout>
