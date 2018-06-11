@@ -9,9 +9,9 @@
         </ActionBar>
      </Page.actionBar>
     <GridLayout rows=" *, auto" class="home-page-layout">
-        <FlexboxLayout class="start-page-image-wrapper" row="0">
-            <Image class="start-page-image" src="res://start_v2_fs8_small2"/>
-        </FlexboxLayout>
+        <GridLayout rows="*, auto, 4*" class="start-page-image-wrapper" row="0">
+            <Image row="1" class="start-page-image" src="res://start_v2_fs8_small2"/>
+        </GridLayout>
         <FlexboxLayout row="1" class="navigation-buttons-container">
             <StackLayout class="btn-new-wrapper" tap="startTap" orientation="horizontal">
                 <Label class="btn-new-text" text="rozpocznij"/>

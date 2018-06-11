@@ -51,14 +51,10 @@
         width: 100%;
     }
     .start-page-image-wrapper {
-        align-items: center;
-        justify-content: space-around;
         padding-left: 30;
         padding-right: 30;
-
         .start-page-image {
             background-color: #e6e6e6;
-            transform: translate(0, -4%);
         }
     }
 }
