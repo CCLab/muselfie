@@ -10,6 +10,8 @@ export interface BackgroundEntry {
     path: string;
     thumbnailPath: string;
     name: string;
+    author: string;
+    year: string;
     type: backgroundEntryType;
     remoteId?: number;
 }
@@ -94,6 +96,8 @@ export class BackgroundGalleryModel extends Observable {
                     path: backgroundsDir.getFile(background.file).path,
                     thumbnailPath: thumbnailsDir.getFile(background.file).path,
                     name: background.name,
+                    author: background.author,
+                    year: background.year,
                     type: "internal",
                 });
             }

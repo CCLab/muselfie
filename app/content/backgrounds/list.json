@@ -1,34 +1,50 @@
 [
   {
     "file": "1.jpg",
-    "name": "J. Mehoffer, Dziwny ogród (1903)"
+    "name": ", Dziwny ogród",
+    "author": "J. Mehoffer",
+    "year": "1903"
   },
   {
     "file": "2.jpg",
-    "name": "J. Malczewski, Hamlet polski - Portret Aleksandra Wielopolskiego (1903)"
+    "name": "Hamlet polski - Portret Aleksandra Wielopolskiego",
+    "author": "J. Malczewski",
+    "year": "1903"
   },
   {
     "file": "3.jpg",
-    "name": "E. Okuń, My i wojna (1917-1923)"
+    "name": "My i wojna",
+    "author": "E. Okuń",
+    "year": "1917-1923"
   },
   {
     "file": "4.jpg",
-    "name": "J. Matejko, Portret żony artysty Teodory z Giebułtowskich (1879)"
+    "name": "Portret żony artysty Teodory z Giebułtowskich",
+    "author": "J. Matejko",
+    "year": "1879"
   },
   {
     "file": "5.jpg",
-    "name": "J. Fałat, Autoportret (1896)"
+    "name": "Autoportret",
+    "author": "J. Fałat",
+    "year": "1896"
   },
   {
     "file": "6.jpg",
-    "name": "J. Wessel, Portret Hieronima Floriana Radziwiłła (1745/46)"
+    "name": "Portret Hieronima Floriana Radziwiłła",
+    "author": "J. Wessel",
+    "year": "1745/46"
   },
   {
     "file": "7.jpg",
-    "name": "S. J. Witkiewicz, Autoportret (1913)"
+    "name": "Autoportret",
+    "author": "S. J. Witkiewicz",
+    "year": "1913"
   },
   {
     "file": "8.jpg",
-    "name": "M. Jabłoński, Melodia (1926)"
+    "name": "Melodia",
+    "author": "M. Jabłoński",
+    "year": "1926"
   }
 ]

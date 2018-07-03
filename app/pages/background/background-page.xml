@@ -25,6 +25,8 @@
         <GridLayout row="1" rows="auto, auto" class="{{ infoVisibilty ? ' ' : 'swipe-icon-wrapper' }}">
             <StackLayout row="0" visibility="{{ infoVisibilty ? 'visible' : 'collapse' }}" class="picture-info">
                     <Label text="{{ chosenBackground.name }}" textWrap="true"/>
+                    <Label text="{{ chosenBackground.author }}" textWrap="true"/>
+                    <Label text="{{ chosenBackground.year }}" textWrap="true"/>
             </StackLayout>
             <StackLayout row="{{ infoVisibilty ? '1' : '0' }}" class="{{ infoVisibilty ? 'swipe-icon-wrapper' : ' ' }}" tap="toggleInfo">
                 <Label class="swipe-icon" />

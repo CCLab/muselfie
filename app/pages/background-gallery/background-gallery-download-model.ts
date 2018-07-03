@@ -12,6 +12,8 @@ import { BackgroundEntry, backgroundEntryType } from "./background-gallery-model
 export interface RemoteBackgroundEntry {
     id: number;
     name: string;
+    author: string;
+    year: string;
     image_url: string;
     thumbnail_url: string;
     already_downloaded?: boolean; // we will add this ourselves later
@@ -31,8 +33,8 @@ export class BackgroundDownloadModel extends Observable {
     }
 
     public downloadImageList(width: number, height: number) {
-        let widthPx = layout.toDevicePixels(width);
-        let heightPx = layout.toDevicePixels(height);
+        let widthPx = Math.round(layout.toDevicePixels(width));
+        let heightPx = Math.round(layout.toDevicePixels(height));
         return http.getJSON(
             `${BackgroundDownloadModel.API_URL}/api/backgrounds/?required_height=${heightPx}&required_width=${widthPx}`,
         ).then((apiBackgrounds: RemoteBackgroundEntry) => {
@@ -65,6 +67,8 @@ export class BackgroundDownloadModel extends Observable {
                     path: filePath,
                     thumbnailPath: thumbPath,
                     name: this.chosenRemoteBackground.name,
+                    author: this.chosenRemoteBackground.author,
+                    year: this.chosenRemoteBackground.year,
                     type: "external" as backgroundEntryType,
                     remoteId: this.chosenRemoteBackground.id,
                 };

@@ -16,7 +16,8 @@ export function onShownModally(args: ShownModallyData) {
     closeCallback = args.closeCallback;
 
     // Get the list of images
-    model.downloadImageList(size.width, size.height).catch(() => {
+    model.downloadImageList(size.width, size.height).catch((error) => {
+        console.error(error);
         dialogs.alert("Problem z połączeniem internetowym. Spróbuj ponownie później.").then(() => {
             closeCallback();
         });
