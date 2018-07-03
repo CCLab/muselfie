@@ -30,6 +30,7 @@ export function downloadGallery(args: EventData) {
     const model = page.bindingContext as BackgroundGalleryModel;
     const galleryView = page.getViewById("gallery") as RadListView;
 
+    model.set("deleteIsActive", false);
     page.showModal(
         "pages/background-gallery/background-gallery-download-page",
         {
@@ -50,14 +51,22 @@ export function imageTap(args: EventData) {
     const view = args.object as View;
     const model = view.page.bindingContext as BackgroundGalleryModel;
     const chosenBackground = view.bindingContext;
-    model.set("chosenBackground", chosenBackground);
+
+    if (!model.deleteIsActive) { // can't change images in delete mode
+        model.set("chosenBackground", chosenBackground);
+    }
 }
 
 export function chooseDeleteTap(args: EventData) {
     const view = args.object as View;
     const model = view.page.bindingContext as BackgroundGalleryModel;
-    console.log(model.deleteIsActive);
-    model.set("deleteIsActive", true);
+
+    if (model.deleteIsActive) {
+        model.removeChosen();
+        model.set("deleteIsActive", false);
+    } else {
+        model.set("deleteIsActive", true);
+    }
 }
 
 export function abortDeleteTap(args: EventData) {

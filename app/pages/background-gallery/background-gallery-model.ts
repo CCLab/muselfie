@@ -118,6 +118,26 @@ export class BackgroundGalleryModel extends Observable {
     }
 
     /**
+     * Removes the chosen background from the device.
+     */
+    public removeChosen() {
+        const path = this.chosenBackground.path;
+
+        // remove from the current view
+        let idx = (this.backgrounds as any)._array.findIndex(item => item.path === path);
+        this.backgrounds.splice(idx, 1);
+
+        // remove the db entry
+        this.db.get("backgrounds").remove<BackgroundEntry>(item => item.path === path).write();
+
+        // remove from disk
+        fs.File.fromPath(path).remove();
+
+        // unselect the removed image
+        this.set("chosenBackground", undefined);
+    }
+
+    /**
      * Get a list of remote ids of all downloaded backgrounds.
      */
     public getBackgroundRemoteIds(): number[] {
