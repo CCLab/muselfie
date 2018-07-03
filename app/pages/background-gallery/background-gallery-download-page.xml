@@ -1,10 +1,10 @@
 <Page shownModally="onShownModally" xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:lv="nativescript-ui-listview" xmlns:fresco="nativescript-fresco">
        <StackLayout>
-            <FlexboxLayout id="action-bar-fake" >
-                <Label class="action-bar-step" tap="backTap"/>
-                <Label class="action-bar-title" text="Pobierz obrazy"/>
-            </FlexboxLayout>
+            <GridLayout columns="2*, 6*, 2*" rows="*" class="action-bar-fake">
+                <Label row="0" col="0" class="action-bar-logo"/>
+                <Label row="0" col="1" class="action-bar-title" text="pobierz nowy obraz"/>
+            </GridLayout>
         <GridLayout>
             <lv:RadListView id="gallery" items="{{ remoteBackgrounds }}">
                 <lv:RadListView.listViewLayout>
@@ -20,15 +20,17 @@
                 </lv:RadListView.itemTemplate>
             </lv:RadListView>
             <ActivityIndicator busy="{{ busy }}" width="64" height="64"/>
-            <StackLayout verticalAlignment="bottom" visibility="{{ chosenRemoteBackground ? 'visible' : 'collapse' }}" isEnabled="{{ !busy }}">
+            <StackLayout verticalAlignment="bottom" isEnabled="{{ !busy }}">
                 <FlexboxLayout class="navigation-buttons-container">
-                    <StackLayout class="{{ !busy ? 'btn-next-wrapper' : 'btn-next-wrapper btn-busy' }}" tap="downloadImage" orientation="horizontal">
-                        <Label class="btn-next-text" text="pobierz tło"/>
+                    <StackLayout class="btn-back-wrapper" >
+                            <Label class="btn-back" tap="backTap"/>
+                    </StackLayout>
+                    <StackLayout class="{{ !busy ? 'btn-next-wrapper' : 'btn-next-wrapper btn-busy' }}" tap="downloadImage" orientation="horizontal" visibility="{{ chosenRemoteBackground ? 'visible' : 'collapse' }}">
+                        <Label class="btn-next-text" text="pobierz"/>
                         <Label class="btn-download"/>
                      </StackLayout>
                 </FlexboxLayout>
             </StackLayout>
-            <Label class="logo"/>
          </GridLayout>
     </StackLayout>
 </Page>

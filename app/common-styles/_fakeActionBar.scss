@@ -1,0 +1,29 @@
+@import 'variables';
+
+.action-bar-fake {
+    @extend .action-bar;
+    align-items: center;
+    background-color: $onlineGalleryBarBackgroundColor;
+    color: black;
+    horizontal-align: left;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 6;
+    padding-right: 0;
+    vertical-align: middle;
+    width: 100%;
+    
+    & .action-bar-logo {
+        @extend %icon;
+        background-image: url("res://mnw_logo_startowa");
+        background-position: left;
+        background-repeat: no-repeat;
+        horizontal-align: left;
+        margin: 0;
+        padding: 0;
+    }
+    
+    & .action-bar-title {
+        vertical-align: middle;
+    }
+}

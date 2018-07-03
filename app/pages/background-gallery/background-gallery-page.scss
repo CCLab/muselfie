@@ -3,8 +3,17 @@
 @import '~/common-styles/_buttons.scss';
 @import '~/common-styles/_logo.scss';
 
-.chosen-file{
+.online-gallery {
+    vertical-align: middle;
+}
+
+.chosen-file {
     border-color: $mainBackgroundColor;
     border-radius: 0;
     border-width: 2;
+}
+.active-delete {
+    .chosen-file {
+        border-color: red;
+    }
 }

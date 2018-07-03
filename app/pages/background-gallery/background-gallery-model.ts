@@ -20,6 +20,7 @@ export class BackgroundGalleryModel extends Observable {
     public thumbnailHeight = 250;
     public chosenBackground: BackgroundEntry;
     public db: lowdb.LowdbSync<lowdb.AdapterSync>;
+    public deleteIsActive: boolean = false;
 
     constructor() {
         super();

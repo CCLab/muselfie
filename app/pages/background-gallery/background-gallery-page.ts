@@ -53,6 +53,19 @@ export function imageTap(args: EventData) {
     model.set("chosenBackground", chosenBackground);
 }
 
+export function chooseDeleteTap(args: EventData) {
+    const view = args.object as View;
+    const model = view.page.bindingContext as BackgroundGalleryModel;
+    console.log(model.deleteIsActive);
+    model.set("deleteIsActive", true);
+}
+
+export function abortDeleteTap(args: EventData) {
+    const view = args.object as View;
+    const model = view.page.bindingContext as BackgroundGalleryModel;
+    model.set("deleteIsActive", false);
+}
+
 export function nextTap(args: NavigatedData) {
     const button = args.object as View;
     const page = button.page as Page;

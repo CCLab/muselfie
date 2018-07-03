@@ -84,6 +84,43 @@ label {
     }
 }
 
+.btn-delete-image-wrapper {
+    @extend %wrapper;
+    background-color: $mainBackgroundColor;
+    color: $mainFontColor;
+    padding-left: 0;
+    &.active-delete {
+        background-color: red;
+        padding-left: $buttonWrapperPadding;
+        
+        .btn-delete-text {
+            @extend %text;
+        }
+        .btn-delete-image {
+            background-color: red;
+        }
+    }
+    
+    .btn-delete-image {
+        @extend %icon;
+        background-image: url("res://trash");
+        background-color: $actionbarBackgroundColor;
+        horizontal-align: left;
+    }
+  
+}
+
+.btn-abort-wrapper {
+    @extend %wrapper;
+    background-color: $mainBackgroundColor;
+    color: $mainFontColor;
+    padding-left: 0;
+    .btn-abort {
+        @extend %icon;
+        background-image: url("res://abort");
+    }
+}
+
 .btn-new-wrapper {
     @extend %wrapper;
     background-color: $startEndBackgroundColor;
@@ -106,23 +143,44 @@ label {
     width: $buttonWrapperHeight;
     .btn-share {
         @extend %icon;
-        background-image: url("res://share_v2");
+        background-image: url("res://share_v3");
         border-radius: 0;
         margin: 0;
         padding: 0;
     }
 }
 
-.btn-download {
-    background-image: url("res://download_black_v2");
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 80;
-    width: 80;
+.btn-start-wrapper {
+    @extend %wrapper;
+    background-color: $startEndBackgroundColor;
+    padding-left: 0;
+    .btn-start {
+        @extend %icon;
+        background-color: $startEndBackgroundColor;
+        background-image: url("res://new_muselfie");
+    }
 }
 
-.action-bar-btn-download {
+.btn-save-wrapper {
+    @extend %wrapper;
+    background-color: $mainBackgroundColor;
+    padding-left: 0;
+    .btn-save {
+        @extend %icon;
+        background-image: url("res://download_v3");
+    }
+}
+
+.btn-download {
     @extend %icon;
-    background-image: url("res://download_violet_v2");
-    background-position: right;
+    background-image: url("res://download_v3");
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-right: 17;
+}
+
+.btn-busy {
+    background-color: $actionbarBackgroundColor;
+    color: #bdbdbd;
+    opacity: 0.5;
 }

@@ -2,10 +2,10 @@
       xmlns:fresco="nativescript-fresco">
       <Page.actionBar>
         <ActionBar class="action-bar">
-            <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
-                <Label class="action-bar-step" text="3 / 3"/>
-                <Label class="action-bar-title" text="Wskaż położenie twarzy"/>
-            </StackLayout>
+            <GridLayout rows="*" columns="2*, 7*, 2*" class="steps">
+                <Label row="0" col="0" class="action-bar-logo"/>
+                <Label row="0" col="1" class="action-bar-title" text="wskaż położenie twarzy"/>
+            </GridLayout>
         </ActionBar>
     </Page.actionBar>
     <GridLayout rows="*, auto">
@@ -31,6 +31,5 @@
                 </StackLayout>
                 </FlexboxLayout>
         </StackLayout>
-        <Label class="logo"/>
     </GridLayout>
 </Page>

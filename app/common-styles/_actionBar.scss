@@ -8,51 +8,60 @@
     font-size: $actionbarFontSize;
     font-weight: 500;
     height: $actionbarHeight;
-    margin-left: -10;
+    margin-left: -6; //- 16 moves element to left side (reduces space added by android); and add 10 padding
+    padding-right: 2;
     text-align: center;
-    & label {
-        width: 100%;
-    }
-    & .action-bar-title {
-        text-align: center;
-        width: 60%;
-    }
-    & .action-bar-step,
-    & .action-bar-icon {
-        width: 20%;
-    }
-    & .action-bar-step {
-        color: red;
-        vertical-align: middle;
-    }
-    & .action-bar-start {
-        width: 100%;
-    }
+
     .steps {
-        width: 100%;
         & .action-bar-title {
             font-size: $actionbarFontSize;
-            width: 60%;
         }
-        & .action-bar-step,
-        & .action-bar-icon {
-            width: 20%;
+        & .action-bar-title, & .action-bar-logo, & .action-bar-icon {
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
         }
-        & .action-bar-step {
-            color: red;
-            padding-left: 10;
-            text-align: left;
-            & .info {
-                background-image: url("res://info_panel_v2");
-                background-position: right;
-                background-repeat: no-repeat;
-                background-size: cover;
-                height: $buttonIconSize;
-                width: $buttonIconSize;
-            }
-            & .close-info {
-                background-image: url("res://x_panel_v2");
-            }
+             
+        & .action-bar-logo {
+            @extend %icon;
+            background-image: url("res://mnw_logo_startowa");
+            background-position: left;
+            background-repeat: no-repeat;
+            horizontal-align: left;
+        }
+
+        & .action-bar-btn-download {
+            background-image: url("res://red_plus");
+            background-repeat: no-repeat;
+            background-size: contain; 
+            height: $buttonIconSize;
+            margin: 0;
+            padding: 0;  
+            width: $buttonIconSize;
+        }
+
+        & .new-backgrounds-badge {
+            background-image: url("res://badge");
+            background-repeat: no-repeat;
+            background-size: contain;
+            color: black;
+            font-size: 10;
+            height: $badgeSize;
+            padding-top: 14;
+            padding-bottom: 14;
+            width: $badgeSize;
+        }
+    
+        & .info {
+            background-image: url("res://info_startowa");
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: $buttonIconSize;
+            width: $buttonIconSize;
+        }
+        & .close-info {
+            background-image: url("res://x_panel_v2");
         }
     }
 }

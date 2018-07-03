@@ -1,42 +1,13 @@
 @import '~/common-styles/_actionBar.scss';
+@import '~/common-styles/_fakeActionBar.scss';
 @import '~/common-styles/_navigationButtonsContainer.scss';
 @import '~/common-styles/_buttons.scss';
 @import '~/common-styles/_variables.scss';
 @import '~/common-styles/_logo.scss';
-#action-bar-fake {
-    @extend .action-bar;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-start;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 5;
-    vertical-align: center;
-    width: 100%;
-    .action-bar-step {
-        @extend %icon;
-        background-image: url("res://arrow_left_red_v2");
-        background-position: left;
-        width: 20%;
-    }
-    .action-bar-title {
-        width: 60%;
-    }
-}
 
 .chosen-file {
     border-color: $mainBackgroundColor;
-}
-
-.btn-download {
-    @extend %icon;
-    background-image: url("res://download_black_v2");
-}
-
-.btn-busy {
-    background-color: $actionbarBackgroundColor;
-    color: #bdbdbd;
-    opacity: 0.5;
+    border-radius: 0;
 }
 
 .downloaded-background {

@@ -3,7 +3,7 @@
     <Page.actionBar>
         <ActionBar class="action-bar">
             <StackLayout>
-                <Label text="Brawo Ty!"/>
+                <Label text="brawo Ty!"/>
             </StackLayout>
         </ActionBar>
     </Page.actionBar>
@@ -15,14 +15,16 @@
                 <StackLayout class="btn-back-wrapper" tap="backTap">
                     <Label class="btn-back"/>
                 </StackLayout>
+                <StackLayout class="btn-save-wrapper" isEnabled="{{ finalImageSource !== undefined }}">
+                    <Label class="btn-save"/>
+                </StackLayout>
                  <StackLayout class="btn-share-wrapper" tap="shareTap" isEnabled="{{ finalImageSource !== undefined }}">
                     <Label class="btn-share"/>
                 </StackLayout>
-                 <StackLayout class="btn-new-wrapper" tap="homeTap" orientation="horizontal">
-                    <Label class="btn-new-text" text="od nowa"/>
+                 <StackLayout class="btn-start-wrapper" tap="homeTap" orientation="horizontal">
+                    <Label class="btn-start"/>
                 </StackLayout>
             </FlexboxLayout>
         </StackLayout>
-        <Label class="logo"/>
     </GridLayout>
 </Page>

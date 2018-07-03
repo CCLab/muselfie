@@ -7,39 +7,18 @@
 }
 
 .action-bar {
-    height: $actionbarHeight;
     margin-left: -6; //- 16 moves element to left side (reduces space added by android); and add 10 padding
-    margin-right: 8; //- 2 moves right element to right side; add 10 padding
+    padding-right: 2;
 }
 
 .steps {
-    .logo,
-    .app-name,
-    .info {
-        vertical-align: middle;
-    }
-    .logo {
-        background-image: url("res://mnw_logo_startowa");
-        background-position: left;
-        horizontal-align: left;
-        margin: 0;
-        padding: 0;
-        width: 20%;
-    }
     .app-name {
         color: black;
         font-weight: bold;
         letter-spacing: 0.04;
         horizontal-align: center;
         text-align: center;
-        width: 60%;
-    }
-    .info {
-        @extend %icon;
-        background-image: url("res://info_startowa");
-        background-position: right;
-        visibility: hidden;
-        width: 20%;
+        vertical-align: middle;
     }
 }
 

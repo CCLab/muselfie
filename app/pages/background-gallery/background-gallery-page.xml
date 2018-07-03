@@ -2,35 +2,44 @@
       xmlns:lv="nativescript-ui-listview" xmlns:fresco="nativescript-fresco">
       <Page.actionBar >
         <ActionBar class="action-bar">
-            <StackLayout class="steps" orientation="horizontal" horizontalAlignment="left">
-                <Label class="action-bar-step" text="1 / 3"/>
-                <Label class="action-bar-title" text="Wybierz tło z galerii"/>
-                <Label class="action-bar-btn-download" tap="downloadGallery"/>
-            </StackLayout>
+             <GridLayout rows="*" columns="2*, 6*, 2*" class="steps">
+                <Label row="0" col="0" class="action-bar-logo"/>
+                <Label row="0" col="1" class="action-bar-title" text="wybierz tło"/>
+                <AbsoluteLayout row="0" col="2" tap="downloadGallery" class="online-gallery">
+                    <Label class="action-bar-btn-download"/>
+                    <Label class="new-backgrounds-badge" text="29"/>
+                </AbsoluteLayout>
+            </GridLayout>
         </ActionBar>
     </Page.actionBar>
     <StackLayout>
         <GridLayout>
-            <lv:RadListView id="gallery" items="{{ backgrounds }}">
+            <lv:RadListView id="gallery" items="{{ backgrounds }}" class="{{ deleteIsActive ? 'active-delete' : ' ' }}">
                 <lv:RadListView.listViewLayout>
                     <lv:ListViewGridLayout scrollDirection="Vertical" spanCount="2"/>
                 </lv:RadListView.listViewLayout>
                 <lv:RadListView.itemTemplate >
                     <GridLayout>
                         <fresco:FrescoDrawee height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ thumbnailPath }}" tap="imageTap"/>
-                        <Label class="{{ $parents['Page'].chosenBackground, $parents['Page'].chosenBackground == $value ? 'chosen-file' : '' }}"/>
+                        <Label class="{{ $parents['Page'].chosenBackground, $parents['Page'].chosenBackground == $value ? 'chosen-file active-delete' : ' ' }}"/>
                      </GridLayout>
                 </lv:RadListView.itemTemplate>
             </lv:RadListView>
             <StackLayout verticalAlignment="bottom" visibility="{{ chosenBackground ? 'visible' : 'collapse' }}">
                 <FlexboxLayout class="navigation-buttons-container">
-                    <StackLayout class="btn-next-wrapper" tap="nextTap" orientation="horizontal">
+                    <StackLayout class="{{ deleteIsActive ? 'active-delete btn-delete-image-wrapper' : 'btn-delete-image-wrapper'}}" orientation="horizontal">
+                        <Label class="btn-delete-text" text="usuń" visibility="{{ deleteIsActive ? 'visible' : 'collapse' }}"/>
+                        <Label class="btn-delete-image" tap="chooseDeleteTap"/>
+                    </StackLayout>
+                    <StackLayout class="btn-next-wrapper" tap="nextTap" orientation="horizontal" visibility="{{ deleteIsActive ? 'collapse' : 'visible' }}">
                         <Label class="btn-next-text" text="dalej" />
                         <Label class="btn-next"/>
                      </StackLayout>
+                    <StackLayout class="btn-abort-wrapper" tap="abortDeleteTap" orientation="horizontal" visibility="{{ deleteIsActive ? 'visible' : 'collapse' }}">
+                        <Label class="btn-abort"/>
+                    </StackLayout>
                 </FlexboxLayout>
             </StackLayout>
-            <Label class="logo"/>
          </GridLayout>
     </StackLayout>
 </Page>
