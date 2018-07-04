@@ -9,6 +9,12 @@
 .action-bar {
     margin-left: -6; //- 16 moves element to left side (reduces space added by android); and add 10 padding
     padding-right: 2;
+    &.app-info {
+        background-color: white;
+        .info {
+            background-image: url('res://x_startowa');
+        }
+    }
 }
 
 .steps {
@@ -34,6 +40,30 @@
         padding-right: 30;
         .start-page-image {
             background-color: #e6e6e6;
+        }
+    }
+}
+
+.carousel {
+    background-color: white;
+    margin-bottom: 30;
+    .carousel-slider {
+        height: 100%;
+        padding-bottom: 85;
+        padding-left: 30;
+        padding-right: 30;
+        .app-info-text {
+            font-size: $fontSize;
+            font-family: $fontFamily;
+            line-height: 1.20;
+            padding: 0;
+            color: black;
+        }
+        .app-info-logos {
+            padding-left: 15;
+            padding-right: 15;
+            border-width: 1;
+            border-color: transparent;
         }
     }
 }
