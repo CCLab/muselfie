@@ -4,6 +4,7 @@
 @import '~/common-styles/_buttons.scss';
 @import '~/common-styles/_variables.scss';
 @import '~/common-styles/_logo.scss';
+@import '~/common-styles/_animations.scss';
 
 .action-bar-fake {
     background-color: $actionbarBackgroundColor;
@@ -16,13 +17,48 @@
     text-align: center;
  }
  
-.swipe-icon-wrapper {
-    margin-top: -44;
-}
+
 
 .swipe-icon {
     @extend %icon;
     background-image: url("res://arrow_right_black_v3");
     background-color: $actionbarBackgroundColor;
-    transform: rotate(-90deg);
  }
+
+.picture-icon-wrapper {
+    &.slide-up {
+        .swipe-icon {
+            animation-name: rotateArrowDown;
+            animation-duration: $animationDuration;
+            animation-fill-mode: forwards;
+         }
+    }
+}
+
+.picture-icon-wrapper {
+    .swipe-icon-wrapper {
+        margin-top: -44;
+        .swipe-icon {
+            transform: rotate(-90deg);
+        }
+    }
+   
+    .picture-info {
+        height: 50%;
+    }
+}
+.picture-icon-wrapper {
+    &.slide-down {
+
+        .swipe-icon {
+            animation-name: rotateArrowUp;
+            animation-duration: $animationDuration;
+            animation-fill-mode: forwards;
+        }
+    }
+}
+
+.logo-bar {
+    background-color: transparent;
+}
+

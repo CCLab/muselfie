@@ -1,5 +1,6 @@
 import * as frameModule from "tns-core-modules/ui/frame";
 import { NavigatedData, Page } from "ui/page";
+import { TouchGestureEventData } from "ui/gestures";
 import { View } from "ui/core/view";
 import { EventData } from "tns-core-modules/data/observable";
 
@@ -25,11 +26,25 @@ export function backTap() {
     frameModule.topmost().goBack();
 }
 
-export function toggleInfo(args: EventData){
-    const button = args.object as View;
-    const page = button.page as Page;
-    let model = page.bindingContext as BackgroundModel;
-    model.set("infoVisibilty", !model.infoVisibilty);
+export function toggleInfo(args: TouchGestureEventData){
+    if (args.action === "down") {
+        const button = args.object as View;
+        const page = button.page as Page;
+        let model = page.bindingContext as BackgroundModel;
+        const pictureInfoWrapper = page.getViewById('picture-info-wrapper') as View;
+        const pictureInfo = page.getViewById('picture-info') as View;
+        const pictureeInfoHeight = pictureInfo.getActualSize().height;
+
+        if (model.infoVisibilty) {
+            pictureInfoWrapper.className = 'picture-icon-wrapper slide-up';
+            pictureInfoWrapper.animate({ translate: { x: 0, y: -1 * pictureeInfoHeight }, duration: 1000 });
+
+        } else {
+            pictureInfoWrapper.className = 'picture-icon-wrapper slide-down';
+            pictureInfoWrapper.animate({ translate: { x: 0, y: 0 }, duration: 1000 });
+        }
+        model.set("infoVisibilty", !model.infoVisibilty);
+    }
 }
 
 declare var org;

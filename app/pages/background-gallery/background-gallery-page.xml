@@ -27,13 +27,13 @@
             </lv:RadListView>
             <StackLayout verticalAlignment="bottom" visibility="{{ chosenBackground ? 'visible' : 'collapse' }}">
                 <FlexboxLayout class="navigation-buttons-container">
-                    <StackLayout class="{{ deleteIsActive ? 'active-delete btn-delete-image-wrapper' : 'btn-delete-image-wrapper'}}" orientation="horizontal"
+                    <StackLayout class="{{ deleteIsActive ? 'btn-delete-image-wrapper active-delete' : 'btn-delete-image-wrapper inactive-delete'  }}" orientation="horizontal"
                             tap="chooseDeleteTap" visibility="{{ chosenBackground, chosenBackground.type === 'external' ? 'visible' : 'collapse' }}">
                         <Label class="btn-delete-text" text="usuń" visibility="{{ deleteIsActive ? 'visible' : 'collapse' }}"/>
                         <Label class="btn-delete-image" />
                     </StackLayout>
                     <StackLayout class="btn-next-wrapper" tap="nextTap" orientation="horizontal" visibility="{{ deleteIsActive ? 'collapse' : 'visible' }}">
-                        <Label class="btn-next-text" text="dalej" />
+                        <Label class="btn-next-text" text="dalej"/>
                         <Label class="btn-next"/>
                      </StackLayout>
                     <StackLayout class="btn-abort-wrapper" tap="abortDeleteTap" orientation="horizontal" visibility="{{ deleteIsActive ? 'visible' : 'collapse' }}">

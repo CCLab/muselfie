@@ -60,6 +60,7 @@ export function imageTap(args: EventData) {
 export function chooseDeleteTap(args: EventData) {
     const view = args.object as View;
     const model = view.page.bindingContext as BackgroundGalleryModel;
+    const page = view.page as Page;
 
     if (model.deleteIsActive) {
         model.removeChosen();
@@ -71,6 +72,7 @@ export function chooseDeleteTap(args: EventData) {
 
 export function abortDeleteTap(args: EventData) {
     const view = args.object as View;
+    const page = view.page as Page;
     const model = view.page.bindingContext as BackgroundGalleryModel;
     model.set("deleteIsActive", false);
 }

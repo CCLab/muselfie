@@ -1,4 +1,6 @@
 @import 'variables';
+@import 'animations';
+
 label {
     border-radius: 100%;
     font-family: $fontFamily;
@@ -90,16 +92,30 @@ label {
     color: $mainFontColor;
     padding-left: 0;
     &.active-delete {
-        background-color: red;
         padding-left: $buttonWrapperPadding;
-        
+        animation-name: makeRedBackgroundColor;
+        animation-duration: $animationDuration;
+        animation-fill-mode: forwards;
         .btn-delete-text {
             @extend %text;
         }
         .btn-delete-image {
-            background-color: red;
+            animation-name: makeRedBackgroundColor;
+            animation-duration: $animationDuration;
+            animation-fill-mode: forwards;
         }
     }
+    &.inactive-delete {
+        animation-name: makeGreyBackgroundColor;
+        animation-duration: $animationDuration;
+        animation-fill-mode: forwards;
+        .btn-delete-image {
+            animation-name: makeGreyBackgroundColor;
+            animation-duration: $animationDuration;
+            animation-fill-mode: forwards;
+        }
+    }
+
     
     .btn-delete-image {
         @extend %icon;

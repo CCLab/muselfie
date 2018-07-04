@@ -5,6 +5,7 @@
 
 .online-gallery {
     vertical-align: middle;
+    horizontal-align: right;
 }
 
 .chosen-file {
@@ -14,6 +15,25 @@
 }
 .active-delete {
     .chosen-file {
-        border-color: red;
+        border-color: $dangerColor;
+    }
+}
+
+
+@keyframes activate-delete {
+    from {
+        background-color: $mainBackgroundColor;
+    }
+    to {
+        background-color: $dangerColor;
+    }
+}
+
+@keyframes disactivate-delete {
+    from {
+        background-color: $dangerColor;
+    }
+    to {
+        background-color: $mainBackgroundColor;
     }
 }

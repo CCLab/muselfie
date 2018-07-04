@@ -1,0 +1,37 @@
+@import 'variables';
+
+@keyframes makeRedBackgroundColor {
+    from {
+        background-color: $actionbarBackgroundColor;
+    }
+    to {
+        background-color: $dangerColor;
+    }
+}
+
+@keyframes makeGreyBackgroundColor {
+    from {
+        background-color: $dangerColor;
+    }
+    to {
+        background-color: $actionbarBackgroundColor;
+    }
+}
+
+@keyframes rotateArrowUp {
+    from {
+        transform: rotate(90deg);
+    }
+    to {
+        transform: rotate(-90deg);
+    }
+}
+
+@keyframes rotateArrowDown {
+    from {
+        transform: rotate(-90deg);
+    }
+    to {
+        transform: rotate(90deg);
+    }
+}
