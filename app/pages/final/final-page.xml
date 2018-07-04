@@ -15,7 +15,7 @@
                 <StackLayout class="btn-back-wrapper" tap="backTap">
                     <Label class="btn-back"/>
                 </StackLayout>
-                <StackLayout class="btn-save-wrapper" isEnabled="{{ finalImageSource !== undefined }}">
+                <StackLayout class="btn-save-wrapper" tap="saveTap" isEnabled="{{ finalImageSource !== undefined }}">
                     <Label class="btn-save"/>
                 </StackLayout>
                  <StackLayout class="btn-share-wrapper" tap="shareTap" isEnabled="{{ finalImageSource !== undefined }}">
