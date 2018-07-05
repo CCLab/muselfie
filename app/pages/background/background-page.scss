@@ -12,13 +12,24 @@
 
 .picture-info {
     background-color: $actionbarBackgroundColor;
+    color: black;
     height: 50%;
-    vertical-align: middle;
+    padding-left: 25;
+    padding-right: 25;
     text-align: center;
+    vertical-align: top;
+
+    .picture-author {
+        margin-bottom: 32;
+    }
+
+    .picture-title {
+        font-weight: bold;
+        line-height: 1.20;
+        margin-bottom: 32;
+    }
  }
  
-
-
 .swipe-icon {
     @extend %icon;
     background-image: url("res://arrow_right_black_v3");
