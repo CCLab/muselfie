@@ -2,9 +2,10 @@
       xmlns="http://schemas.nativescript.org/tns.xsd">
     <Page.actionBar>
         <ActionBar class="action-bar">
-            <StackLayout>
-                <Label text="brawo Ty!"/>
-            </StackLayout>
+            <GridLayout rows="*" columns="2*, 7*, 2*" class="steps">
+                <Label row="0" col="0" class="action-bar-logo"/>
+                <Label row="0" col="1" class="action-bar-title" text="brawo Ty!"/>
+            </GridLayout>
         </ActionBar>
     </Page.actionBar>
     <GridLayout rows="*, auto">
