@@ -52,9 +52,8 @@ export function imageTap(args: EventData) {
     const model = view.page.bindingContext as BackgroundGalleryModel;
     const chosenBackground = view.bindingContext;
 
-    if (!model.deleteIsActive) { // can't change images in delete mode
-        model.set("chosenBackground", chosenBackground);
-    }
+    model.set("deleteIsActive", false);
+    model.set("chosenBackground", chosenBackground);
 }
 
 export function chooseDeleteTap(args: EventData) {
