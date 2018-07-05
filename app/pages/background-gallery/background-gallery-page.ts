@@ -22,6 +22,7 @@ export function navigatedTo(args: NavigatedData): void {
     model.set("imageSize", imageSize);
     model.set("thumbnailHeight", imageSize.height / 2); // keep the aspect ratio
     model.showImages();
+    model.checkOnlineNotifications();
 }
 
 export function downloadGallery(args: EventData) {
@@ -38,6 +39,7 @@ export function downloadGallery(args: EventData) {
             downloadedRemoteIds: model.getBackgroundRemoteIds(),
         },
         (backgroundEntry: BackgroundEntry) => {
+            model.set("onlineChangesCount", 0);
             if (backgroundEntry) {
                 model.addBackgroundEntry(backgroundEntry);
                 galleryView.scrollToIndex(0);

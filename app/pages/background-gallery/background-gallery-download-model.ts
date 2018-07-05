@@ -3,6 +3,7 @@ import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { layout } from "tns-core-modules/utils/utils";
 import * as fs from "tns-core-modules/file-system";
 import * as http from "http";
+import * as settings from "application-settings";
 
 import { BackgroundEntry, backgroundEntryType } from "./background-gallery-model";
 
@@ -17,6 +18,11 @@ export interface RemoteBackgroundEntry {
     image_url: string;
     thumbnail_url: string;
     already_downloaded?: boolean; // we will add this ourselves later
+}
+
+export interface BackgroundListAPIResponse {
+    server_time: string;
+    backgrounds: RemoteBackgroundEntry[];
 }
 
 export class BackgroundDownloadModel extends Observable {
@@ -37,20 +43,21 @@ export class BackgroundDownloadModel extends Observable {
         let heightPx = Math.round(layout.toDevicePixels(height));
         return http.getJSON(
             `${BackgroundDownloadModel.API_URL}/api/backgrounds/?required_height=${heightPx}&required_width=${widthPx}`,
-        ).then((apiBackgrounds: RemoteBackgroundEntry) => {
-            if (!(apiBackgrounds instanceof Array)) {
+        ).then((apiResponse: BackgroundListAPIResponse) => {
+            if (!(apiResponse.backgrounds instanceof Array) || typeof apiResponse.server_time !== "string") {
                 // Wrong format. Reject.
                 return Promise.reject("Wrong format of JSON response.");
             }
+            settings.setString("lastOnlineGalleryAccess", apiResponse.server_time);
 
             // Make the urls absolute and add the download status
-            apiBackgrounds.forEach(background => {
+            apiResponse.backgrounds.forEach(background => {
                 background.image_url = BackgroundDownloadModel.API_URL + background.image_url;
                 background.thumbnail_url = BackgroundDownloadModel.API_URL + background.thumbnail_url;
                 background.already_downloaded = this.isBackgroundDownloaded(background);
             });
 
-            this.remoteBackgrounds.push(apiBackgrounds);
+            this.remoteBackgrounds.push(apiResponse.backgrounds);
             this.set("busy", false); // hide the loading indicator
         });
     }

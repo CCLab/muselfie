@@ -4,6 +4,10 @@ import { layout } from "tns-core-modules/utils/utils";
 import * as fs from "tns-core-modules/file-system";
 import * as lowdb from "lowdb";
 import * as NativeScriptAdapter from "lowdb-nativescript-adapter";
+import * as http from "http";
+import * as settings from "application-settings";
+
+import { BackgroundDownloadModel } from "./background-gallery-download-model";
 
 export type backgroundEntryType = "external"|"internal";
 export interface BackgroundEntry {
@@ -16,6 +20,10 @@ export interface BackgroundEntry {
     remoteId?: number;
 }
 
+export interface BackgroundChangesCountAPIResponse {
+    changes_count: number;
+}
+
 export class BackgroundGalleryModel extends Observable {
     public backgrounds = new ObservableArray<BackgroundEntry>();
     public imageSize;
@@ -23,6 +31,7 @@ export class BackgroundGalleryModel extends Observable {
     public chosenBackground: BackgroundEntry;
     public db: lowdb.LowdbSync<lowdb.AdapterSync>;
     public deleteIsActive: boolean = false;
+    public onlineChangesCount = 0;
 
     constructor() {
         super();
@@ -105,6 +114,25 @@ export class BackgroundGalleryModel extends Observable {
             // save to db
             this.db.set("backgrounds", (this.backgrounds as any)._array).write();
         }
+    }
+
+    /**
+     * Queries the API server and displays the number of changes in the online gallery since the last visit.
+     */
+    public checkOnlineNotifications() {
+        const theBeginignOfTime = "1986-06-13T00:00";
+        let lastAccess = encodeURIComponent(
+            settings.getString("lastOnlineGalleryAccess", theBeginignOfTime)
+        );
+        http.getJSON(
+            `${BackgroundDownloadModel.API_URL}/api/backgrounds/changes_count/?last_access=${lastAccess}`,
+        ).then((apiResponse: BackgroundChangesCountAPIResponse) => {
+            if (typeof apiResponse.changes_count === "number") {
+                this.set("onlineChangesCount", apiResponse.changes_count);
+            } else {
+                console.error("Unexpected backgrounds/changes_count API response format");
+            }
+        });
     }
 
     /**
