@@ -37,11 +37,11 @@ export function toggleInfo(args: TouchGestureEventData){
 
         if (model.infoVisibilty) {
             pictureInfoWrapper.className = 'picture-icon-wrapper slide-up';
-            pictureInfoWrapper.animate({ translate: { x: 0, y: -1 * pictureeInfoHeight }, duration: 1000 });
+            pictureInfoWrapper.animate({ translate: { x: 0, y: -1 * pictureeInfoHeight }, duration: 400 });
 
         } else {
             pictureInfoWrapper.className = 'picture-icon-wrapper slide-down';
-            pictureInfoWrapper.animate({ translate: { x: 0, y: 0 }, duration: 1000 });
+            pictureInfoWrapper.animate({ translate: { x: 0, y: 0 }, duration: 400 });
         }
         model.set("infoVisibilty", !model.infoVisibilty);
     }

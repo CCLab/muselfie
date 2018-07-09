@@ -40,7 +40,7 @@
     &.slide-up {
         .swipe-icon {
             animation-name: rotateArrowDown;
-            animation-duration: $animationDuration;
+            animation-duration: $animationDurationLong;
             animation-fill-mode: forwards;
          }
     }
@@ -63,7 +63,7 @@
 
         .swipe-icon {
             animation-name: rotateArrowUp;
-            animation-duration: $animationDuration;
+            animation-duration: $animationDurationLong;
             animation-fill-mode: forwards;
         }
     }
