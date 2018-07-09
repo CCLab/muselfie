@@ -7,7 +7,10 @@
                 <Label row="0" col="1" class="action-bar-title" text="wybierz tło"/>
                 <AbsoluteLayout row="0" col="2" tap="downloadGallery" class="online-gallery">
                     <Label class="action-bar-btn-download"/>
-                    <Label class="new-backgrounds-badge" visibility="{{ onlineChangesCount > 0 ? 'visible' : 'collapse' }}" text="{{ onlineChangesCount }}"/>
+                    <GridLayout visibility="{{ onlineChangesCount > 0 ? 'visible' : 'collapse' }}">
+                        <Label class="new-backgrounds-badge" />
+                        <Label class="new-backgrounds-text" text="{{ onlineChangesCount }}"/>
+                    </GridLayout>
                 </AbsoluteLayout>
             </GridLayout>
         </ActionBar>

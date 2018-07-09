@@ -43,13 +43,19 @@
         & .new-backgrounds-badge {
             background-image: url("res://badge");
             background-repeat: no-repeat;
+            background-position: center;
             background-size: contain;
-            color: black;
-            font-size: 10;
+            border-width: 0;
             height: $badgeSize;
-            padding-top: 14;
-            padding-bottom: 14;
             width: $badgeSize;
+        }
+        & .new-backgrounds-text {
+            color: black;
+            border-width: 0;
+            font-size: $badgeFontSize;
+            horizontal-align: center;
+            text-align: center;
+            vertical-align: middle;
         }
     
         & .info {
