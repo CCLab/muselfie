@@ -26,8 +26,8 @@
             </GridLayout>
                 <GridLayout id="picture-info-wrapper" row="1" rows="auto, auto" class="picture-icon-wrapper" touch="toggleInfo">
                     <StackLayout id="picture-info" row="0" class="picture-info">
-                            <Label class="picture-author" text="{{ chosenBackground.author }}" textWrap="true"/>
-                            <Label class="picture-title" text="{{ chosenBackground.name }}" textWrap="true"/>
+                            <Label class="picture-author" text="{{ chosenBackground.author|polishLineBreaks }}" textWrap="true"/>
+                            <Label class="picture-title" text="{{ chosenBackground.name|polishLineBreaks }}" textWrap="true"/>
                             <Label text="{{ chosenBackground.year }}" textWrap="true"/>
                     </StackLayout>
                     <StackLayout id="swipe-icon" row="1" class="swipe-icon-wrapper">
