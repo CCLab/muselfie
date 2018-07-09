@@ -1,38 +1,36 @@
-<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:ns="nativescript-carousel" xmlns:controls="nativescript-carousel-view">
-    <Page.actionBar>
-        <ActionBar class="{{ appInfoVisibility ? 'action-bar app-info' : 'action-bar' }}">
-            <GridLayout rows="*" columns="2*, 6*, 2*" class="steps">
-                <Label row="0" col="0" class="action-bar-logo"/>
-                <Label row="0" col="1" class="app-name" text="muselfie"/>
-                <Label row="0" col="2" class="info" tap="showAppInfo"/>
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:ns="nativescript-carousel" xmlns:controls="nativescript-carousel-view" actionBarHidden="true">
+   <StackLayout>
+        <GridLayout rows="*" columns="2*, 6*, 2*" class="{{ appInfoVisibility ? 'action-bar app-info' : 'action-bar' }}">
+            <Label row="0" col="0" class="action-bar-logo"/>
+            <Label row="0" col="1" class="app-name" text="muselfie"/>
+            <Label row="0" col="2" class="info" tap="showAppInfo"/>
+        </GridLayout>
+        <GridLayout rows=" *, auto" class="home-page-layout">
+            <GridLayout rows="*, auto, 4*" class="start-page-image-wrapper" row="0">
+                <Image row="1" class="start-page-image" src="res://startowa_v3"/>
+                <Label row="1" class="background-mask" visibility="{{ appInfoVisibility ? 'visible' : 'collapse' }}"/>
             </GridLayout>
-        </ActionBar>
-     </Page.actionBar>
-    <GridLayout rows=" *, auto" class="home-page-layout">
-        <GridLayout rows="*, auto, 4*" class="start-page-image-wrapper" row="0">
-            <Image row="1" class="start-page-image" src="res://startowa_v3"/>
-            <Label row="1" class="background-mask" visibility="{{ appInfoVisibility ? 'visible' : 'collapse' }}"/>
+            <GridLayout row="0" visibility="{{ appInfoVisibility ? 'visible' : 'collapse' }}" class="carousel">
+                <ns:Carousel pageChanged="myChangeEvent" indicatorColor="#00e187" indicatorColorUnselected="black" indicatorOffset="0, -80">
+                    <ns:CarouselItem id="slide1"  verticalAlignment="center">
+                        <GridLayout class="carousel-slider" rows="*, auto" verticalAlignment="center" horizontalAlignment="center">
+                            <Label class="app-info-text" row="0" textWrap="true" text="Aplikację stworzono w Pracowni Otwierania Kultury w ramach współpracy z Muzeum Narodowym w Warszawie."/>
+                            <Image src="res://logo_startowa_info" class="app-info-logos" row="1"/>
+                        </GridLayout>
+                    </ns:CarouselItem>
+                    <ns:CarouselItem id="slide2" verticalAlignment="center">
+                        <GridLayout class="carousel-slider" rows="*" verticalAlignment="center" horizontalAlignment="center">
+                            <Label class="app-info-text" textWrap="true" text="Wszystkie obrazy użyte w aplikacji znajdują się w domenie publicznej. Można je dowolnie wykorzystywać: remiksować, wycinać, wstawiać na bloga i do mediów społecznościowych."/>
+                        </GridLayout>
+                    </ns:CarouselItem>
+                </ns:Carousel>
+            </GridLayout>
+            <FlexboxLayout row="1" class="navigation-buttons-container">
+                <StackLayout class="btn-new-wrapper" tap="startTap" orientation="horizontal">
+                    <Label class="btn-new-text" text="start"/>
+                    <Label class="btn-new"/>
+                </StackLayout>
+            </FlexboxLayout>
         </GridLayout>
-        <GridLayout row="0" visibility="{{ appInfoVisibility ? 'visible' : 'collapse' }}" class="carousel">
-            <ns:Carousel pageChanged="myChangeEvent" indicatorColor="#00e187" indicatorColorUnselected="black" indicatorOffset="0, -80">
-                <ns:CarouselItem id="slide1"  verticalAlignment="center">
-                    <GridLayout class="carousel-slider" rows="*, auto" verticalAlignment="center" horizontalAlignment="center">
-                        <Label class="app-info-text" row="0" textWrap="true" text="Aplikację stworzono w Pracowni Otwierania Kultury w ramach współpracy z Muzeum Narodowym w Warszawie."/>
-                        <Image src="res://logo_startowa_info" class="app-info-logos" row="1"/>
-                    </GridLayout>
-                </ns:CarouselItem>
-                <ns:CarouselItem id="slide2" verticalAlignment="center">
-                    <GridLayout class="carousel-slider" rows="*" verticalAlignment="center" horizontalAlignment="center">
-                        <Label class="app-info-text" textWrap="true" text="Wszystkie obrazy użyte w aplikacji znajdują się w domenie publicznej. Można je dowolnie wykorzystywać: remiksować, wycinać, wstawiać na bloga i do mediów społecznościowych."/>
-                    </GridLayout>
-                </ns:CarouselItem>
-            </ns:Carousel>
-        </GridLayout>
-        <FlexboxLayout row="1" class="navigation-buttons-container">
-            <StackLayout class="btn-new-wrapper" tap="startTap" orientation="horizontal">
-                <Label class="btn-new-text" text="start"/>
-                <Label class="btn-new"/>
-            </StackLayout>
-        </FlexboxLayout>
-    </GridLayout>
+    </StackLayout>
 </Page>

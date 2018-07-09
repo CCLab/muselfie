@@ -1,35 +1,33 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
-      xmlns:fresco="nativescript-fresco">
-      <Page.actionBar>
-        <ActionBar class="action-bar">
-            <GridLayout rows="*" columns="2*, 7*, 2*" class="steps">
-                <Label row="0" col="0" class="action-bar-logo"/>
-                <Label row="0" col="1" class="action-bar-title" text="oznacz owal twarzy"/>
-            </GridLayout>
-        </ActionBar>
-    </Page.actionBar>
-    <GridLayout rows="*, auto">
-        <fresco:FrescoDrawee id="image-photo" width="100%" aspectRatio="1"
-                             imageUri="{{ chosenPhotoPath }}"/>
-        <AbsoluteLayout pan="facePan" touch="faceTouch" pinch="facePinch" rotation="faceRotation">
-            <Label id="face-oval"
-                    top="{{ faceY }}"
-                    left="{{ faceX }}" 
-                    width="{{ faceWidth }}"
-                    height="{{ faceHeight }}"
-                    rotate="{{ faceRotation }}" 
-                />
-         </AbsoluteLayout>
-         <StackLayout verticalAlignment="bottom">
-            <FlexboxLayout class="navigation-buttons-container" >
-                 <StackLayout class="btn-back-wrapper" >
-                     <Label class="btn-back" tap="backTap"/>
-                </StackLayout>
-                <StackLayout class="btn-next-wrapper" tap="nextTap" orientation="horizontal">
-                    <Label class="btn-next-text" text="dalej"/>
-                    <Label class="btn-next"/>
-                </StackLayout>
-            </FlexboxLayout>
-        </StackLayout>
-    </GridLayout>
+      xmlns:fresco="nativescript-fresco" actionBarHidden="true">
+      <StackLayout>
+        <GridLayout rows="*" columns="2*, 6*, 2*" class="action-bar">
+            <Label row="0" col="0" class="action-bar-logo"/>
+            <Label row="0" col="1" class="action-bar-title" text="oznacz owal twarzy"/>
+        </GridLayout>
+        <GridLayout rows="*, auto">
+            <fresco:FrescoDrawee id="image-photo" width="100%" aspectRatio="1"
+                                imageUri="{{ chosenPhotoPath }}"/>
+            <AbsoluteLayout pan="facePan" touch="faceTouch" pinch="facePinch" rotation="faceRotation">
+                <Label id="face-oval"
+                        top="{{ faceY }}"
+                        left="{{ faceX }}" 
+                        width="{{ faceWidth }}"
+                        height="{{ faceHeight }}"
+                        rotate="{{ faceRotation }}" 
+                    />
+            </AbsoluteLayout>
+            <StackLayout verticalAlignment="bottom">
+                <FlexboxLayout class="navigation-buttons-container" >
+                    <StackLayout class="btn-back-wrapper" >
+                        <Label class="btn-back" tap="backTap"/>
+                    </StackLayout>
+                    <StackLayout class="btn-next-wrapper" tap="nextTap" orientation="horizontal">
+                        <Label class="btn-next-text" text="dalej"/>
+                        <Label class="btn-next"/>
+                    </StackLayout>
+                </FlexboxLayout>
+            </StackLayout>
+        </GridLayout>
+    </StackLayout>
 </Page>

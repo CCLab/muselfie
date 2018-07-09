@@ -8,67 +8,75 @@
     font-size: $actionbarFontSize;
     font-weight: 500;
     height: $actionbarHeight;
-    margin-left: -6; //- 16 moves element to left side (reduces space added by android); and add 10 padding
-    padding-right: 2;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10;
+    padding-right: 10;
     text-align: center;
+    width: 100%;
 
-    .steps {
-        & .action-bar-title {
-            font-size: $actionbarFontSize;
-        }
-        & .action-bar-title, & .action-bar-logo, & .action-bar-icon {
-            vertical-align: middle;
-            margin: 0;
-            padding: 0;
-        }
-             
-        & .action-bar-logo {
-            @extend %icon;
-            background-image: url("res://mnw_logo_startowa");
-            background-position: left;
-            background-repeat: no-repeat;
-            horizontal-align: left;
-        }
+    & .action-bar-title {
+        font-size: $actionbarFontSize;
+        horizontal-align: center;
+    }
+    & .action-bar-title, & .action-bar-logo, & .action-bar-icon {
+        vertical-align: middle;
+        margin: 0;
+        padding: 0;
+    }
+            
+    & .action-bar-logo {
+        @extend %icon;
+        background-image: url("res://mnw_logo_startowa");
+        background-position: left;
+        background-repeat: no-repeat;
+        horizontal-align: left;
+    }
 
-        & .action-bar-btn-download {
-            background-image: url("res://red_plus");
-            background-repeat: no-repeat;
-            background-size: contain; 
-            height: $buttonIconSize;
-            margin: 0;
-            padding: 0;  
-            width: $buttonIconSize;
-        }
+    & .action-bar-icon {
+        background-position: right;
+        horizontal-align: right;
+    }
+  
+    & .action-bar-btn-download {
+        background-image: url("res://red_plus");
+        background-repeat: no-repeat;
+        background-size: contain; 
+        height: $buttonIconSize;
+        margin: 0;
+        padding: 0;  
+        width: $buttonIconSize;
+    }
 
-        & .new-backgrounds-badge {
-            background-image: url("res://badge");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            border-width: 0;
-            height: $badgeSize;
-            width: $badgeSize;
-        }
-        & .new-backgrounds-text {
-            color: black;
-            border-width: 0;
-            font-size: $badgeFontSize;
-            horizontal-align: center;
-            text-align: center;
-            vertical-align: middle;
-        }
+   & .new-backgrounds-badge {
+        background-image: url("res://badge");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        border-width: 0;
+        height: $badgeSize;
+        width: $badgeSize;
+     }
+    & .new-backgrounds-text {
+        color: black;
+        border-width: 0;
+        font-size: $badgeFontSize;
+        horizontal-align: center;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    & .info {
+        background-image: url("res://info_startowa");
+        background-position: right;
+        background-repeat: no-repeat;
+        background-size: cover;
+        horizontal-align: right;
+        height: $buttonIconSize;
+        width: $buttonIconSize;
+    }
     
-        & .info {
-            background-image: url("res://info_startowa");
-            background-position: right;
-            background-repeat: no-repeat;
-            background-size: cover;
-            horizontal-align: right;
-            height: $buttonIconSize;
-            width: $buttonIconSize;
-        }
-        & .close-info {
-            background-image: url("res://x_panel_v2");
-        }
+  & .close-info {
+        background-image: url("res://x_panel_v2");
     }
 }

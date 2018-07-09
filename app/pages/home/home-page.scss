@@ -7,8 +7,6 @@
 }
 
 .action-bar {
-    margin-left: -6; //- 16 moves element to left side (reduces space added by android); and add 10 padding
-    padding-right: 2;
     &.app-info {
         background-color: white;
         .info {
@@ -17,18 +15,16 @@
     }
 }
 
-.steps {
-    .app-name {
-        color: black;
-        font-family: $fontFamilyBold;
-        letter-spacing: 0.04;
-        horizontal-align: center;
-        text-align: center;
-        vertical-align: middle;
-    }
+.app-name {
+    color: black;
+    font-weight: bold;
+    letter-spacing: 0.04;
+    horizontal-align: center;
+    text-align: center;
+    vertical-align: middle;
 }
 
-.background-mask {
+.background-mask { // cover image when app info is visible
     background-color: $actionbarBackgroundColor;
     border-radius: 0;
 }

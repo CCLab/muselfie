@@ -1,49 +1,47 @@
 <Page class="page" navigatingTo="onNavigatingTo" navigatedTo="navigatedTo" xmlns="http://schemas.nativescript.org/tns.xsd"
-      xmlns:lv="nativescript-ui-listview" xmlns:fresco="nativescript-fresco">
-      <Page.actionBar >
-        <ActionBar class="action-bar">
-             <GridLayout rows="*" columns="2*, 6*, 2*" class="steps">
-                <Label row="0" col="0" class="action-bar-logo"/>
-                <Label row="0" col="1" class="action-bar-title" text="wybierz tło"/>
-                <AbsoluteLayout row="0" col="2" tap="downloadGallery" class="online-gallery">
-                    <Label class="action-bar-btn-download"/>
-                    <GridLayout visibility="{{ onlineChangesCount > 0 ? 'visible' : 'collapse' }}">
-                        <Label class="new-backgrounds-badge" />
-                        <Label class="new-backgrounds-text" text="{{ onlineChangesCount }}"/>
-                    </GridLayout>
-                </AbsoluteLayout>
-            </GridLayout>
-        </ActionBar>
-    </Page.actionBar>
+      xmlns:lv="nativescript-ui-listview" xmlns:fresco="nativescript-fresco" actionBarHidden="true">
     <StackLayout>
-        <GridLayout>
-            <lv:RadListView id="gallery" items="{{ backgrounds }}" class="{{ deleteIsActive ? 'active-delete' : ' ' }}">
-                <lv:RadListView.listViewLayout>
-                    <lv:ListViewGridLayout scrollDirection="Vertical" spanCount="2"/>
-                </lv:RadListView.listViewLayout>
-                <lv:RadListView.itemTemplate >
-                    <GridLayout>
-                        <fresco:FrescoDrawee height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ thumbnailPath }}" tap="imageTap"/>
-                        <Label class="{{ $parents['Page'].chosenBackground, $parents['Page'].chosenBackground == $value ? 'chosen-file active-delete' : ' ' }}"/>
-                     </GridLayout>
-                </lv:RadListView.itemTemplate>
-            </lv:RadListView>
-            <StackLayout verticalAlignment="bottom" visibility="{{ chosenBackground ? 'visible' : 'collapse' }}">
-                <FlexboxLayout class="navigation-buttons-container">
-                    <StackLayout class="{{ deleteIsActive ? 'btn-delete-image-wrapper active-delete' : 'btn-delete-image-wrapper inactive-delete'  }}" orientation="horizontal"
-                            tap="chooseDeleteTap" visibility="{{ chosenBackground, chosenBackground.type === 'external' ? 'visible' : 'collapse' }}">
-                        <Label class="btn-delete-text" text="usuń" visibility="{{ deleteIsActive ? 'visible' : 'collapse' }}"/>
-                        <Label class="btn-delete-image" />
-                    </StackLayout>
-                    <StackLayout class="btn-next-wrapper" tap="nextTap" orientation="horizontal" visibility="{{ deleteIsActive ? 'collapse' : 'visible' }}">
-                        <Label class="btn-next-text" text="dalej"/>
-                        <Label class="btn-next"/>
-                     </StackLayout>
-                    <StackLayout class="btn-abort-wrapper" tap="abortDeleteTap" orientation="horizontal" visibility="{{ deleteIsActive ? 'visible' : 'collapse' }}">
-                        <Label class="btn-abort"/>
-                    </StackLayout>
-                </FlexboxLayout>
-            </StackLayout>
-         </GridLayout>
+        <GridLayout rows="*" columns="2*, 6*, 2*" class="action-bar">
+            <Label row="0" col="0" class="action-bar-logo"/>
+            <Label row="0" col="1" class="action-bar-title" text="wybierz tło"/>
+            <AbsoluteLayout row="0" col="2" tap="downloadGallery" class="online-gallery">
+                <Label class="action-bar-btn-download"/>
+                <GridLayout visibility="{{ onlineChangesCount > 0 ? 'visible' : 'collapse' }}">
+                      <Label class="new-backgrounds-badge" />
+                      <Label class="new-backgrounds-text" text="{{ onlineChangesCount }}"/>
+                </GridLayout>
+            </AbsoluteLayout>
+        </GridLayout>
+        <StackLayout>
+            <GridLayout>
+                <lv:RadListView id="gallery" items="{{ backgrounds }}" class="{{ deleteIsActive ? 'active-delete' : ' ' }}">
+                    <lv:RadListView.listViewLayout>
+                        <lv:ListViewGridLayout scrollDirection="Vertical" spanCount="2"/>
+                    </lv:RadListView.listViewLayout>
+                    <lv:RadListView.itemTemplate >
+                        <GridLayout>
+                            <fresco:FrescoDrawee height="{{ $parents['Page'].thumbnailHeight }}" imageUri="{{ thumbnailPath }}" tap="imageTap"/>
+                            <Label class="{{ $parents['Page'].chosenBackground, $parents['Page'].chosenBackground == $value ? 'chosen-file active-delete' : ' ' }}"/>
+                        </GridLayout>
+                    </lv:RadListView.itemTemplate>
+                </lv:RadListView>
+                <StackLayout verticalAlignment="bottom" visibility="{{ chosenBackground ? 'visible' : 'collapse' }}">
+                    <FlexboxLayout class="navigation-buttons-container">
+                        <StackLayout class="{{ deleteIsActive ? 'btn-delete-image-wrapper active-delete' : 'btn-delete-image-wrapper inactive-delete'  }}" orientation="horizontal"
+                                tap="chooseDeleteTap" visibility="{{ chosenBackground, chosenBackground.type === 'external' ? 'visible' : 'collapse' }}">
+                            <Label class="btn-delete-text" text="usuń" visibility="{{ deleteIsActive ? 'visible' : 'collapse' }}"/>
+                            <Label class="btn-delete-image" />
+                        </StackLayout>
+                        <StackLayout class="btn-next-wrapper" tap="nextTap" orientation="horizontal" visibility="{{ deleteIsActive ? 'collapse' : 'visible' }}">
+                            <Label class="btn-next-text" text="dalej"/>
+                            <Label class="btn-next"/>
+                        </StackLayout>
+                        <StackLayout class="btn-abort-wrapper" tap="abortDeleteTap" orientation="horizontal" visibility="{{ deleteIsActive ? 'visible' : 'collapse' }}">
+                            <Label class="btn-abort"/>
+                        </StackLayout>
+                    </FlexboxLayout>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
     </StackLayout>
 </Page>
