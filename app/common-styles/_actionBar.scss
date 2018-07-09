@@ -1,9 +1,6 @@
 @import 'variables';
 .action-bar {
     background-color: $actionbarBackgroundColor;
-    border-color: transparent;
-    border-width: 1;
-    box-shadow: none;
     color: $actionbarFontColor;
     font-size: $actionbarFontSize;
     font-weight: 500;

@@ -11,7 +11,9 @@ $onlineGalleryBarBackgroundColor: $startEndBackgroundColor;
 $fontFamily: 'WorkSans-Medium';
 $fontFamilyBold: 'WorkSans-Bold';
 $fontSize: 22;
-$letterSpacing:-0.01;
+$letterSpacing: 0;
+$letterSpacingAppName: 0.04;
+$letterSpacingBold: 0;
 
 $buttonIconSize: 61;
 $buttonIconPadding: 0;
@@ -29,8 +31,6 @@ $actionbarFontColor: $secondaryBackgroundColor;
 $actionbarFontSize: 22;
 $actionbarHeight: 81;
 $actionbarSecondaryFontColor: #ff3232;
-
-$fakeActionBarMarginTop: -1 * $actionbarHeight / 2;
 
 $animationDuration: .1s;
 

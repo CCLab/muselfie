@@ -17,8 +17,8 @@
 
 .app-name {
     color: black;
-    font-weight: bold;
-    letter-spacing: 0.04;
+    font-family: $fontFamilyBold;
+    letter-spacing: $letterSpacingAppName;
     horizontal-align: center;
     text-align: center;
     vertical-align: middle;
