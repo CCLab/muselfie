@@ -28,6 +28,11 @@
     }
 }
 
+.background-mask {
+    background-color: $actionbarBackgroundColor;
+    border-radius: 0;
+}
+
 .home-page-layout {
     .home-page-layout-main {
         align-items: center;
