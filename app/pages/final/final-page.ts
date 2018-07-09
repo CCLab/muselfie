@@ -51,7 +51,7 @@ export function homeTap() {
     }).then(result => {
         if (result) {
             frameModule.topmost().navigate({
-                moduleName: "pages/home/home-page",
+                moduleName: "pages/background-gallery/background-gallery-page",
                 clearHistory: true,
             });
         }
