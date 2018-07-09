@@ -28,8 +28,7 @@ export function backTap() {
 
 export function toggleInfo(args: TouchGestureEventData){
     if (args.action === "down") {
-        const button = args.object as View;
-        const page = button.page as Page;
+        const page = (args.object as View).page as Page;
         let model = page.bindingContext as BackgroundModel;
         const pictureInfoWrapper = page.getViewById('picture-info-wrapper') as View;
         const pictureInfo = page.getViewById('picture-info') as View;

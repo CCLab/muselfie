@@ -24,18 +24,18 @@
                             </FlexboxLayout>
                     </StackLayout>
             </GridLayout>
-                <GridLayout id="picture-info-wrapper" row="1" rows="auto, auto" class="picture-icon-wrapper" touch="toggleInfo">
-                    <StackLayout id="picture-info" row="0" class="picture-info">
+            <GridLayout id="picture-info-wrapper" row="1" rows="auto, auto" class="picture-icon-wrapper">
+                    <StackLayout id="picture-info" row="0" class="picture-info" touch="toggleInfo">
                             <Label class="picture-author" text="{{ chosenBackground.author|polishLineBreaks }}" textWrap="true"/>
                             <Label class="picture-title" text="{{ chosenBackground.name|polishLineBreaks }}" textWrap="true"/>
                             <Label text="{{ chosenBackground.year }}" textWrap="true"/>
                     </StackLayout>
-                    <StackLayout id="swipe-icon" row="1" class="swipe-icon-wrapper">
+                    <StackLayout id="swipe-icon" row="1" class="swipe-icon-wrapper" touch="toggleInfo">
                         <Label class="swipe-icon" />
                     </StackLayout>
             </GridLayout>
         </GridLayout>
-         <GridLayout columns="2*, 6*, 2*" rows="*" class="action-bar-fake logo-bar" verticalAlignment="top">
+        <GridLayout columns="2*, 6*, 2*" rows="*" class="action-bar-fake logo-bar" verticalAlignment="top">
             <Label class="action-bar-logo"/>
         </GridLayout>
     </GridLayout>
