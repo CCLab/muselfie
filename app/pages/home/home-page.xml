@@ -11,7 +11,7 @@
                 <Label row="1" class="background-mask" visibility="{{ appInfoVisibility ? 'visible' : 'collapse' }}"/>
             </GridLayout>
             <GridLayout row="0" visibility="{{ appInfoVisibility ? 'visible' : 'collapse' }}" class="carousel">
-                <ns:Carousel pageChanged="myChangeEvent" indicatorColor="#00e187" indicatorColorUnselected="black" indicatorOffset="0, -80">
+                <ns:Carousel pageChanged="myChangeEvent" indicatorColor="#00e187" indicatorColorUnselected="black">
                     <ns:CarouselItem id="slide1"  verticalAlignment="center">
                         <GridLayout class="carousel-slider" rows="*, auto" verticalAlignment="center" horizontalAlignment="center">
                             <Label class="app-info-text" row="0" textWrap="true" text="Aplikację stworzono w Pracowni Otwierania Kultury w ramach współpracy z Muzeum Narodowym w Warszawie."/>

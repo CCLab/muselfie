@@ -24,7 +24,7 @@
             
     & .action-bar-logo {
         @extend %icon;
-        background-image: url("res://mnw_logo_startowa");
+        background-image: url("res://logo_mnw_bigger");
         background-position: left;
         background-repeat: no-repeat;
         horizontal-align: left;
@@ -43,6 +43,7 @@
         margin: 0;
         padding: 0;  
         width: $buttonIconSize;
+        vertical-align: middle;
     }
 
    & .new-backgrounds-badge {
